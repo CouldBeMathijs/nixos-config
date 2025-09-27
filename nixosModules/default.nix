@@ -1,5 +1,6 @@
 { lib, ...}: {
         imports = [
+                ./DE-WM/cinnamon.nix
                 ./DE-WM/gnome.nix
                 
                 ./programs/cli-utils.nix
