@@ -26,7 +26,7 @@ jobs:
 
       - name: Install Determinate Nix
         # This step is required to ensure Nix and Flakes are available
-        uses: DeterminateSystems/determinate-nix-action@v10 # Use the latest stable version
+        uses: DeterminateSystems/determinate-nix-action@v27 # Use the latest stable version
 
       - name: Update flake.lock and Commit
         uses: DeterminateSystems/update-flake-lock@main
