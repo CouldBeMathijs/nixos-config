@@ -1,0 +1,36 @@
+name: "Flake.lock: Daily Update and Commit"
+
+# Triggers the workflow daily at 00:00 UTC
+on:
+  schedule:
+    # '0 0 * * *' runs at 00:00 (midnight) UTC every day
+    - cron: '0 0 * * *'
+  # Allows manually triggering the workflow from the GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  nix-flake-update:
+    runs-on: ubuntu-latest
+    
+    # Permissions are crucial for the action to check out, update, and commit/push
+    permissions:
+      contents: write # Allows the action to commit and push changes
+      id-token: write # Recommended for use with Determinate Nix Installer
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        # Set the target branch for the action to run against and commit to
+        with:
+          ref: main 
+
+      - name: Install Determinate Nix
+        # This step is required to ensure Nix and Flakes are available
+        uses: DeterminateSystems/determinate-nix-action@v10 # Use the latest stable version
+
+      - name: Update flake.lock and Commit
+        uses: DeterminateSystems/update-flake-lock@main
+        # By default, this action commits directly to the current branch (main in this case)
+        # if no pull request is opened. 
+        # The default commit message is "flake.lock: Update"
+        # The action uses the GITHUB_TOKEN provided by the 'contents: write' permission.
