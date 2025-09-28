@@ -32,6 +32,8 @@
                 # Enable LaTeX
                 latex.enable = true;
 
+                minecraft.enable = true;
+
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
                 # This value determines the Home Manager release that your configuration is
