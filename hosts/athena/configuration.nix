@@ -46,8 +46,6 @@
 
                 # Media
                 gimp # GNU Image Manipulation Program
-                musescore # Writing music scores
-                muse-sounds-manager # Write music scores with better playback
 
                 # Documents
                 # gramps # Geneology

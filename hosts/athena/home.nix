@@ -35,6 +35,9 @@
                 # Enable LaTeX
                 latex.enable = true;
 
+                # Enable musescore
+                composing.enable = true;
+
                 minecraft.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
@@ -110,13 +113,6 @@
                                                         exec = "ghostty";
                                                 };
                                         };
-                                };
-                                "muse-sounds-manager" = {
-                                        name = "Muse Sounds Manager";
-                                        icon = "enjoy-music-player";
-                                        comment = "Manage Muse sound themes";
-                                        exec = "muse-sounds-manager";
-                                        categories = [ "Audio" ];
                                 };
                         };
                 };

@@ -4,6 +4,7 @@
                 ./cliApps/git.nix
                 ./cliApps/shell.nix
                 ./programs/browser.nix
+                ./programs/composing.nix
                 ./programs/csa-utils.nix
                 ./programs/jetbrains.nix
                 ./programs/latex.nix
