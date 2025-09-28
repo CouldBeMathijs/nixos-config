@@ -45,10 +45,6 @@
                 signal-desktop # Signal messenger
                 vesktop # Discord client
 
-                # Development
-                logisim # Live laugh Logisim - Swiepie (2024)
-                mars-mips # MIPS Assembly IDE
-
                 # Media
                 gimp # GNU Image Manipulation Program
                 musescore # Writing music scores
@@ -71,7 +67,6 @@
         };
 
         # Nvidia
-
 
         # Enable OpenGL
         hardware.graphics = {

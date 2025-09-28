@@ -29,6 +29,9 @@
                 # Enable Jetbrains IDE's
                 jetbrains.enable = true;
 
+                # Enable logisim and mars-mips
+                csa-utils.enable = true;
+
                 # Enable LaTeX
                 latex.enable = true;
 
