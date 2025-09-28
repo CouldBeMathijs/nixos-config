@@ -1,36 +1,53 @@
-name: "Flake.lock: Daily Update and Commit"
+name: "Flake.lock: update Nix dependencies"
 
-# Triggers the workflow daily at 00:00 UTC
 on:
+  workflow_dispatch: # allows manual triggering
   schedule:
-    # '0 0 * * *' runs at 00:00 (midnight) UTC every day
-    - cron: '0 0 * * *'
-  # Allows manually triggering the workflow from the GitHub Actions tab
-  workflow_dispatch:
+    - cron: '0 0 * * *' # runs daily at 00:00 (midnight) UTC
 
 jobs:
   nix-flake-update:
-    runs-on: ubuntu-latest
-    
-    # Permissions are crucial for the action to check out, update, and commit/push
     permissions:
-      contents: write # Allows the action to commit and push changes
-      id-token: write # Recommended for use with Determinate Nix Installer
-      
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        # Set the target branch for the action to run against and commit to
+      - uses: actions/checkout@v4
+        # Important: Fetch full history so we can commit
         with:
-          ref: main 
+          fetch-depth: 0
 
-      - name: Install Determinate Nix
-        # This step is required to ensure Nix and Flakes are available
-        uses: DeterminateSystems/determinate-nix-action@v27 # Use the latest stable version
+      - uses: DeterminateSystems/determinate-nix-action@v3
 
-      - name: Update flake.lock and Commit
-        uses: DeterminateSystems/update-flake-lock@main
-        # By default, this action commits directly to the current branch (main in this case)
-        # if no pull request is opened. 
-        # The default commit message is "flake.lock: Update"
-        # The action uses the GITHUB_TOKEN provided by the 'contents: write' permission.
+      - name: Update flake.lock
+        # Run the update command
+        run: nix flake update
+      
+      - name: Check for Changes
+        # Check if the lock file has actually changed
+        id: git_status
+        run: |
+          if git diff --exit-code flake.lock; then
+            echo "::set-output name=changed::false"
+          else
+            echo "::set-output name=changed::true"
+          fi
+      
+      - name: Commit and Push
+        # Only run the commit if there are changes
+        if: steps.git_status.outputs.changed == 'true'
+        run: |
+          # Configure Git user
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add the changed lock file
+          git add flake.lock
+          
+          # Commit the changes
+          git commit -m "chore(deps): Update Nix flake dependencies"
+          
+          # Push directly to the default branch (assuming it is 'main')
+          git push
