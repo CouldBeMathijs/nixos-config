@@ -21,16 +21,9 @@
                 
                 # Enable fastfetct configuration
                 fastfetch.enable = true;
-                
-                # Enable gnome customization
-                gnome-extensions.enable = true;
-                gnome-theming.enable = true;
 
-                # Enable Jetbrains IDE's
-                jetbrains.enable = true;
-
-                # Enable LaTeX
-                latex.enable = true;
+                # Enable cinnamon theming
+                cinnamon-theming.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
