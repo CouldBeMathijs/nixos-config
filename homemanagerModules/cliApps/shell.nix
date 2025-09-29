@@ -27,9 +27,8 @@ in
                                 "ll" = "eza -l";
                                 ".." = "cd ..";
                                 "switch-home" = "home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
-                                "flake-update" = "nix flake update --flake ${flake}";
+                                "flake-update" = "git -C ${flake} pull";
                                 "switch-all" = "nh os switch ${flake} && home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
-                                # "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
                         };
                 };
                 programs.zoxide = {
