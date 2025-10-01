@@ -7,5 +7,5 @@ Do not forget to bring your own hardware-configuration.nix!
 If you've got any questions, I'd be glad to help.
 
 Hosts:
-  Athena: ASUS Vivobook Flip - School laptop
-  Dionysus: Lenovo Legion - Gaming laptop
+ - Athena: ASUS Vivobook Flip - School laptop
+ - Dionysus: Lenovo Legion - Gaming laptop
