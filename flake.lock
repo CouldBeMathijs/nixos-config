@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756237290,
-        "narHash": "sha256-lpS2jbnG4025lmEFhcdSmMPncHpEMOsCNBA+Pyv+BNE=",
+        "lastModified": 1759300630,
+        "narHash": "sha256-nbOcuGqGzijPcFuW6N7xF13WfIc77tadtAOZKRljQmQ=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "e34546fca9b31e9c660d41b3aa37cf24009706ed",
+        "rev": "cfbcde41f9bb574bea5f49871446d37fc4c462ce",
         "type": "github"
       },
       "original": {
