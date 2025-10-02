@@ -11,6 +11,7 @@
                         impression # dd but Gnome
                         parabolic # Media downloader
                         papers # Pdf reader
+                        pinta # Paint
                         pdfarranger # Pdf arranger
                         pitivi # Video editor
                         rnote # Handdrawn note taking
