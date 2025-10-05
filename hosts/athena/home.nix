@@ -30,7 +30,7 @@
                 jetbrains.enable = true;
 
                 # Enable logisim and mars-mips
-                csa-utils.enable = true;
+                csa-utils.enable = false;
 
                 # Enable LaTeX
                 latex.enable = true;
@@ -67,6 +67,9 @@
                                                 builtins.substring (builtins.stringLength patchName - builtins.stringLength suffix) (builtins.stringLength suffix) patchName != suffix
                                 ) oldAttrs.patches;
                         }))
+                        pkgs.obs-studio
+                        pkgs.audacity
+                        pkgs.shotcut
                 ];
 
                 xdg = {
