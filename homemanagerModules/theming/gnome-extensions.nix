@@ -16,7 +16,7 @@
                         #rounded-window-corners-reborn # Should be default
                         user-themes # Classic
                         vitals # System monitor in top bar
-
+                        gbinaryclock
                 ];
                 dconf = {
                         enable = true;
@@ -34,6 +34,7 @@
                                                 #rounded-window-corners-reborn.extensionUuid # Should be default
                                                 user-themes.extensionUuid # Classic
                                                 vitals.extensionUuid # System monitor in top bar
+                                                gbinaryclock.extensionUuid
                                         ];
                                         disable-extension-version-validation = true;
                                 };
