@@ -8,6 +8,7 @@
                         file # File information
                         ghostty # You never want to end up without terminal emulator
                         git # Version control for the modern age
+                        killall # Kill all instances of a program
                         tree # Tree folder view
                         unzip # Make it not zipped
                         wget # Download things from the World Wide Web
