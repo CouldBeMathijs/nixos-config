@@ -8,4 +8,8 @@ If you've got any questions, I'd be glad to help.
 
 Hosts:
  - Athena: ASUS Vivobook Flip - School laptop
+     - Gnome
+     - Development tooling and IDE's
  - Dionysus: Lenovo Legion - Gaming laptop
+     - Cinnamon
+     - Steam + Heroic
