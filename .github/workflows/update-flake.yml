@@ -1,10 +1,12 @@
 name: "Flake.lock: update Nix dependencies"
 
 on:
-  workflow_dispatch: # allows manual triggering
+  push:
+    branches:
+      - main
+  workflow_dispatch:
   schedule:
-    - cron: '30 */8 * * *'
-
+    - cron: '30 */4 * * *'
 jobs:
   nix-flake-update:
     permissions:
