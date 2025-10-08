@@ -27,7 +27,7 @@
 
                 # Enable musescore
                 composing.enable = true;
-
+                gramps.enable = true;
                 minecraft.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
@@ -35,28 +35,10 @@
                 # This value determines the Home Manager release that your configuration is
                 # compatible with.
                 home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
-                home.packages = [
-                        (pkgs.gramps.overrideAttrs (oldAttrs: {
-                                src = pkgs.fetchFromGitHub {
-                                        owner = "gramps-project";
-                                        repo = "gramps";
-                                        rev = "v6.0.4";
-                                        hash = "sha256-MBsc4YMbCvzRG6+7/cGQpx7iYvQAdqWYrIMEpf1A7ew=";
-                                };
-                                version = "6.0.4";
-
-                                propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [
-                                        pkgs.python3Packages.orjson
-                                ];
-
-                                patches = builtins.filter (p:
-                                        let
-                                                patchName = builtins.toString p;
-                                                suffix = "disable-gtk-warning-dialog.patch";
-                                        in
-                                                builtins.substring (builtins.stringLength patchName - builtins.stringLength suffix) (builtins.stringLength suffix) patchName != suffix
-                                ) oldAttrs.patches;
-                        }))
+                home.packages = with pkgs; [
+                        # Messaging apps
+                        signal-desktop
+                        vesktop
                 ];
 
                 xdg = {

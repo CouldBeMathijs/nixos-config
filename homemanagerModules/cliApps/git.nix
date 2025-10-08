@@ -14,5 +14,9 @@
                                 init.defaultBranch = "main";
                         };
                 };
+                home.packages = with pkgs; [
+                        gh # Github client
+                        git # Duh
+                ];
         };
 }

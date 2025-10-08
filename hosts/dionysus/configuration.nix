@@ -38,13 +38,6 @@
         # List packages installed in system profile. To search, run:
         # $ nix search wget
         environment.systemPackages = with pkgs; [
-                # Command Line tools (CLI)
-                gh # Github CLI-client
-
-                # Communication
-                signal-desktop # Signal messenger
-                vesktop # Discord client
-
                 # Media
                 gimp # GNU Image Manipulation Program
 
