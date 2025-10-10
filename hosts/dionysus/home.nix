@@ -23,7 +23,9 @@
                 fastfetch.enable = true;
 
                 # Enable cinnamon theming
-                cinnamon-theming.enable = true;
+                #cinnamon-theming.enable = true;
+                gnome-theming.enable = true;
+                gnome-extensions.enable = true;
 
                 # Enable musescore
                 composing.enable = true;
