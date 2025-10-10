@@ -1,4 +1,4 @@
-{ pkgs-unstable, gruvboxPlusIcons, lib, config, options, ... }:
+{ pkgs-unstable, pkgs, gruvboxPlusIcons, lib, config, options, ... }:
 {
         options = {
                 gnome-theming.enable = lib.mkEnableOption "enable gnome-theming";
@@ -61,10 +61,29 @@
                                 tweakVariants = [ "macos" ];
                         };
                 };
+
+                # This option ensures that the installed cursor theme is properly configured
+                # for X11, GTK, and Qt applications in your user session.
+                home.pointerCursor = {
+                        # 1. Enable the cursor configuration module
+                        enable = true;
+
+                        # 2. Specify the Nix package containing the Numix cursor theme
+                        package = pkgs.capitaine-cursors-themed;
+
+                        # 3. Set the specific theme name.
+                        #    The Numix package installs both 'Numix-Cursor' (light) and 
+                        #    'Numix-Cursor-Dark' (dark). We use the dark variant here.
+                        name = "Capitaine Cursors (Gruvbox)";
+
+                        # 4. (Optional) Set a suitable cursor size (e.g., 24, 32, or 48)
+                        #size = 24;
+                };
                 xdg.configFile = {
-                                "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-                                "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-                                "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
-                        };
+                        "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+                        "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+                        "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+                };
         };
+
 }
