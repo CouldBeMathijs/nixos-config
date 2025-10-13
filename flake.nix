@@ -2,57 +2,61 @@
         description = "The main flake";
 
         inputs = {
-                nixpkgs.url = "nixpkgs/nixos-25.05";
-                nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-
-                home-manager = {
-                        url = "github:nix-community/home-manager/release-25.05";
-                        inputs.nixpkgs.follows = "nixpkgs";
-                };
-
                 asus-numberpad-driver = {
                         url = "github:asus-linux-drivers/asus-numberpad-driver";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-
-                nix-index-database = {
-                        url = "github:nix-community/nix-index-database";
+                home-manager = {
+                        url = "github:nix-community/home-manager/release-25.05";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-
-                my-bash-scripts = {
-                        url = "github:CouldBeMathijs/bash-scripts";
-                        flake = false;
-                };
-
-                nvf = {
-                        url = "github:NotAShelf/nvf/v0.8";
-                        inputs.nixpkgs.follows = "nixpkgs";
-                };
-
                 gruvbox-icons = {
                         url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
                         flake = false;
                 };
-
+                my-bash-scripts = {
+                        url = "github:CouldBeMathijs/bash-scripts";
+                        flake = false;
+                };
+                nixos-hardware = {
+                        url = "github:nixos/nixos-hardware/master";
+                };
+                nixpkgs = {
+                        url = "nixpkgs/nixos-25.05";
+                };
+                nixpkgs-unstable = {
+                        url = "nixpkgs/nixos-unstable";
+                };
+                nix-index-database = {
+                        url = "github:nix-community/nix-index-database";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                };
+                nvf = {
+                        url = "github:NotAShelf/nvf/v0.8";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                };
+                stylix = {
+                        url = "github:nix-community/stylix";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                };
                 zen-browser = {
                         url = "github:0xc000022070/zen-browser-flake/beta";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-                nixos-hardware.url = "github:nixos/nixos-hardware/master";
         };
 
         outputs = {
+                asus-numberpad-driver,
+                gruvbox-icons,
+                home-manager,
+                my-bash-scripts,
+                nix-index-database,
+                nixos-hardware,
                 nixpkgs,
                 nixpkgs-unstable,
-                home-manager,
-                asus-numberpad-driver,
-                nix-index-database,
-                my-bash-scripts,
                 nvf,
-                gruvbox-icons,
+                stylix,
                 zen-browser,
-                nixos-hardware,
                 ...
                 }:
                 let

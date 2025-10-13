@@ -5,7 +5,10 @@
         };
 
         config = lib.mkIf config.browser.enable {
-                home.packages = with zen-browser.packages."x86_64-linux"; [ beta ];
+                home.packages = [ 
+                        zen-browser.packages."x86_64-linux".beta
+                        pkgs.tor-browser
+                ];
                 xdg = {
                         enable = true;
                         desktopEntries = {
