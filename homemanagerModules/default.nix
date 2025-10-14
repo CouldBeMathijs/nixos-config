@@ -6,6 +6,7 @@
                 ./programs/browser.nix
                 ./programs/composing.nix
                 ./programs/csa-utils.nix
+                ./programs/discord.nix
                 ./programs/gramps.nix
                 ./programs/jetbrains.nix
                 ./programs/latex.nix

@@ -37,6 +37,7 @@
 
                 # Enable musescore
                 composing.enable = true;
+                discord.enable = true;
                 gramps.enable = true;
                 minecraft.enable = true;
 
@@ -46,9 +47,10 @@
                 # compatible with.
                 home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
                 home.packages = with pkgs; [
-                        obs-studio
-                        audacity
-                        shotcut
+                        obs-studio # Record you screen
+                        audacity # Audio recording and editing
+                        shotcut # Video editing
+                        kdePackages.kwordquiz # Flash card builder
 
                         # Messaging apps
                         signal-desktop
@@ -57,24 +59,12 @@
 
                 xdg = {
                         enable = true;
-                        autostart = {
-                                enable = true;
-                                entries = [ "${config.home.homeDirectory}/.nix-profile/share/applications/vesktop.desktop" ];
-                        };
-                        
                         desktopEntries = {
                                 "cups" = {
                                         name = "Cups Printer Manager";
                                         noDisplay = true;
                                 };
-                                "vesktop" = {
-                                        name = "Vesktop";
-                                        comment = "A Discord client";
-                                        genericName = "Discord Client";
-                                        exec = "vesktop";
-                                        type = "Application";
-                                        icon = "discord";
-                                };
+                                
                                 "com.mitchellh.ghostty" = {
                                         name = "Ghostty";
                                         genericName = "Terminal Emulator";
