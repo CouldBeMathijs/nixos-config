@@ -198,11 +198,11 @@
     "gruvbox-icons": {
       "flake": false,
       "locked": {
-        "lastModified": 1760353742,
-        "narHash": "sha256-66PeyLCgU3eoPaPxkSQodw/bmjXyhTg6th/kMNXyWTE=",
+        "lastModified": 1760443387,
+        "narHash": "sha256-T7nGx6Iv85L6to/RYu6nNv4ZEcN69FuOh1HwPtSNeIE=",
         "owner": "SylEleuth",
         "repo": "gruvbox-plus-icon-pack",
-        "rev": "5beb84b57dac3809eee070c178bfc2b85234e757",
+        "rev": "fa4d371ac2b95c5daf2778ffad93325ea27058d8",
         "type": "github"
       },
       "original": {
