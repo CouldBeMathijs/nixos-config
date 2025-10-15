@@ -19,10 +19,10 @@
                         flake = false;
                 };
                 nixpkgs = {
-                        url = "nixpkgs/nixos-25.05";
+                        url = "github:NixOS/nixpkgs/nixos-25.05";
                 };
                 nixpkgs-unstable = {
-                        url = "nixpkgs/nixos-unstable";
+                        url = "github:NixOS/nixpkgs/nixos-unstable";
                 };
                 nix-index-database = {
                         url = "github:nix-community/nix-index-database";
