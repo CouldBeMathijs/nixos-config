@@ -18,9 +18,6 @@
                         url = "github:CouldBeMathijs/bash-scripts";
                         flake = false;
                 };
-                nixos-hardware = {
-                        url = "github:nixos/nixos-hardware/master";
-                };
                 nixpkgs = {
                         url = "nixpkgs/nixos-25.05";
                 };
@@ -35,10 +32,6 @@
                         url = "github:NotAShelf/nvf/v0.8";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-                stylix = {
-                        url = "github:nix-community/stylix/release-25.05";
-                        inputs.nixpkgs.follows = "nixpkgs";
-                };
                 zen-browser = {
                         url = "github:0xc000022070/zen-browser-flake/beta";
                         inputs.nixpkgs.follows = "nixpkgs";
@@ -51,11 +44,9 @@
                 home-manager,
                 my-bash-scripts,
                 nix-index-database,
-                nixos-hardware,
                 nixpkgs,
                 nixpkgs-unstable,
                 nvf,
-                stylix,
                 zen-browser,
                 ...
                 }:
