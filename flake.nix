@@ -32,6 +32,10 @@
                         url = "github:NotAShelf/nvf/v0.8";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
+                stylix = {
+                        url = "github:nix-community/stylix/release-25.05";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                };
                 zen-browser = {
                         url = "github:0xc000022070/zen-browser-flake/beta";
                         inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +51,7 @@
                 nixpkgs,
                 nixpkgs-unstable,
                 nvf,
+                stylix,
                 zen-browser,
                 ...
                 }:
@@ -138,6 +143,7 @@
                                                                 my-neovim-pkg
                                                         ];
                                                 }
+                                                stylix.homeModules.stylix
                                         ];
                                         extraSpecialArgs = {
                                                 inherit pkgs-unstable gruvboxPlusIcons zen-browser;
@@ -154,6 +160,7 @@
                                                                 my-neovim-pkg
                                                         ];
                                                 }
+                                                stylix.homeModules.stylix
                                         ];
                                         extraSpecialArgs = {
                                                 inherit pkgs-unstable gruvboxPlusIcons zen-browser;
