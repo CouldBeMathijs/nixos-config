@@ -33,6 +33,7 @@
                 description = "Mathijs Pittoors";
                 extraGroups = [ "networkmanager" "wheel" ];
         };
+        locale.language = "finnish";
 
         # List packages installed in system profile. To search, run:
         # $ nix search wget
