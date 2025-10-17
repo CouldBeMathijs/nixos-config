@@ -20,15 +20,15 @@ in
                         enable = true;
                         initExtra = "fastfetch";
                         shellAliases = {
-                                "z" = "zoxide";
+                                ".." = "cd ..";
                                 "cat" = "bat";
                                 "clear" = "clear; fastfetch";
-                                "ls" = "eza";
                                 "ll" = "eza -l";
-                                ".." = "cd ..";
-                                "switch-home" = "home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
-                                #"flake-update" = "git -C ${flake} pull --ff-only && [[ $(git -C ${flake} log -1 --pretty=format:\"%h\") != $(git -C ${flake} log -1 --pretty=format:\"%h@{1}\") ]] && git -C ${flake} diff HEAD^ HEAD";
+                                "ls" = "eza";
+                                "open" = "xdg-open";
                                 "switch-all" = "nh os switch ${flake} && home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
+                                "switch-home" = "home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
+                                "z" = "zoxide";
                         };
                 };
                 programs.zoxide = {
