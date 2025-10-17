@@ -14,6 +14,7 @@
                 ./theming/cinnamon-theming.nix
                 ./theming/gnome-extensions.nix
                 ./theming/gnome-theming.nix
+                ./theming/gnome-stylix.nix
         ];
         browser.enable = lib.mkDefault true;
         git.enable = lib.mkDefault true;
