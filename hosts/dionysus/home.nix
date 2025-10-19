@@ -15,8 +15,8 @@
                 # Enable fastfetct configuration
                 fastfetch.enable = true;
 
-                gnome-theming.enable = true;
-                gnome-extensions.enable = true;
+                #gnome-theming.enable = true;
+                #gnome-extensions.enable = true;
 
                 # Enable musescore
                 composing.enable = true;
