@@ -49,9 +49,10 @@ in
                         [ "en_GB.UTF-8/UTF-8" "nl_BE.UTF-8/UTF-8" ] 
                         ++ lib.optionals (config.locale.language == "finnish") [ finnishLocale ];
                 services.xserver = {
-                        xkb.layout = "us";
-                        xkbVariant = "alt-intl";
-                        #xkbOptions = "grp:win_space_toggle";
+                        xkb = {
+                                layout = "us";
+                                variant = "alt-intl";
+                        };
                 };
 
                 console.keyMap = "us";
