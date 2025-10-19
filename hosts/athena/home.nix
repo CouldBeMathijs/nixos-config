@@ -34,6 +34,7 @@
 
                 # Enable LaTeX
                 latex.enable = true;
+                funCli.enable = true;
 
                 # Enable musescore
                 composing.enable = true;

@@ -1,6 +1,7 @@
 { lib, ...}: {
         imports = [
                 ./cliApps/fastfetch.nix
+                ./cliApps/funCli.nix
                 ./cliApps/git.nix
                 ./cliApps/shell.nix
                 ./programs/browser.nix
@@ -13,8 +14,8 @@
                 ./programs/minecraft.nix
                 ./theming/cinnamon-theming.nix
                 ./theming/gnome-extensions.nix
-                ./theming/gnome-theming.nix
                 ./theming/gnome-stylix.nix
+                ./theming/gnome-theming.nix
         ];
         browser.enable = lib.mkDefault true;
         git.enable = lib.mkDefault true;
