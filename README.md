@@ -11,5 +11,5 @@ Hosts:
      - Gnome
      - Development tooling and IDE's
  - Dionysus: Lenovo Legion - Gaming laptop
-     - Gnome
+     - KDE Plasma
      - Steam + Heroic

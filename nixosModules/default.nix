@@ -2,6 +2,7 @@
         imports = [
                 ./DE-WM/cinnamon.nix
                 ./DE-WM/gnome.nix
+                ./DE-WM/kde.nix
                 
                 ./programs/cli-utils.nix
                 ./programs/fonts.nix

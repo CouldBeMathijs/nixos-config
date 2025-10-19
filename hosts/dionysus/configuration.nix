@@ -9,7 +9,7 @@
 
         ripping.enable = true;
         #cinnamon.enable = true;
-        gnome.enable = true;
+        kde.enable = true;
 
         gaming.steam.enable = true;
         gaming.heroic.enable = true;
