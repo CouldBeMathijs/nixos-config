@@ -1,11 +1,11 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs-unstable, lib, config , ... }:
 {
         options = {
                 gnome-extensions.enable = lib.mkEnableOption "enable gnome-extensions";
         };
 
         config = lib.mkIf config.gnome-extensions.enable {
-                home.packages = with pkgs.gnomeExtensions; [
+                home.packages = with pkgs-unstable.gnomeExtensions; [
                         alphabetical-app-grid # Back to GNOME 3.2x
                         appindicator # Yes, I know I shouldn't
                         caffeine # Stay awake, screen
@@ -23,7 +23,7 @@
                         settings = {
                                 "org/gnome/shell" = {
                                         disable-user-extensions = false;
-                                        enabled-extensions = with pkgs.gnomeExtensions; [
+                                        enabled-extensions = with pkgs-unstable.gnomeExtensions; [
                                                 alphabetical-app-grid.extensionUuid # Back to GNOME 3.2x
                                                 appindicator.extensionUuid # Yes, I know I shouldn't
                                                 caffeine.extensionUuid # Stay awake, screen
