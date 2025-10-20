@@ -4,10 +4,10 @@ let
 in
         {
         options = {
-                funCli.enable = lib.mkEnableOption "Enable funCli configuration";
+                fun-cli.enable = lib.mkEnableOption "Enable fun-cli configuration";
         };
 
-        config = lib.mkIf config.funCli.enable {
+        config = lib.mkIf config.fun-cli.enable {
                 home.packages = with pkgs; [
                         pipes
                         fortuneWithOffensive
