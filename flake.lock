@@ -272,11 +272,11 @@
     "my-bash-scripts": {
       "flake": false,
       "locked": {
-        "lastModified": 1760791389,
-        "narHash": "sha256-I8RVIGse5a91Mm/ZVXcEd60ZP3S+sUOf2Vl8SCJt9/g=",
+        "lastModified": 1760944782,
+        "narHash": "sha256-HSmX5ge6WdBR35bz8xa73fBER3ch8kbqAhwWCochL9g=",
         "owner": "CouldBeMathijs",
         "repo": "bash-scripts",
-        "rev": "28fce9b56731ddb811771b38b5daf46f9c38c6b7",
+        "rev": "7f89df866658616122e3e2738b8097e64048399c",
         "type": "github"
       },
       "original": {
