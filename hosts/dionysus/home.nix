@@ -5,7 +5,7 @@
         # manage.
 
         imports = [
-                ../../homemanagerModules
+                ../../modules/home-manager
         ];
 
         config = {
