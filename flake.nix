@@ -7,7 +7,7 @@
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
                 home-manager = {
-                        url = "github:nix-community/home-manager/release-25.05";
+                        url = "github:nix-community/home-manager/master";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
                 gruvbox-icons = {
@@ -19,7 +19,7 @@
                         flake = false;
                 };
                 nixpkgs = {
-                        url = "github:NixOS/nixpkgs/nixos-25.05";
+                        url = "github:NixOS/nixpkgs/nixos-unstable";
                 };
                 nixpkgs-unstable = {
                         url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -29,11 +29,11 @@
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
                 nvf = {
-                        url = "github:NotAShelf/nvf/v0.8";
+                        url = "github:NotAShelf/nvf/ea3ee477fa1814352b30d114f31bf4895eed053e";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
                 stylix = {
-                        url = "github:nix-community/stylix/release-25.05";
+                        url = "github:nix-community/stylix/master";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
                 zen-browser = {

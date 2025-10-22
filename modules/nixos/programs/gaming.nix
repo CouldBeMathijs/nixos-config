@@ -51,10 +51,12 @@ in
       };
 
       # Enable the AMDVLK Vulkan driver and its 32-bit support.
+        /**
       amdgpu.amdvlk = {
         enable = true;
         support32Bit.enable = true;
       };
+        **/
       
     };
 
