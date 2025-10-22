@@ -15,6 +15,7 @@
                         pdfarranger # Pdf arranger
                         pitivi # Video editor
                         rnote # Handdrawn note taking
+                        gtranslator # PO translation editor
                         # Games
                         quadrapassel # Tetris in all but name
                         gnome-nibbles # Snake++

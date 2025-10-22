@@ -1,9 +1,9 @@
 { lib, ...}: {
         imports = [
-                ./cliApps/fastfetch.nix
-                ./cliApps/fun-cli.nix
-                ./cliApps/git.nix
-                ./cliApps/shell.nix
+                ./cli-apps/fastfetch.nix
+                ./cli-apps/fun-cli.nix
+                ./cli-apps/git.nix
+                ./cli-apps/shell.nix
                 ./programs/browser.nix
                 ./programs/composing.nix
                 ./programs/csa-utils.nix

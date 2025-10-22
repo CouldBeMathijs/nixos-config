@@ -6,11 +6,21 @@
 
 {
         networking.hostName = "athena";
-        
+
         # Enable Gnome and all packages around it
         gnome.enable = true;
         gnome-apps.enable = true;
         ripping.enable = true;
+
+        nixpkgs.overlays = [ (final: prev: {
+                inherit (prev.lixPackageSets.stable)
+                nixpkgs-review
+                nix-eval-jobs
+                nix-fast-build
+                colmena;
+        }) ];
+
+        nix.package = pkgs.lixPackageSets.stable.lix;
 
         # Allow unfree packages
         nixpkgs.config.allowUnfree = true;
@@ -33,7 +43,7 @@
                 description = "Mathijs Pittoors";
                 extraGroups = [ "networkmanager" "wheel" ];
         };
-        locale.language = "finnish";
+        locale.language = "irish";
 
         # List packages installed in system profile. To search, run:
         # $ nix search wget

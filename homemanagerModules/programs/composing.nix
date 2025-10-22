@@ -1,11 +1,11 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs-unstable, lib, config, options, ... }:
 {
         options = {
                 composing.enable = lib.mkEnableOption "Enable composing configuration";
         };
 
         config = lib.mkIf config.composing.enable {
-                home.packages = with pkgs; [
+                home.packages = with pkgs-unstable; [
                         musescore # Writing music scores
                         muse-sounds-manager # Write music scores with better playback
                 ];
