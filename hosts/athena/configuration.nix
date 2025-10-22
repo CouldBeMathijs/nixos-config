@@ -29,7 +29,7 @@
         networking.networkmanager.enable = true;
 
         imports = [
-                ./../../nixosModules
+                ./../../modules/nixos
         ];
         services = {
                 envfs.enable = true;
