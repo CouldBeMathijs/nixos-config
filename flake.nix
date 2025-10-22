@@ -21,8 +21,8 @@
                 nixpkgs = {
                         url = "github:NixOS/nixpkgs/nixos-unstable";
                 };
-                nixpkgs-unstable = {
-                        url = "github:NixOS/nixpkgs/nixos-unstable";
+                nixpkgs-stable = {
+                        url = "github:NixOS/nixpkgs/release-25.05";
                 };
                 nix-index-database = {
                         url = "github:nix-community/nix-index-database";
@@ -49,7 +49,7 @@
                 my-bash-scripts,
                 nix-index-database,
                 nixpkgs,
-                nixpkgs-unstable,
+                nixpkgs-stable,
                 nvf,
                 stylix,
                 zen-browser,
@@ -64,7 +64,7 @@
                                 config.allowUnfree = true;
                         };
 
-                        pkgs-unstable = import nixpkgs-unstable {
+                        pkgs-stable = import nixpkgs-stable {
                                 inherit system;
                                 config.allowUnfree = true;
                         };
@@ -113,7 +113,7 @@
                                                 { programs.nix-index-database.comma.enable = true; }
                                         ];
                                         specialArgs = {
-                                                inherit pkgs-unstable;
+                                                inherit pkgs-stable;
                                         };
                                 };
 
@@ -124,10 +124,9 @@
                                                 ./hosts/dionysus/hardware-configuration.nix
                                                 nix-index-database.nixosModules.nix-index
                                                 { programs.nix-index-database.comma.enable = true; }
-                                                #nixos-hardware.nixosModules.lenovo-legion-15ach6h-nvidia
                                         ];
                                         specialArgs = {
-                                                inherit pkgs-unstable;
+                                                inherit pkgs-stable;
                                         };
                                 };
                         };
@@ -146,7 +145,7 @@
                                                 stylix.homeModules.stylix
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-unstable gruvboxPlusIcons zen-browser;
+                                                inherit pkgs-stable gruvboxPlusIcons zen-browser;
                                         };
                                 };
 
@@ -163,7 +162,7 @@
                                                 stylix.homeModules.stylix
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-unstable gruvboxPlusIcons zen-browser;
+                                                inherit pkgs-stable gruvboxPlusIcons zen-browser;
                                         };
                                 };
                         };

@@ -91,7 +91,7 @@
                         enableBashIntegration = true;
                         installBatSyntax = true;
                         settings = {
-                                theme = "GruvboxDarkHard";
+                                theme = "Gruvbox Dark Hard";
                         };
                 };
 

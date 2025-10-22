@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, gruvboxPlusIcons, lib, config, ... }:
+{ pkgs, gruvboxPlusIcons, lib, config, ... }:
 
 {
         options = {
@@ -41,7 +41,7 @@
                         enable = true;
                         theme = {
                                 name = "Gruvbox-Dark";
-                                package = pkgs-unstable.gruvbox-gtk-theme.override {
+                                package = pkgs.gruvbox-gtk-theme.override {
                                         tweakVariants = [ "macos" ];
                                 };
                         };
