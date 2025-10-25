@@ -4,15 +4,12 @@
         };
         config = lib.mkIf config.gnome.enable {
                 services.xserver ={
-                        enable = true;
-                        # Enable GNOME
-                        displayManager.gdm.enable = true;
-                        desktopManager.gnome.enable = true;
                         excludePackages = with pkgs; [
                                 xterm # Why is it here by default
                         ];
-
                 };
+                services.desktopManager.gnome.enable = true;
+                services.displayManager.gdm.enable = true;
                 # Disable some applications
                 environment.gnome.excludePackages = (with pkgs; [
                         decibels # Default audio player
