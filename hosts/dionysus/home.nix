@@ -19,7 +19,7 @@
                 #gnome-extensions.enable = true;
 
                 # Enable musescore
-                composing.enable = true;
+                composing.enable = false;
                 gramps.enable = true;
                 minecraft.enable = true;
                 discord.enable = true;

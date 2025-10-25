@@ -43,7 +43,6 @@
                 gimp # GNU Image Manipulation Program
 
                 # Documents
-                # gramps # Geneology
                 libreoffice # Office Suite
 
                 # Back-ups
@@ -51,7 +50,7 @@
         ];
 
         boot = {
-                kernelPackages = pkgs.linuxPackages_zen;
+                kernelPackages = pkgs.linuxPackages_latest;
                 loader = {
                         systemd-boot.enable = true;
                         efi.canTouchEfiVariables = true;
