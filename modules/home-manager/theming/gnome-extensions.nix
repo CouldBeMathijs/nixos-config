@@ -10,13 +10,11 @@
                         appindicator # Yes, I know I shouldn't
                         caffeine # Stay awake, screen
                         hot-edge # When the top left is to far away
-                        #maximize-to-empty-workspace # MacOS did something right here
+                        # maximize-to-empty-workspace # MacOS did something right here
                         open-desktop-file-location # Great debugging help
                         paperwm # Scrolling window management
-                        #rounded-window-corners-reborn # Should be default
+                        # rounded-window-corners-reborn # Should be default
                         user-themes # Classic
-                        vitals # System monitor in top bar
-                        gbinaryclock
                 ];
                 dconf = {
                         enable = true;
@@ -28,13 +26,11 @@
                                                 appindicator.extensionUuid # Yes, I know I shouldn't
                                                 caffeine.extensionUuid # Stay awake, screen
                                                 hot-edge.extensionUuid # When the top left is to far away
-                                                #maximize-to-empty-workspace.extensionUuid # MacOS did something right here
+                                                # maximize-to-empty-workspace.extensionUuid # MacOS did something right here
                                                 open-desktop-file-location.extensionUuid # Great debugging help
                                                 paperwm.extensionUuid # Scrolling window management
-                                                #rounded-window-corners-reborn.extensionUuid # Should be default
+                                                # rounded-window-corners-reborn.extensionUuid # Should be default
                                                 user-themes.extensionUuid # Classic
-                                                vitals.extensionUuid # System monitor in top bar
-                                                gbinaryclock.extensionUuid
                                         ];
                                         disable-extension-version-validation = true;
                                 };

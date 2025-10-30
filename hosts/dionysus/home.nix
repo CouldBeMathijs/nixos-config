@@ -23,7 +23,8 @@
                 home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
                 home.packages = with pkgs; [
                         signal-desktop
-                        gruvboxPlusIcons
+                        libreoffice-fresh
+			gruvboxPlusIcons
                 ];
 
                 xdg = {
