@@ -8,11 +8,11 @@
         networking.hostName = "dionysus";
 
         ripping.enable = true;
-        #cinnamon.enable = true;
         kde.enable = true;
 
         gaming.steam.enable = true;
         gaming.heroic.enable = true;
+        locale.language = "finnish";
 
         # Allow unfree packages
         nixpkgs.config.allowUnfree = true;
