@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, gruvboxPlusIcons, ... }:
 
 {
         # Home Manager needs a bit of information about you and the paths it should
@@ -9,20 +9,12 @@
         ];
 
         config = {
-                # Enable shell configuration
-                shell.enable = true;
-
-                # Enable fastfetct configuration
+                composing.enable = true;
+                discord.enable = true;
                 fastfetch.enable = true;
-
-                #gnome-theming.enable = true;
-                #gnome-extensions.enable = true;
-
-                # Enable musescore
-                composing.enable = false;
                 gramps.enable = true;
                 minecraft.enable = true;
-                discord.enable = true;
+                shell.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
@@ -31,6 +23,7 @@
                 home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
                 home.packages = with pkgs; [
                         signal-desktop
+                        gruvboxPlusIcons
                 ];
 
                 xdg = {
