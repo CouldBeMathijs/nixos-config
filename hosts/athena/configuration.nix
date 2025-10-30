@@ -51,10 +51,6 @@
                 # Media
                 gimp # GNU Image Manipulation Program
 
-                # Documents
-                # gramps # Geneology
-                libreoffice # Office Suite
-
                 # Back-ups
                 deja-dup 
         ];
