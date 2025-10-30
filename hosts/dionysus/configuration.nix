@@ -42,9 +42,6 @@
                 # Media
                 gimp # GNU Image Manipulation Program
 
-                # Documents
-                libreoffice # Office Suite
-
                 # Back-ups
                 deja-dup 
         ];
