@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761023365,
-        "narHash": "sha256-Tb+A0uV/C23P0qdj77wyjVGb6KgRt7nzRcw6DQ7kxsI=",
+        "lastModified": 1761919396,
+        "narHash": "sha256-cgpjkLNO0Ps+FSTCvf/ksE6jQKfgeP9J2On/zragfCQ=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "40bfc9c9d375f372052f12dca2987f0bacc91f6a",
+        "rev": "14198c4476c764da19ae115de0dcf764268b505f",
         "type": "github"
       },
       "original": {
@@ -198,11 +198,11 @@
     "gruvbox-icons": {
       "flake": false,
       "locked": {
-        "lastModified": 1761827626,
-        "narHash": "sha256-uJcNUTRpXuAqjbYWvikw5l3hs8QaUlbBtu1Y+cKW2IQ=",
+        "lastModified": 1761905777,
+        "narHash": "sha256-mv5oiIwz9ac8EursovIBhUV4e2PxAm4Bu5pimO5cndc=",
         "owner": "SylEleuth",
         "repo": "gruvbox-plus-icon-pack",
-        "rev": "e48a2471ed2c1a71c5765cf4e6174d8649b4fe54",
+        "rev": "3187fd966dfb2527d86b18e4b5f662928361e07a",
         "type": "github"
       },
       "original": {
@@ -323,11 +323,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1761881092,
-        "narHash": "sha256-2enbrMWqvHPVVcOhhTFUytRzNNRvyU/dPvBzobO7hs0=",
+        "lastModified": 1761919447,
+        "narHash": "sha256-DvwwSDNQsQB4dx+OBwgNVWDHChzuRfG9UFB+7SN8R/w=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a63c8ea0b42f2cb4bb113e8e9b5d8c38ce93fcfc",
+        "rev": "11dc804a3331290cda6938401a97647957a3df70",
         "type": "github"
       },
       "original": {
@@ -373,17 +373,17 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1760781693,
-        "narHash": "sha256-kNLWWt/FXqDpPZdmNYCTeeUBYZM0RV0UL7+Cg3CvQMI=",
+        "lastModified": 1761514959,
+        "narHash": "sha256-7xcjhq6lKupZGph2qAmHfBjTB9nKJs32+n/3iAkl36I=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "ea3ee477fa1814352b30d114f31bf4895eed053e",
+        "rev": "96ba7b64862ec27becbd6846a9d5c05de1697f8e",
         "type": "github"
       },
       "original": {
         "owner": "NotAShelf",
+        "ref": "v0.8",
         "repo": "nvf",
-        "rev": "ea3ee477fa1814352b30d114f31bf4895eed053e",
         "type": "github"
       }
     },
