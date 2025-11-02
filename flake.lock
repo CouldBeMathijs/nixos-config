@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761919396,
-        "narHash": "sha256-cgpjkLNO0Ps+FSTCvf/ksE6jQKfgeP9J2On/zragfCQ=",
+        "lastModified": 1762016396,
+        "narHash": "sha256-cStqXBV3nLJdEa8235hpleMTRvXfEe14BAFDzQAJCDU=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "14198c4476c764da19ae115de0dcf764268b505f",
+        "rev": "befe9d2466268bebb090190c3ec5dff442f37cc2",
         "type": "github"
       },
       "original": {
@@ -219,11 +219,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761878381,
-        "narHash": "sha256-lCRaipHgszaFZ1Cs8fdGJguVycCisBAf2HEFgip5+xU=",
+        "lastModified": 1762041416,
+        "narHash": "sha256-rmJKABRXnhFjjI6RB/MnEvLTQa569zu684Th9y6UlOI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "4ac96eb21c101a3e5b77ba105febc5641a8959aa",
+        "rev": "c0016dd14773f4ca0b467b74c7cdcc501570df4b",
         "type": "github"
       },
       "original": {
@@ -292,11 +292,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761451000,
-        "narHash": "sha256-qBJL6xEIjqYq9zOcG2vf2nPTeVBppNJzvO0LuQWMwMo=",
+        "lastModified": 1762055842,
+        "narHash": "sha256-Pu1v3mlFhRzZiSxVHb2/i/f5yeYyRNqr0RvEUJ4UgHo=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "ed6b293161b378a7368cda38659eb8d3d9a0dac4",
+        "rev": "359ff6333a7b0b60819d4c20ed05a3a1f726771f",
         "type": "github"
       },
       "original": {
@@ -307,11 +307,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1761672384,
-        "narHash": "sha256-o9KF3DJL7g7iYMZq9SWgfS1BFlNbsm6xplRjVlOCkXI=",
+        "lastModified": 1761907660,
+        "narHash": "sha256-kJ8lIZsiPOmbkJypG+B5sReDXSD1KGu2VEPNqhRa/ew=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "08dacfca559e1d7da38f3cf05f1f45ee9bfd213c",
+        "rev": "2fb006b87f04c4d3bdf08cfdbc7fab9c13d94a15",
         "type": "github"
       },
       "original": {
@@ -323,11 +323,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1761957984,
-        "narHash": "sha256-BxxW8mKiskbD47fstqslU8yDEva7bJhG8R5H2miMrtw=",
+        "lastModified": 1762049852,
+        "narHash": "sha256-HWs1Fvyc/Ns5ZlzUS584kx3WcKBoKrgVSuBpt1VgeLg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "616072d664de5dea4aae971233c686188c646dd8",
+        "rev": "4a9ea7252cb9c046a88aed6f6b58e56fbdc81191",
         "type": "github"
       },
       "original": {
