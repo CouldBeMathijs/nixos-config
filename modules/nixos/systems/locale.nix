@@ -3,16 +3,13 @@ let
         locales = {
                 irish = { 
                         code = "en_IE.UTF-8"; 
-                        timeZone = "Europe/Brussels";
                 };
                 finnish = { 
                         code = "fi_FI.UTF-8"; 
-                        timeZone = "Europe/Brussels"; 
                 };
         };
 
-        selectedLanguage = locales.${config.locale.language} or locales.irish;
-        finnishLocale = "fi_FI.UTF-8/UTF-8";
+        selectedLanguage = locales.${config.locale.language} or locales.irish; 
 in
         {
         options = {
@@ -30,24 +27,32 @@ in
 
         config = lib.mkIf config.locale.enable {
 
-                time.timeZone = selectedLanguage.timeZone;
+                time.timeZone = "Europe/Brussels"; 
                 i18n.defaultLocale = selectedLanguage.code;
 
                 i18n.extraLocaleSettings = {
+                        LC_ALL = selectedLanguage.code;
+                        /**
+                        LANG = selectedLanguage.code;
+                        LANGUAGE = selectedLanguage.code;
                         LC_ADDRESS = selectedLanguage.code;
+                        LC_COLLATE = selectedLanguage.code;
+                        LC_CTYPE = selectedLanguage.code;
                         LC_IDENTIFICATION = selectedLanguage.code;
                         LC_MEASUREMENT = selectedLanguage.code;
+                        LC_MESSAGES = selectedLanguage.code;
                         LC_MONETARY = selectedLanguage.code;
                         LC_NAME = selectedLanguage.code;
                         LC_NUMERIC = selectedLanguage.code;
                         LC_PAPER = selectedLanguage.code;
                         LC_TELEPHONE = selectedLanguage.code;
                         LC_TIME = selectedLanguage.code;
+                        **/
                 };
 
                 i18n.extraLocales = 
-                        [ "en_GB.UTF-8/UTF-8" "nl_BE.UTF-8/UTF-8" ] 
-                        ++ lib.optionals (config.locale.language == "finnish") [ finnishLocale ];
+                        [ "en_GB.UTF-8/UTF-8" "nl_BE.UTF-8/UTF-8" "fi_FI.UTF-8/UTF-8" ]; 
+
                 services.xserver = {
                         xkb = {
                                 layout = "us";
