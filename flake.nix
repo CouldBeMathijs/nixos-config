@@ -18,6 +18,10 @@
                         url = "github:CouldBeMathijs/bash-scripts";
                         flake = false;
                 };
+                niri-flake = {
+                        url = "github:sodiboo/niri-flake";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                };
                 nixpkgs = {
                         url = "github:NixOS/nixpkgs/nixos-unstable";
                 };
@@ -47,6 +51,7 @@
                 gruvbox-icons,
                 home-manager,
                 my-bash-scripts,
+                niri-flake,
                 nix-index-database,
                 nixpkgs,
                 nixpkgs-stable,
