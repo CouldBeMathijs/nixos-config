@@ -9,7 +9,7 @@
 
                 programs.niri = {
                         enable = true;
-                        pacakge = pkgs.niri-stable;
+                        package = pkgs.niri-stable;
                 };
         };
 }
