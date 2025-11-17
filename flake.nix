@@ -116,6 +116,7 @@
                                                 asus-numberpad-driver.nixosModules.default
                                                 nix-index-database.nixosModules.nix-index
                                                 { programs.nix-index-database.comma.enable = true; }
+                                                niri.nixosModules.niri
                                         ];
                                         specialArgs = {
                                                 inherit pkgs-stable niri;
@@ -148,6 +149,7 @@
                                                         ];
                                                 }
                                                 stylix.homeModules.stylix
+                                                niri.homeModules.niri
                                         ];
                                         extraSpecialArgs = {
                                                 inherit pkgs-stable gruvboxPlusIcons zen-browser niri;
