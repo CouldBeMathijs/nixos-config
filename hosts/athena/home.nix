@@ -34,6 +34,8 @@
 
                 # Enable LaTeX
                 latex.enable = true;
+
+                niri-config.enable = true;
                 fun-cli.enable = true;
 
                 # Enable musescore
