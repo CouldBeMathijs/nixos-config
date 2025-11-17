@@ -12,6 +12,7 @@
                 ./programs/jetbrains.nix
                 ./programs/latex.nix
                 ./programs/minecraft.nix
+                ./programs/niri.nix
                 ./theming/cinnamon-theming.nix
                 ./theming/gnome-extensions.nix
                 ./theming/gnome-stylix.nix

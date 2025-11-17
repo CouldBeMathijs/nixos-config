@@ -18,7 +18,7 @@
                         url = "github:CouldBeMathijs/bash-scripts";
                         flake = false;
                 };
-                niri-flake = {
+                niri = {
                         url = "github:sodiboo/niri-flake";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
@@ -51,7 +51,7 @@
                 gruvbox-icons,
                 home-manager,
                 my-bash-scripts,
-                niri-flake,
+                niri,
                 nix-index-database,
                 nixpkgs,
                 nixpkgs-stable,
@@ -118,7 +118,7 @@
                                                 { programs.nix-index-database.comma.enable = true; }
                                         ];
                                         specialArgs = {
-                                                inherit pkgs-stable;
+                                                inherit pkgs-stable niri;
                                         };
                                 };
 
@@ -150,7 +150,7 @@
                                                 stylix.homeModules.stylix
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-stable gruvboxPlusIcons zen-browser;
+                                                inherit pkgs-stable gruvboxPlusIcons zen-browser niri;
                                         };
                                 };
 

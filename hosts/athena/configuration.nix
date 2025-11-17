@@ -10,6 +10,7 @@
         # Enable Gnome and all packages around it
         gnome.enable = true;
         gnome-apps.enable = true;
+        niri.enable = true;
         ripping.enable = true;
 
         nixpkgs.overlays = [ (final: prev: {
