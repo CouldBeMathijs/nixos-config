@@ -11,14 +11,15 @@ in
                 home.packages = with pkgs; [
                         bat # Better cat
                         eza # Better ls
-                        trash-cli # rm on safe mode
+                        microfetch # Nix specific fetcher, as fast as can be
                         tldr # When man is overkill
+                        trash-cli # rm on safe mode
                         zoxide # cd^2
                 ];
                 # Shell configuration
                 programs.bash = {
                         enable = true;
-                        initExtra = "fastfetch";
+                        initExtra = "microfetch";
                         shellAliases = {
                                 ".." = "cd ..";
                                 "cat" = "bat";
