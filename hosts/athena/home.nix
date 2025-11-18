@@ -27,7 +27,8 @@
                 gnome-theming.enable = true;
 
                 # Enable Jetbrains IDE's
-                jetbrains.enable = true;
+                jetbrains.clion.enable = true;
+                jetbrains.datagrip.enable = true;
 
                 # Enable logisim and mars-mips
                 csa-utils.enable = false;

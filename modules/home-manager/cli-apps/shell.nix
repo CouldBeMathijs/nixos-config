@@ -23,7 +23,7 @@ in
                         shellAliases = {
                                 ".." = "cd ..";
                                 "cat" = "bat";
-                                "clear" = "clear; fastfetch";
+                                "clear" = "clear; microfetch";
                                 "ll" = "eza -l";
                                 "ls" = "eza";
                                 "open" = "xdg-open";

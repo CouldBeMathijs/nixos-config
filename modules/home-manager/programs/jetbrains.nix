@@ -1,25 +1,32 @@
 { pkgs, lib, config, ... }:
 
 {
-  options.jetbrains = {
-    enable = lib.mkEnableOption "Enable all JetBrains IDEs (PyCharm and CLion)";
+        options.jetbrains = {
+                enable = lib.mkEnableOption "Enable Pycharm and Clion";
 
-    pycharm = {
-      enable = lib.mkEnableOption "Enable PyCharm Professional";
-    };
+                pycharm = {
+                        enable = lib.mkEnableOption "Enable PyCharm";
+                };
 
-    clion = {
-      enable = lib.mkEnableOption "Enable CLion";
-    };
-  };
+                clion = {
+                        enable = lib.mkEnableOption "Enable CLion";
+                };
 
-  config = {
-    # If the top-level jetbrains.enable is set, enable the individual options
-    jetbrains.pycharm.enable = lib.mkIf config.jetbrains.enable true;
-    jetbrains.clion.enable = lib.mkIf config.jetbrains.enable true;
+                datagrip = {
+                        enable = lib.mkEnableOption "Enable Datagrip";
+                };
 
-    home.packages = lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm-professional
-                 ++ lib.optional config.jetbrains.clion.enable pkgs.jetbrains.clion;
-  };
+
+        };
+
+        config = {
+                # If the top-level jetbrains.enable is set, enable the individual options
+                jetbrains.pycharm.enable = lib.mkIf config.jetbrains.enable true;
+                jetbrains.clion.enable = lib.mkIf config.jetbrains.enable true;
+
+                home.packages = lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm-professional
+                        ++ lib.optional config.jetbrains.clion.enable pkgs.jetbrains.clion
+                        ++ lib.optional config.jetbrains.datagrip.enable pkgs.jetbrains.datagrip;
+        };
 }
 
