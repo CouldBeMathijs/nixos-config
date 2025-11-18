@@ -15,6 +15,7 @@
                 gramps.enable = true;
                 minecraft.enable = true;
                 shell.enable = true;
+                jetbrains.clion.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";

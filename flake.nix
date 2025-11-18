@@ -119,7 +119,7 @@
                                                 niri.nixosModules.niri
                                         ];
                                         specialArgs = {
-                                                inherit pkgs-stable niri;
+                                                inherit pkgs-stable;
                                         };
                                 };
 
@@ -130,6 +130,7 @@
                                                 ./hosts/dionysus/hardware-configuration.nix
                                                 nix-index-database.nixosModules.nix-index
                                                 { programs.nix-index-database.comma.enable = true; }
+                                                niri.nixosModules.niri
                                         ];
                                         specialArgs = {
                                                 inherit pkgs-stable;
@@ -152,7 +153,7 @@
                                                 niri.homeModules.niri
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-stable gruvboxPlusIcons zen-browser niri;
+                                                inherit pkgs-stable gruvboxPlusIcons zen-browser;
                                         };
                                 };
 
@@ -167,6 +168,7 @@
                                                         ];
                                                 }
                                                 stylix.homeModules.stylix
+                                                niri.homeModules.niri
                                         ];
                                         extraSpecialArgs = {
                                                 inherit pkgs-stable gruvboxPlusIcons zen-browser;
