@@ -119,7 +119,7 @@
                                                 niri.nixosModules.niri
                                         ];
                                         specialArgs = {
-                                                inherit pkgs-stable;
+                                                inherit pkgs-stable niri;
                                         };
                                 };
 
@@ -133,7 +133,7 @@
                                                 niri.nixosModules.niri
                                         ];
                                         specialArgs = {
-                                                inherit pkgs-stable;
+                                                inherit pkgs-stable niri;
                                         };
                                 };
                         };
@@ -153,7 +153,11 @@
                                                 niri.homeModules.niri
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-stable gruvboxPlusIcons zen-browser;
+                                                inherit 
+                                                gruvboxPlusIcons 
+                                                niri
+                                                pkgs-stable 
+                                                zen-browser;
                                         };
                                 };
 
@@ -171,7 +175,11 @@
                                                 niri.homeModules.niri
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-stable gruvboxPlusIcons zen-browser;
+                                                inherit 
+                                                gruvboxPlusIcons
+                                                niri
+                                                pkgs-stable
+                                                zen-browser;
                                         };
                                 };
                         };
