@@ -74,58 +74,78 @@
                                 config.allowUnfree = true;
                         };
 
-                        # Custom bash scripts package
                         my-bash-scripts-pkg = pkgs.stdenv.mkDerivation {
                                 pname = "my-bash-scripts";
                                 version = "1.0.0";
                                 src = my-bash-scripts;
                                 installPhase = ''
-                mkdir -p $out/bin
-                for script in $src/*.sh; do
-                    base_name=$(basename "$script" .sh)
-                    cp "$script" "$out/bin/$base_name"
-                    chmod +x "$out/bin/$base_name"
-                done
+                                mkdir -p $out/bin
+                                for script in $src/*.sh; do
+                                        base_name=$(basename "$script" .sh)
+                                        cp "$script" "$out/bin/$base_name"
+                                        chmod +x "$out/bin/$base_name"
+                                done
                                 '';
                         };
 
-                        # Neovim config using NVF
                         my-neovim-pkg = (nvf.lib.neovimConfiguration {
                                 pkgs = nixpkgs.legacyPackages."${system}";
                                 modules = [ ./nvf-configuration.nix ];
                         }).neovim;
 
-                        # Gruvbox icon pack derivation
                         gruvbox-plus-icons-git = pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
                                 inherit gruvbox-icons system;
                         };
 
                         # Function to create a NixOS system configuration
-                        mkHost = { hostname, modules }: lib.nixosSystem {
+                        mkHost = { hostname, extraModules ? [] }: lib.nixosSystem {
                                 inherit system;
-                                modules = modules ++ [
-                                        nix-index-database.nixosModules.nix-index
-                                        { programs.nix-index-database.comma.enable = true; }
-                                        niri.nixosModules.niri
-                                ];
+                                modules = 
+                                        # Host-specific modules based on convention
+                                        [
+                                                ./hosts/${hostname}/configuration.nix
+                                                ./hosts/${hostname}/hardware-configuration.nix
+                                        ] 
+                                        ++ 
+                                        # Common NixOS modules
+                                        [
+                                                nix-index-database.nixosModules.nix-index
+                                                { programs.nix-index-database.comma.enable = true; }
+                                                niri.nixosModules.niri
+                                        ] 
+                                        ++
+                                        # extraModules can be added in the function call
+                                        extraModules;
+
                                 specialArgs = {
                                         inherit pkgs-stable niri;
                                 };
                         };
 
                         # Function to create a Home Manager configuration
-                        mkHome = { username, hostname, homeModules }: home-manager.lib.homeManagerConfiguration {
+                        mkHome = { username, hostname, extraModules ? [] }: home-manager.lib.homeManagerConfiguration {
                                 inherit pkgs;
-                                modules = homeModules ++ [
-                                        {
-                                                home.packages = [
-                                                        my-bash-scripts-pkg
-                                                        my-neovim-pkg
-                                                ];
-                                        }
-                                        stylix.homeModules.stylix
-                                        niri.homeModules.niri
-                                ];
+                                modules = 
+                                        # Home-specific module based on convention
+                                        [
+                                                ./hosts/${hostname}/home.nix
+                                        ] 
+                                        ++ 
+                                        # Common Home Manager modules and packages
+                                        [
+                                                {
+                                                        home.packages = [
+                                                                my-bash-scripts-pkg
+                                                                my-neovim-pkg
+                                                        ];
+                                                }
+                                                stylix.homeModules.stylix
+                                                niri.homeModules.niri
+                                        ] 
+                                        ++
+                                        # extrModules can be added in the function call
+                                        extraModules;
+
                                 extraSpecialArgs = {
                                         inherit
                                         gruvbox-plus-icons-git
@@ -146,19 +166,13 @@
                         nixosConfigurations = {
                                 athena = mkHost {
                                         hostname = "athena";
-                                        modules = [
-                                                ./hosts/athena/hardware-configuration.nix
-                                                ./hosts/athena/configuration.nix
+                                        extraModules = [
                                                 asus-numberpad-driver.nixosModules.default
                                         ];
                                 };
 
                                 dionysus = mkHost {
                                         hostname = "dionysus";
-                                        modules = [
-                                                ./hosts/dionysus/configuration.nix
-                                                ./hosts/dionysus/hardware-configuration.nix
-                                        ];
                                 };
                         };
 
@@ -166,17 +180,11 @@
                                 "mathijs@athena" = mkHome {
                                         username = "mathijs";
                                         hostname = "athena";
-                                        homeModules = [
-                                                ./hosts/athena/home.nix
-                                        ];
                                 };
 
                                 "mathijs@dionysus" = mkHome {
                                         username = "mathijs";
                                         hostname = "dionysus";
-                                        homeModules = [
-                                                ./hosts/dionysus/home.nix
-                                        ];
                                 };
                         };
                 };
