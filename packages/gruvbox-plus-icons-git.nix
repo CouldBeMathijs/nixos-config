@@ -1,7 +1,7 @@
 { lib, stdenvNoCC, gruvbox-icons, gtk3, plasma5Packages, gnome-icon-theme, hicolor-icon-theme, system }:
 
 stdenvNoCC.mkDerivation rec {
-        pname = "gruvbox-plus-icons";
+        pname = "gruvbox-plus-icons-git";
         version = gruvbox-icons.lastModifiedDate;
         src = gruvbox-icons;
 
@@ -28,7 +28,7 @@ stdenvNoCC.mkDerivation rec {
 
   runHook postInstall
         '';
-        dontDropIconThemeCache = true;
+        dontDropIconThemeCache = false;
         dontBuild = true;
         dontConfigure = true;
 

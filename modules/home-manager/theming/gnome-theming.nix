@@ -1,4 +1,4 @@
-{ pkgs, gruvboxPlusIcons, lib, config, options, ... }:
+{ pkgs, gruvbox-plus-icons-git, lib, config, options, ... }:
 {
         options = {
                 gnome-theming.enable = lib.mkEnableOption "enable gnome-theming";
@@ -50,7 +50,7 @@
                         };
                         iconTheme = {
                                 name = "Gruvbox-Plus-Dark";
-                                package = gruvboxPlusIcons;
+                                package = gruvbox-plus-icons-git;
                         };
                         gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
                         gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
