@@ -14,6 +14,16 @@
         gaming.heroic.enable = true;
         locale.language = "finnish";
 
+        # Enable lix
+        nixpkgs.overlays = [ (final: prev: {
+                inherit (prev.lixPackageSets.stable)
+                nixpkgs-review
+                nix-eval-jobs
+                nix-fast-build
+                colmena;
+        }) ];
+        nix.package = pkgs.lixPackageSets.stable.lix;
+
         # Allow unfree packages
         nixpkgs.config.allowUnfree = true;
 
@@ -27,7 +37,11 @@
                 envfs.enable = true;
                 fwupd.enable = true;
         };
-        security.rtkit.enable = true;
+
+        security = {
+                rtkit.enable = true;
+                sudo-rs.enable = true;
+        };
 
         # Define a user account. Don't forget to set a password with ‘passwd’.
         users.users.mathijs = {
