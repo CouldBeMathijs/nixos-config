@@ -80,12 +80,12 @@
                                 version = "1.0.0";
                                 src = my-bash-scripts;
                                 installPhase = ''
-        mkdir -p $out/bin
-        for script in $src/*.sh; do
-          base_name=$(basename "$script" .sh)
-          cp "$script" "$out/bin/$base_name"
-          chmod +x "$out/bin/$base_name"
-        done
+                mkdir -p $out/bin
+                for script in $src/*.sh; do
+                    base_name=$(basename "$script" .sh)
+                    cp "$script" "$out/bin/$base_name"
+                    chmod +x "$out/bin/$base_name"
+                done
                                 '';
                         };
 
@@ -100,6 +100,42 @@
                                 inherit gruvbox-icons system;
                         };
 
+                        # Function to create a NixOS system configuration
+                        mkHost = { hostname, modules }: lib.nixosSystem {
+                                inherit system;
+                                modules = modules ++ [
+                                        nix-index-database.nixosModules.nix-index
+                                        { programs.nix-index-database.comma.enable = true; }
+                                        niri.nixosModules.niri
+                                ];
+                                specialArgs = {
+                                        inherit pkgs-stable niri;
+                                };
+                        };
+
+                        # Function to create a Home Manager configuration
+                        mkHome = { username, hostname, homeModules }: home-manager.lib.homeManagerConfiguration {
+                                inherit pkgs;
+                                modules = homeModules ++ [
+                                        {
+                                                home.packages = [
+                                                        my-bash-scripts-pkg
+                                                        my-neovim-pkg
+                                                ];
+                                        }
+                                        stylix.homeModules.stylix
+                                        niri.homeModules.niri
+                                ];
+                                extraSpecialArgs = {
+                                        inherit
+                                        gruvbox-plus-icons-git
+                                        niri
+                                        pkgs-stable
+                                        zen-browser;
+                                };
+                        };
+
+
                 in {
                         # Default app for `nix run .`
                         defaultApp."${system}" = {
@@ -108,79 +144,39 @@
                         };
 
                         nixosConfigurations = {
-                                athena = lib.nixosSystem {
-                                        inherit system;
+                                athena = mkHost {
+                                        hostname = "athena";
                                         modules = [
                                                 ./hosts/athena/hardware-configuration.nix
                                                 ./hosts/athena/configuration.nix
                                                 asus-numberpad-driver.nixosModules.default
-                                                nix-index-database.nixosModules.nix-index
-                                                { programs.nix-index-database.comma.enable = true; }
-                                                niri.nixosModules.niri
                                         ];
-                                        specialArgs = {
-                                                inherit pkgs-stable niri;
-                                        };
                                 };
 
-                                dionysus = lib.nixosSystem {
-                                        inherit system;
+                                dionysus = mkHost {
+                                        hostname = "dionysus";
                                         modules = [
                                                 ./hosts/dionysus/configuration.nix
                                                 ./hosts/dionysus/hardware-configuration.nix
-                                                nix-index-database.nixosModules.nix-index
-                                                { programs.nix-index-database.comma.enable = true; }
-                                                niri.nixosModules.niri
                                         ];
-                                        specialArgs = {
-                                                inherit pkgs-stable niri;
-                                        };
                                 };
                         };
 
                         homeConfigurations = {
-                                "mathijs@athena" = home-manager.lib.homeManagerConfiguration {
-                                        inherit pkgs;
-                                        modules = [
+                                "mathijs@athena" = mkHome {
+                                        username = "mathijs";
+                                        hostname = "athena";
+                                        homeModules = [
                                                 ./hosts/athena/home.nix
-                                                {
-                                                        home.packages = [
-                                                                my-bash-scripts-pkg
-                                                                my-neovim-pkg
-                                                        ];
-                                                }
-                                                stylix.homeModules.stylix
-                                                niri.homeModules.niri
                                         ];
-                                        extraSpecialArgs = {
-                                                inherit 
-                                                gruvbox-plus-icons-git 
-                                                niri
-                                                pkgs-stable 
-                                                zen-browser;
-                                        };
                                 };
 
-                                "mathijs@dionysus" = home-manager.lib.homeManagerConfiguration {
-                                        inherit pkgs;
-                                        modules = [
+                                "mathijs@dionysus" = mkHome {
+                                        username = "mathijs";
+                                        hostname = "dionysus";
+                                        homeModules = [
                                                 ./hosts/dionysus/home.nix
-                                                {
-                                                        home.packages = [
-                                                                my-bash-scripts-pkg
-                                                                my-neovim-pkg
-                                                        ];
-                                                }
-                                                stylix.homeModules.stylix
-                                                niri.homeModules.niri
                                         ];
-                                        extraSpecialArgs = {
-                                                inherit 
-                                                gruvbox-plus-icons-git
-                                                niri
-                                                pkgs-stable
-                                                zen-browser;
-                                        };
                                 };
                         };
                 };
