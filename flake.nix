@@ -96,7 +96,7 @@
                         }).neovim;
 
                         # Gruvbox icon pack derivation
-                        gruvboxPlusIcons = pkgs.callPackage ./packages/gruvbox-plus-icons.nix {
+                        gruvbox-plus-icons-git = pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
                                 inherit gruvbox-icons system;
                         };
 
@@ -154,7 +154,7 @@
                                         ];
                                         extraSpecialArgs = {
                                                 inherit 
-                                                gruvboxPlusIcons 
+                                                gruvbox-plus-icons-git 
                                                 niri
                                                 pkgs-stable 
                                                 zen-browser;
@@ -176,7 +176,7 @@
                                         ];
                                         extraSpecialArgs = {
                                                 inherit 
-                                                gruvboxPlusIcons
+                                                gruvbox-plus-icons-git
                                                 niri
                                                 pkgs-stable
                                                 zen-browser;

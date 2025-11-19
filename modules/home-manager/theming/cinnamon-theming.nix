@@ -1,4 +1,4 @@
-{ pkgs, gruvboxPlusIcons, lib, config, ... }:
+{ pkgs, gruvbox-plus-icons-git, lib, config, ... }:
 
 {
         options = {
@@ -47,7 +47,7 @@
                         };
                         iconTheme = {
                                 name = "Gruvbox-Plus-Dark";
-                                package = gruvboxPlusIcons;
+                                package = gruvbox-plus-icons-git;
                         };
                         gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
 

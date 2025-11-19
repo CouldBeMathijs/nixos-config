@@ -1,4 +1,4 @@
-{ config, pkgs, gruvboxPlusIcons, ... }:
+{ config, pkgs, gruvbox-plus-icons-git, ... }:
 
 {
         # Home Manager needs a bit of information about you and the paths it should
@@ -25,7 +25,7 @@
                 home.packages = with pkgs; [
                         signal-desktop
                         libreoffice-fresh
-			gruvboxPlusIcons
+			gruvbox-plus-icons-git
                 ];
 
                 xdg = {
