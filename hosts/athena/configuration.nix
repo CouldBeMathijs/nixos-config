@@ -13,6 +13,7 @@
         niri.enable = true;
         ripping.enable = true;
 
+        # Enable lix
         nixpkgs.overlays = [ (final: prev: {
                 inherit (prev.lixPackageSets.stable)
                 nixpkgs-review
@@ -20,7 +21,6 @@
                 nix-fast-build
                 colmena;
         }) ];
-
         nix.package = pkgs.lixPackageSets.stable.lix;
 
         # Allow unfree packages
@@ -32,11 +32,16 @@
         imports = [
                 ./../../modules/nixos
         ];
+
         services = {
                 envfs.enable = true;
                 fwupd.enable = true;
         };
-        security.rtkit.enable = true;
+
+        security = {
+                rtkit.enable = true;
+                sudo-rs.enable = true;
+        };
 
         # Define a user account. Don't forget to set a password with ‘passwd’.
         users.users.mathijs = {
