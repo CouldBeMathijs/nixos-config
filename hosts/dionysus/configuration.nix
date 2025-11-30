@@ -12,7 +12,7 @@
 
         gaming.steam.enable = true;
         gaming.heroic.enable = true;
-        locale.language = "finnish";
+        locale.language = "irish";
 
         # Enable lix
         nixpkgs.overlays = [ (final: prev: {

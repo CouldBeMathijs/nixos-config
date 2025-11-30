@@ -61,16 +61,13 @@
                 ...
                 }:
                 let
-                        system = "x86_64-linux";
+                        # Concrete system used for internal packages (since they must be built once)
+                        internalSystem = "x86_64-linux";
                         lib = nixpkgs.lib;
 
+                        # Packages for the internalSystem, used by home.packages and defaultApp
                         pkgs = import nixpkgs {
-                                inherit system;
-                                config.allowUnfree = true;
-                        };
-
-                        pkgs-stable = import nixpkgs-stable {
-                                inherit system;
+                                system = internalSystem;
                                 config.allowUnfree = true;
                         };
 
@@ -89,51 +86,53 @@
                         };
 
                         my-neovim-pkg = (nvf.lib.neovimConfiguration {
-                                pkgs = nixpkgs.legacyPackages."${system}";
+                                pkgs = nixpkgs.legacyPackages."${internalSystem}";
                                 modules = [ ./nvf-configuration.nix ];
                         }).neovim;
 
                         gruvbox-plus-icons-git = pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
-                                inherit gruvbox-icons system;
+                                inherit gruvbox-icons;
                         };
 
                         # Function to create a NixOS system configuration
-                        mkHost = { hostname, extraModules ? [] }: lib.nixosSystem {
+                        mkHost = { hostname, extraModules ? [], system }: lib.nixosSystem {
                                 inherit system;
-                                modules = 
+                                modules =
                                         # Host-specific modules based on convention
                                         [
                                                 ./hosts/${hostname}/configuration.nix
                                                 ./hosts/${hostname}/hardware-configuration.nix
-                                        ] 
-                                        ++ 
+                                        ]
+                                        ++
                                         # Common NixOS modules
                                         [
                                                 nix-index-database.nixosModules.nix-index
                                                 { programs.nix-index-database.comma.enable = true; }
                                                 niri.nixosModules.niri
-                                        ] 
+                                        ]
                                         ++
                                         # extraModules can be added in the function call
                                         extraModules;
 
                                 specialArgs = {
-                                        inherit pkgs-stable niri;
+                                        pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
+                                        inherit niri;
                                 };
                         };
 
                         # Function to create a Home Manager configuration
-                        mkHome = { username, hostname, extraModules ? [] }: home-manager.lib.homeManagerConfiguration {
-                                inherit pkgs;
-                                modules = 
+                        mkHome = { username, hostname, extraModules ? [], system }: home-manager.lib.homeManagerConfiguration {
+                                pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+                                modules =
                                         # Home-specific module based on convention
                                         [
                                                 ./hosts/${hostname}/home.nix
-                                        ] 
-                                        ++ 
+                                        ]
+                                        ++
                                         # Common Home Manager modules and packages
                                         [
                                                 {
+                                                        # These packages rely on the internalSystem build
                                                         home.packages = [
                                                                 my-bash-scripts-pkg
                                                                 my-neovim-pkg
@@ -141,7 +140,7 @@
                                                 }
                                                 stylix.homeModules.stylix
                                                 niri.homeModules.niri
-                                        ] 
+                                        ]
                                         ++
                                         # extrModules can be added in the function call
                                         extraModules;
@@ -150,15 +149,14 @@
                                         inherit
                                         gruvbox-plus-icons-git
                                         niri
-                                        pkgs-stable
                                         zen-browser;
+                                        pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
                                 };
                         };
 
 
                 in {
-                        # Default app for `nix run .`
-                        defaultApp."${system}" = {
+                        defaultApp."${internalSystem}" = {
                                 type = "app";
                                 program = "${my-neovim-pkg}/bin/nvim";
                         };
@@ -166,6 +164,7 @@
                         nixosConfigurations = {
                                 athena = mkHost {
                                         hostname = "athena";
+                                        system = "x86_64-linux";
                                         extraModules = [
                                                 asus-numberpad-driver.nixosModules.default
                                         ];
@@ -173,6 +172,7 @@
 
                                 dionysus = mkHost {
                                         hostname = "dionysus";
+                                        system = "x86_64-linux";
                                 };
                         };
 
@@ -180,11 +180,13 @@
                                 "mathijs@athena" = mkHome {
                                         username = "mathijs";
                                         hostname = "athena";
+                                        system = "x86_64-linux";
                                 };
 
                                 "mathijs@dionysus" = mkHome {
                                         username = "mathijs";
                                         hostname = "dionysus";
+                                        system = "x86_64-linux";
                                 };
                         };
                 };

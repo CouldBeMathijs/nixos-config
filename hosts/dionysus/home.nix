@@ -26,6 +26,7 @@
                         signal-desktop
                         libreoffice-fresh
 			gruvbox-plus-icons-git
+                        subtitlecomposer
                 ];
 
                 xdg = {

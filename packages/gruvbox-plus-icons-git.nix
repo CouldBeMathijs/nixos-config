@@ -1,4 +1,4 @@
-{ lib, stdenvNoCC, gruvbox-icons, gtk3, plasma5Packages, gnome-icon-theme, hicolor-icon-theme, system }:
+{ lib, stdenvNoCC, gruvbox-icons, gtk3, plasma5Packages, gnome-icon-theme, hicolor-icon-theme }:
 
 stdenvNoCC.mkDerivation rec {
         pname = "gruvbox-plus-icons-git";
