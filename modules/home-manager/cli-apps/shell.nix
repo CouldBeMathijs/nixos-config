@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, microfetch, ... }:
 let
         flake = "${config.home.homeDirectory}/.dotfiles";
 in
@@ -8,13 +8,13 @@ in
         };
 
         config = lib.mkIf config.shell.enable {
-                home.packages = with pkgs; [
-                        bat # Better cat
-                        eza # Better ls
-                        microfetch # Nix specific fetcher, as fast as can be
-                        tldr # When man is overkill
-                        trash-cli # rm on safe mode
-                        zoxide # cd^2
+                home.packages = [
+                        microfetch.microfetch # Nix specific fetcher, as fast as can be
+                        pkgs.bat # Better cat
+                        pkgs.eza # Better ls
+                        pkgs.tldr # When man is overkill
+                        pkgs.trash-cli # rm on safe mode
+                        pkgs.zoxide # cd^2
                 ];
                 # Shell configuration
                 programs.bash = {
