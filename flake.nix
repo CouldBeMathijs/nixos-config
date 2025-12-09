@@ -14,6 +14,10 @@
                         url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
                         flake = false;
                 };
+                microfetch-git = {
+                        url = "github:NotAShelf/microfetch";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                };
                 my-bash-scripts = {
                         url = "github:CouldBeMathijs/bash-scripts";
                         flake = false;
@@ -50,6 +54,7 @@
                 asus-numberpad-driver,
                 gruvbox-icons,
                 home-manager,
+                microfetch-git,
                 my-bash-scripts,
                 niri,
                 nix-index-database,
@@ -146,10 +151,8 @@
                                         extraModules;
 
                                 extraSpecialArgs = {
-                                        inherit
-                                        gruvbox-plus-icons-git
-                                        niri
-                                        zen-browser;
+                                        inherit gruvbox-plus-icons-git niri zen-browser;
+                                        microfetch = microfetch-git.packages.x86_64-linux;
                                         pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
                                 };
                         };
