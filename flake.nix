@@ -173,6 +173,11 @@
                                         ];
                                 };
 
+				chronos = mkHost {
+					hostname = "chronos";
+					system = "x86_64-linux";
+				};
+
                                 dionysus = mkHost {
                                         hostname = "dionysus";
                                         system = "x86_64-linux";
@@ -185,6 +190,12 @@
                                         hostname = "athena";
                                         system = "x86_64-linux";
                                 };
+
+				"mathijs@chronos" = mkHome {
+					username = "mathijs";
+					hostname = "chronos";
+                                        system = "x86_64-linux";
+				};
 
                                 "mathijs@dionysus" = mkHome {
                                         username = "mathijs";
