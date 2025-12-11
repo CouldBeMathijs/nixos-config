@@ -10,6 +10,9 @@ Hosts:
  - Athena: ASUS Vivobook Flip - School laptop
      - Gnome
      - Development tooling and IDE's
+ - Chronos: Aorus Elite - Gaming PC
+     - KDE Plasma
+     - Steam + Heroic
  - Dionysus: Lenovo Legion - Gaming laptop
      - KDE Plasma
      - Steam + Heroic
