@@ -2,6 +2,8 @@
         description = "The main flake";
 
         inputs = {
+                flake-utils.url = "github:numtide/flake-utils";
+
                 asus-numberpad-driver = {
                         url = "github:asus-linux-drivers/asus-numberpad-driver";
                         inputs.nixpkgs.follows = "nixpkgs";
@@ -26,157 +28,143 @@
                         url = "github:sodiboo/niri-flake";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-                nixpkgs = {
-                        url = "github:NixOS/nixpkgs/nixos-unstable";
-                };
-                nixpkgs-stable = {
-                        url = "github:NixOS/nixpkgs/release-25.05";
-                };
+
+                nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+                nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.05";
+
                 nix-index-database = {
                         url = "github:nix-community/nix-index-database";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
+
                 nvf = {
                         url = "github:NotAShelf/nvf/v0.8";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
+
                 stylix = {
                         url = "github:nix-community/stylix/master";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
+
                 zen-browser = {
                         url = "github:0xc000022070/zen-browser-flake/beta";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
         };
 
-        outputs = {
-                asus-numberpad-driver,
-                gruvbox-icons,
-                home-manager,
-                microfetch-git,
-                my-bash-scripts,
-                niri,
-                nix-index-database,
-                nixpkgs,
-                nixpkgs-stable,
-                nvf,
-                stylix,
-                zen-browser,
-                ...
-                }:
+        outputs = inputs @ { self, flake-utils, nixpkgs, nixpkgs-stable, home-manager, ... }:
+
                 let
-                        # Concrete system used for internal packages (since they must be built once)
-                        internalSystem = "x86_64-linux";
-                        lib = nixpkgs.lib;
+                        # Hosts that actually run NixOS
+                        linuxSystems = [ "x86_64-linux" ];
 
-                        # Packages for the internalSystem, used by home.packages and defaultApp
-                        pkgs = import nixpkgs {
-                                system = internalSystem;
-                                config.allowUnfree = true;
-                        };
+                        mkHost = { hostname, system, extraModules ? [] }:
+                                nixpkgs.lib.nixosSystem {
+                                        inherit system;
+                                        modules =
+                                                [
+                                                        ./hosts/${hostname}/configuration.nix
+                                                        ./hosts/${hostname}/hardware-configuration.nix
 
-                        my-bash-scripts-pkg = pkgs.stdenv.mkDerivation {
-                                pname = "my-bash-scripts";
-                                version = "1.0.0";
-                                src = my-bash-scripts;
-                                installPhase = ''
-                                mkdir -p $out/bin
-                                for script in $src/*.sh; do
-                                        base_name=$(basename "$script" .sh)
-                                        cp "$script" "$out/bin/$base_name"
-                                        chmod +x "$out/bin/$base_name"
-                                done
-                                '';
-                        };
+                                                        inputs.nix-index-database.nixosModules.nix-index
+                                                        { programs.nix-index-database.comma.enable = true; }
 
-                        my-neovim-pkg = (nvf.lib.neovimConfiguration {
-                                pkgs = nixpkgs.legacyPackages."${internalSystem}";
-                                modules = [ ./nvf-configuration.nix ];
-                        }).neovim;
+                                                        inputs.niri.nixosModules.niri
+                                                ]
+                                                ++ extraModules;
 
-                        gruvbox-plus-icons-git = pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
-                                inherit gruvbox-icons;
-                        };
-
-                        # Function to create a NixOS system configuration
-                        mkHost = { hostname, extraModules ? [], system }: lib.nixosSystem {
-                                inherit system;
-                                modules =
-                                        # Host-specific modules based on convention
-                                        [
-                                                ./hosts/${hostname}/configuration.nix
-                                                ./hosts/${hostname}/hardware-configuration.nix
-                                        ]
-                                        ++
-                                        # Common NixOS modules
-                                        [
-                                                nix-index-database.nixosModules.nix-index
-                                                { programs.nix-index-database.comma.enable = true; }
-                                                niri.nixosModules.niri
-                                        ]
-                                        ++
-                                        # extraModules can be added in the function call
-                                        extraModules;
-
-                                specialArgs = {
-                                        pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
-                                        inherit niri;
+                                        specialArgs = {
+                                                pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
+                                                inherit (inputs) niri;
+                                        };
                                 };
-                        };
 
-                        # Function to create a Home Manager configuration
-                        mkHome = { username, hostname, extraModules ? [], system }: home-manager.lib.homeManagerConfiguration {
-                                pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-                                modules =
-                                        # Home-specific module based on convention
-                                        [
-                                                ./hosts/${hostname}/home.nix
-                                        ]
-                                        ++
-                                        # Common Home Manager modules and packages
-                                        [
-                                                {
-                                                        # These packages rely on the internalSystem build
-                                                        home.packages = [
-                                                                my-bash-scripts-pkg
-                                                                my-neovim-pkg
-                                                        ];
-                                                }
-                                                stylix.homeModules.stylix
-                                                niri.homeModules.niri
-                                        ]
-                                        ++
-                                        # extrModules can be added in the function call
-                                        extraModules;
+                        mkHome = { username, hostname, system, extraModules ? [] }:
+                                inputs.home-manager.lib.homeManagerConfiguration {
+                                        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
 
-                                extraSpecialArgs = {
-                                        inherit gruvbox-plus-icons-git niri zen-browser;
-                                        microfetch = microfetch-git.packages.x86_64-linux;
-                                        pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
+                                        modules =
+                                                [
+                                                        ./hosts/${hostname}/home.nix
+
+                                                        {
+                                                                home.packages = [
+                                                                        self.packages.${system}.my-bash-scripts
+                                                                        self.packages.${system}.my-neovim
+                                                                ];
+                                                        }
+
+                                                        inputs.stylix.homeModules.stylix
+                                                        inputs.niri.homeModules.niri
+                                                ]
+                                                ++ extraModules;
+
+                                        extraSpecialArgs = {
+                                                inherit (inputs) niri zen-browser;
+                                                microfetch = inputs.microfetch-git.packages.${system};
+                                                pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
+                                                gruvbox-plus-icons-git = self.packages.${system}.gruvbox-plus-icons-git;
+                                        };
                                 };
-                        };
 
+                in
+                        flake-utils.lib.eachDefaultSystem (system:
+                                let
+                                        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+                                        pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
 
-                in {
-                        defaultApp."${internalSystem}" = {
-                                type = "app";
-                                program = "${my-neovim-pkg}/bin/nvim";
-                        };
+                                        my-bash-scripts-pkg = pkgs.stdenv.mkDerivation {
+                                                pname = "my-bash-scripts";
+                                                version = "1.0.0";
+                                                src = inputs.my-bash-scripts;
+                                                installPhase = ''
+          mkdir -p $out/bin
+          for script in $src/*.sh; do
+            cp "$script" "$out/bin/$(basename "$script" .sh)"
+            chmod +x "$out/bin/$(basename "$script" .sh)"
+          done
+                                                '';
+                                        };
 
+                                        my-neovim-pkg = (inputs.nvf.lib.neovimConfiguration {
+                                                inherit pkgs;
+                                                modules = [ ./nvf-configuration.nix ];
+                                        }).neovim;
+
+                                        gruvbox-plus-icons-git =
+                                                pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
+                                                        inherit (inputs) gruvbox-icons;
+                                                };
+                                in
+                                        {
+                                        packages = {
+                                                my-bash-scripts = my-bash-scripts-pkg;
+                                                my-neovim = my-neovim-pkg;
+                                                inherit gruvbox-plus-icons-git;
+                                        };
+
+                                        apps.default = {
+                                                type = "app";
+                                                program = "${my-neovim-pkg}/bin/nvim";
+                                        };
+                                }
+                        ) //
+
+                {
                         nixosConfigurations = {
                                 athena = mkHost {
                                         hostname = "athena";
                                         system = "x86_64-linux";
                                         extraModules = [
-                                                asus-numberpad-driver.nixosModules.default
+                                                inputs.asus-numberpad-driver.nixosModules.default
                                         ];
                                 };
 
-				chronos = mkHost {
-					hostname = "chronos";
-					system = "x86_64-linux";
-				};
+                                chronos = mkHost {
+                                        hostname = "chronos";
+                                        system = "x86_64-linux";
+                                };
 
                                 dionysus = mkHost {
                                         hostname = "dionysus";
@@ -191,11 +179,11 @@
                                         system = "x86_64-linux";
                                 };
 
-				"mathijs@chronos" = mkHome {
-					username = "mathijs";
-					hostname = "chronos";
+                                "mathijs@chronos" = mkHome {
+                                        username = "mathijs";
+                                        hostname = "chronos";
                                         system = "x86_64-linux";
-				};
+                                };
 
                                 "mathijs@dionysus" = mkHome {
                                         username = "mathijs";
@@ -205,4 +193,7 @@
                         };
                 };
 }
+
+
+
 
