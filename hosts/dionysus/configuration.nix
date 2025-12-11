@@ -53,15 +53,12 @@
         # List packages installed in system profile. To search, run:
         # $ nix search wget
         environment.systemPackages = with pkgs; [
-                # Media
                 gimp # GNU Image Manipulation Program
-
-                # Back-ups
-                deja-dup 
+                deja-dup # Back-ups
         ];
 
         boot = {
-                kernelPackages = pkgs.linuxPackages_latest;
+                # kernelPackages = pkgs.linuxPackages_latest;
                 loader = {
                         systemd-boot.enable = true;
                         efi.canTouchEfiVariables = true;
@@ -99,7 +96,7 @@
                 # supported GPUs is at: 
                 # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
                 # Only available from driver 515.43.04+
-                open = false;
+                open = true;
 
                 # Enable the Nvidia settings menu,
                 # accessible via `nvidia-settings`.
