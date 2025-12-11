@@ -14,16 +14,6 @@
         gaming.heroic.enable = true;
         locale.language = "irish";
 
-        # Enable lix
-        nixpkgs.overlays = [ (final: prev: {
-                inherit (prev.lixPackageSets.stable)
-                nixpkgs-review
-                nix-eval-jobs
-                nix-fast-build
-                colmena;
-        }) ];
-        nix.package = pkgs.lixPackageSets.stable.lix;
-
         # Allow unfree packages
         nixpkgs.config.allowUnfree = true;
 
@@ -59,6 +49,8 @@
                 deja-dup # Back-ups 
                 gimp # GNU Image Manipulation Program
                 openrgb-with-all-plugins # RGB Color control
+                bluez
+                bluez-tools
         ];
 
         boot = {
@@ -121,7 +113,7 @@
                                 # When enabled other devices can connect faster to us, however
                                 # the tradeoff is increased power consumption. Defaults to
                                 # 'false'.
-                                FastConnectable = true;
+                                FastConnectable = false;
                         };
                         Policy = {
                                 # Enable all controllers when they are found. This includes
