@@ -1,5 +1,6 @@
 { lib, ...}: {
         imports = [
+                ./cli-apps/direnv.nix
                 ./cli-apps/fastfetch.nix
                 ./cli-apps/fun-cli.nix
                 ./cli-apps/git.nix
@@ -19,5 +20,6 @@
                 ./theming/gnome-theming.nix
         ];
         browser.enable = lib.mkDefault true;
+        nix-direnv.enable = lib.mkDefault true;
         git.enable = lib.mkDefault true;
 }
