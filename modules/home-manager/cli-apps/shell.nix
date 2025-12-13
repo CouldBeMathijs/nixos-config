@@ -10,6 +10,7 @@ in
         config = lib.mkIf config.shell.enable {
                 home.packages = [
                         microfetch.microfetch # Nix specific fetcher, as fast as can be
+                        pkgs.atuin # Better up arrow
                         pkgs.bat # Better cat
                         pkgs.eza # Better ls
                         pkgs.tldr # When man is overkill
@@ -32,9 +33,14 @@ in
                                 "z" = "zoxide";
                         };
                 };
-                programs.zoxide = {
-                        enable = true;
-                        enableBashIntegration = true;
+                programs = {
+                        atuin = {
+                                enable = true;
+                        };
+                        zoxide = {
+                                enable = true;
+                                enableBashIntegration = true;
+                        };
                 };
                 xdg = {
                         enable = true;
