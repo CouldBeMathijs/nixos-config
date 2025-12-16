@@ -11,11 +11,12 @@
         config = {
                 composing.enable = true;
                 discord.enable = true;
+                dosbox.enable = true;
                 fastfetch.enable = true;
                 gramps.enable = true;
+                jetbrains.clion.enable = true;
                 minecraft.enable = true;
                 shell.enable = true;
-                jetbrains.clion.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";

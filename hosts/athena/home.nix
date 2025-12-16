@@ -38,6 +38,7 @@
 
                 niri-config.enable = true;
                 fun-cli.enable = true;
+                dosbox.enable = true;
 
                 # Enable musescore
                 composing.enable = true;
