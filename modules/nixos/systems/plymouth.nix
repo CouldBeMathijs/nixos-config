@@ -1,19 +1,24 @@
-{ pkgs, lib, config, ...}: {
+{ pkgs, lib, config, ...}:
+let
+        selectedTheme = "pixels";
+in
+        {
         options = {
                 plymouth.enable = lib.mkEnableOption "enable plymouth.nix";
         };
+
         config = lib.mkIf config.plymouth.enable {
                 boot = {
                         plymouth = {
                                 enable = true;
-                                theme = "owl";
+                                theme = selectedTheme; 
                                 themePackages = with pkgs; [
-                                        # By default we would install all themes
                                         (adi1090x-plymouth-themes.override {
-                                                selected_themes = [ "owl" ];
+                                                selected_themes = [ selectedTheme ]; 
                                         })
                                 ];
                         };
+
                         # Enable "Silent boot"
                         consoleLogLevel = 3;
                         initrd.verbose = false;
@@ -24,6 +29,7 @@
                                 "udev.log_priority=3"
                                 "rd.systemd.show_status=auto"
                         ];
+
                         # Hide the OS choice for bootloaders.
                         # It's still possible to open the bootloader list by pressing any key
                         # It will just not appear on screen unless a key is pressed
