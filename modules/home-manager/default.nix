@@ -4,6 +4,7 @@
                 ./cli-apps/fastfetch.nix
                 ./cli-apps/fun-cli.nix
                 ./cli-apps/git.nix
+                ./cli-apps/ollama.nix
                 ./cli-apps/shell.nix
                 ./programs/browser.nix
                 ./programs/composing.nix
