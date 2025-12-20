@@ -16,6 +16,7 @@
                 gramps.enable = true;
                 jetbrains.clion.enable = true;
                 minecraft.enable = true;
+                ollama.enable = true;
                 shell.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
