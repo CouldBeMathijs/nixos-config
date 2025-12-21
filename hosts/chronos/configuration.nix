@@ -7,8 +7,9 @@
 {
         networking.hostName = "chronos";
 
+        plasma-apps.enable = true;
+        plasma.enable = true;
         ripping.enable = true;
-        kde.enable = true;
 
         gaming.steam.enable = true;
         gaming.heroic.enable = true;

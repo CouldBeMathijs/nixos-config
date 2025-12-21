@@ -1,10 +1,10 @@
 { pkgs, lib, config, ...}:
 {
         options = {
-                kde.enable = lib.mkEnableOption "enable kde.nix";
+                plasma.enable = lib.mkEnableOption "enable plasma.nix";
         };
 
-        config = lib.mkIf config.kde.enable {
+        config = lib.mkIf config.plasma.enable {
 
                 services.xserver.enable = true;
                 services.gvfs.enable = true;
