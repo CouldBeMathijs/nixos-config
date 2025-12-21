@@ -2,12 +2,13 @@
         imports = [
                 ./DE-WM/cinnamon.nix
                 ./DE-WM/gnome.nix
-                ./DE-WM/kde.nix
                 ./DE-WM/niri.nix
+                ./DE-WM/plasma.nix
                 ./programs/cli-utils.nix
                 ./programs/fonts.nix
                 ./programs/gaming.nix
                 ./programs/gnome-apps.nix
+                ./programs/plasma-apps.nix
                 ./programs/ripping.nix
                 ./systems/audio.nix
                 ./systems/lix.nix
