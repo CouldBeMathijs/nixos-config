@@ -15,6 +15,7 @@
                 fastfetch.enable = true;
                 gramps.enable = true;
                 jetbrains.clion.enable = true;
+                latex.enable = true;
                 minecraft.enable = true;
                 niri-config.enable = true;
                 ollama.enable = true;

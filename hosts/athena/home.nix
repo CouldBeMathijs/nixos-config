@@ -35,6 +35,7 @@
 
                 # Enable LaTeX
                 latex.enable = true;
+                latex.gnome-apps.enable = true;
 
                 niri-config.enable = true;
                 fun-cli.enable = true;
