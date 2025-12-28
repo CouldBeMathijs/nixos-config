@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766759727,
-        "narHash": "sha256-ZMRbSm7gh2AULVKNxgkgpaewaokVPGT64orG/HyqzKM=",
+        "lastModified": 1766846061,
+        "narHash": "sha256-YPUJASptpayyHBp73ZF0F+gMaaHoNfckKnQIKPBXkWA=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "359985b088ae0bd88dcaf6bd6eb3d6833785ba9e",
+        "rev": "9944e51f3829c1af876c589ae118c170dde08452",
         "type": "github"
       },
       "original": {
@@ -239,11 +239,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766682973,
-        "narHash": "sha256-GKO35onS711ThCxwWcfuvbIBKXwriahGqs+WZuJ3v9E=",
+        "lastModified": 1766881808,
+        "narHash": "sha256-JR7A2xS3EBPWFeONzhqez5vp7nKEsp7eLj2Ks210Srk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "91cdb0e2d574c64fae80d221f4bf09d5592e9ec2",
+        "rev": "d2e0458d6531885600b346e161c38790dc356fa8",
         "type": "github"
       },
       "original": {
@@ -455,11 +455,11 @@
     },
     "nixpkgs-stable_2": {
       "locked": {
-        "lastModified": 1766757676,
-        "narHash": "sha256-hGCDtw0z2WuwCIl4tjYC7lPOowpmTxGw/lycTISf9pc=",
+        "lastModified": 1766899694,
+        "narHash": "sha256-lN6zOvHa213omlQ/CsxfE/OHADe6UnXte/B9ZAFZteI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "799013d71f32e69bacde52df19ec4251ae2aebe3",
+        "rev": "5c84a81d259b415b071a34efea61b0fae832e928",
         "type": "github"
       },
       "original": {
