@@ -16,6 +16,7 @@
                 ./systems/nh.nix
                 ./systems/plymouth.nix
                 ./systems/printing.nix
+                ./systems/sddm-minimal-theme.nix
         ];
         audio.enable = lib.mkDefault true;
         cli-utils.enable = lib.mkDefault true;

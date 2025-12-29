@@ -10,6 +10,7 @@
                 services.gvfs.enable = true;
                 services.desktopManager.plasma6.enable = true;
                 services.displayManager.sddm.enable = true;
+                sddm-minimal-theme.enable = lib.mkDefault true;
 
                 services.xserver.excludePackages = with pkgs; [
                         xterm # Exclude the basic xterm terminal
