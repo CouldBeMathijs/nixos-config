@@ -15,6 +15,7 @@ in
                         pkgs.eza # Better ls
                         pkgs.tldr # When man is overkill
                         pkgs.trash-cli # rm on safe mode
+                        pkgs.yazi # Terminal File Manager
                         pkgs.zoxide # cd^2
                 ];
                 # Shell configuration
