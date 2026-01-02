@@ -31,6 +31,7 @@
                         libreoffice-fresh
 			gruvbox-plus-icons-git
                         subtitlecomposer
+                        obs-studio
                 ];
 
                 xdg = {
