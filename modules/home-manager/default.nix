@@ -18,8 +18,8 @@
                 ./programs/niri.nix
                 ./theming/cinnamon-theming.nix
                 ./theming/gnome-extensions.nix
-                ./theming/gnome-stylix.nix
                 ./theming/gnome-theming.nix
+                ./theming/plasma-theming.nix
         ];
         browser.enable = lib.mkDefault true;
         nix-direnv.enable = lib.mkDefault true;
