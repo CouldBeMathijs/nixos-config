@@ -20,6 +20,7 @@
                 niri-config.enable = true;
                 ollama.enable = true;
                 shell.enable = true;
+                plasma-theming.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";

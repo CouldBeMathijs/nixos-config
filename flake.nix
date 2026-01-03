@@ -36,7 +36,11 @@
                         url = "github:nix-community/nix-index-database";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-
+                plasma-manager = {
+                        url = "github:nix-community/plasma-manager";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                        inputs.home-manager.follows = "home-manager";
+                };
                 nvf = {
                         url = "github:NotAShelf/nvf";
                         inputs.nixpkgs.follows = "nixpkgs";
@@ -95,8 +99,9 @@
                                                                 ];
                                                         }
 
-                                                        inputs.stylix.homeModules.stylix
                                                         inputs.niri.homeModules.niri
+                                                        inputs.plasma-manager.homeModules.plasma-manager
+                                                        inputs.stylix.homeModules.stylix
                                                 ]
                                                 ++ extraModules;
 
