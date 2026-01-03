@@ -6,18 +6,20 @@
                 environment.systemPackages = with pkgs; [ 
                         devtoolbox # Just some nicities
                         gtranslator # PO translation editor
+                        karp # Pdf merger
                         kdePackages.dragon # Video player
                         kdePackages.elisa # Music player
                         kdePackages.isoimagewriter # dd but Gnome
                         kdePackages.kapman # Pacman in all but name
                         kdePackages.kbreakout
+                        kdePackages.kdenlive # Video editor
                         kdePackages.kolourpaint # Paint
                         kdePackages.konquest
                         kdePackages.okular # Pdf reader
                         krename # Bulk rename tol
                         parabolic # Media downloader
                         pdfarranger # Pdf arranger
-                        pitivi # Video editor
+                        qalculate-qt # Calculator
                         rnote # Handdrawn note taking
                 ];
                 environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
