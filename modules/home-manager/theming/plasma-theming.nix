@@ -1,6 +1,6 @@
 { lib, config, pkgs, gruvbox-plus-icons-git, ... }:
 let
-        wallpaperPath = ./images/bulbs.png;
+        wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
 in
         {
         options = {
@@ -8,13 +8,12 @@ in
         };
 
         config = lib.mkIf config.plasma-theming.enable {
-                # 1. Ensure the icon package is actually installed
                 home.packages = [
                         gruvbox-plus-icons-git
                 ];
                 gtk = {
                         enable = true;
-
+                        gtk2.enable = false;
                         theme = {
                                 name = "Breeze-Dark";
                                 package = pkgs.kdePackages.breeze-gtk;
@@ -33,13 +32,9 @@ in
                         overrideConfig = true; # Warning: This wipes manual changes on every switch
 
                         workspace = {
-                                # 2. Use lookAndFeel to force the global "Dark" profile
+                                iconTheme = "Gruvbox-Plus-Dark"; 
                                 lookAndFeel = "org.kde.breezedark.desktop";
                                 theme = "breeze-dark";
-
-                                # 3. Double check this name matches the folder in the package
-                                iconTheme = "Gruvbox-Plus-Dark"; 
-
                                 wallpaper = wallpaperPath;
                         };
 
