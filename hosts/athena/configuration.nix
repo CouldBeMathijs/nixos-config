@@ -7,12 +7,12 @@
 {
         networking.hostName = "athena";
 
-        # Enable Gnome and all packages around it
-        gnome.enable = true;
-        gnome-apps.enable = true;
+        # Enable Desktops and all packages around it
+        plasma.enable = true;
+        plasma-apps.enable = true;
         niri.enable = true;
-        ripping.enable = true;
 
+        ripping.enable = true;
 
         # Allow unfree packages
         nixpkgs.config.allowUnfree = true;

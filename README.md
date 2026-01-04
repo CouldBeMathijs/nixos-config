@@ -8,7 +8,7 @@ If you've got any questions, I'd be glad to help.
 
 Hosts:
  - Athena: ASUS Vivobook Flip - School laptop
-     - Gnome
+     - KDE Plasma
      - Development tooling and IDE's
  - Chronos: Aorus Elite - Gaming PC
      - KDE Plasma
