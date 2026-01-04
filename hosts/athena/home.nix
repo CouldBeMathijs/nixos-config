@@ -19,12 +19,11 @@
                 # Enable shell configuration
                 shell.enable = true;
                 
-                # Enable fastfetct configuration
+                # Enable fastfetch configuration
                 fastfetch.enable = true;
                 
-                # Enable gnome customization
-                gnome-extensions.enable = true;
-                gnome-theming.enable = true;
+                # Enable Plasma config
+                plasma-theming.enable = true;
 
                 # Enable Jetbrains IDE's
                 jetbrains.clion.enable = true;

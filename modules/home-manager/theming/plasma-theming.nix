@@ -2,7 +2,7 @@
 let
         wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
 in
-        {
+{
         options = {
                 plasma-theming.enable = lib.mkEnableOption "enable plasma-theming";
         };
@@ -24,7 +24,15 @@ in
                 programs.plasma = {
                         enable = true;
                         overrideConfig = true;
-
+                        input = {
+                                keyboard.layouts = [
+                                {
+                                        displayName = "usi";
+                                        layout = "us";
+                                        variant = "intl";
+                                }
+                                ];
+                        };
                         workspace = {
                                 iconTheme = "Gruvbox-Plus-Dark";
                                 lookAndFeel = "org.kde.breezedark.desktop";
@@ -38,49 +46,61 @@ in
                                 titlebarButtons.left = [ "close" "minimize" "maximize" ];
                                 titlebarButtons.right = [ "keep-above-windows" ];
                         };
-
                         panels = [
-                                # Bottom Panel (Centered Icon Tasks)
-                                {
-                                        location = "bottom";
-                                        height = 56;
-                                        floating = true;
-                                        hiding = "dodgewindows";
-                                        widgets = [
-                                                "org.kde.plasma.panelspacer" # Modern Spacer
-                                                "org.kde.plasma.icontasks"
-                                                "org.kde.plasma.panelspacer" # Modern Spacer
-                                        ];
-                                }
-                                # Top Panel
-                                {
-                                        location = "top";
-                                        height = 30;
-                                        floating = true;
-                                        widgets = [
-                                                {
-                                                        name = "org.kde.plasma.kicker";
-                                                        config = {
-                                                                General = {
-                                                                        icon = "distributor-logo-nixos";
-                                                                        systemFavorites = "suspend\\,hibernate\\,reboot\\,shutdown";
-                                                                        favoritesPortedToKAstats = true;
-                                                                };
-                                                                Configuration = {
-                                                                        PreloadWeight = 100;
-                                                                        popupHeight = 440;
-                                                                        popupWidth = 300;
-                                                                };
+                        # Bottom Panel (Centered Icon Tasks)
+                        {
+                                location = "bottom";
+                                height = 56;
+                                floating = true;
+                                hiding = "dodgewindows";
+                                widgets = [
+                                        "org.kde.plasma.panelspacer"
+                                        {
+                                                name = "org.kde.plasma.icontasks";
+                                                config = {
+                                                        General = {
+                                                                # List the .desktop files for the apps you want to pin
+                                                                launchers = [
+                                                                                "applications:zen-beta.desktop"
+                                                                                "applications:org.kde.konsole.desktop"
+                                                                                "applications:org.kde.dolphin.desktop"
+                                                                                "applications:vesktop.desktop"
+                                                                ];
                                                         };
-                                                }
-                                                "org.kde.plasma.pager"
-                                                "org.kde.plasma.panelspacer"
-                                                "org.kde.plasma.digitalclock"
-                                                "org.kde.plasma.panelspacer"
-                                                "org.kde.plasma.systemtray"
-                                                "org.kde.plasma.showdesktop"
-                                        ];
+                                                };
+                                        }
+                                "org.kde.plasma.panelspacer"
+                                ];
+                        }
+                        # Top Panel
+                        {
+                                location = "top";
+                                height = 30;
+                                floating = true;
+                                widgets = [
+                                {
+                                        name = "org.kde.plasma.kicker";
+                                        config = {
+                                                General = {
+                                                        icon = "distributor-logo-nixos";
+                                                        systemFavorites = "suspend\\,hibernate\\,reboot\\,shutdown";
+                                                        favoritesPortedToKAstats = true;
+                                                };
+                                                Configuration = {
+                                                        PreloadWeight = 100;
+                                                        popupHeight = 440;
+                                                        popupWidth = 300;
+                                                };
+                                        };
                                 }
+                                "org.kde.plasma.pager"
+                                        "org.kde.plasma.panelspacer"
+                                        "org.kde.plasma.digitalclock"
+                                        "org.kde.plasma.panelspacer"
+                                        "org.kde.plasma.systemtray"
+                                        "org.kde.plasma.showdesktop"
+                                        ];
+                        }
                         ];
                 };
         };
