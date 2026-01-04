@@ -60,7 +60,6 @@
 
                         # Messaging apps
                         signal-desktop
-                        vesktop # A discord client
 
                         # Documents
                         libreoffice-fresh
