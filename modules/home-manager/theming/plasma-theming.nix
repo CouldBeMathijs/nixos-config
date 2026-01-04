@@ -58,7 +58,21 @@ in
                                         height = 30;
                                         floating = true;
                                         widgets = [
-                                                "org.kde.plasma.kickoff"
+                                                {
+                                                        name = "org.kde.plasma.kicker";
+                                                        config = {
+                                                                General = {
+                                                                        icon = "distributor-logo-nixos";
+                                                                        systemFavorites = "suspend\\,hibernate\\,reboot\\,shutdown";
+                                                                        favoritesPortedToKAstats = true;
+                                                                };
+                                                                Configuration = {
+                                                                        PreloadWeight = 100;
+                                                                        popupHeight = 440;
+                                                                        popupWidth = 300;
+                                                                };
+                                                        };
+                                                }
                                                 "org.kde.plasma.pager"
                                                 "org.kde.plasma.panelspacer"
                                                 "org.kde.plasma.digitalclock"
