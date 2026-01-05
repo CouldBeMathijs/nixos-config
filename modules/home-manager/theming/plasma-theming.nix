@@ -1,4 +1,4 @@
-{ lib, config, pkgs, gruvbox-plus-icons-git, ... }:
+{ lib, config, pkgs, gruvbox-plus-icons-git, plasma-manager-pkgs, ... }:
 let
         wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
         geometryChange = pkgs.callPackage ../../../packages/kwin-script-geometry-change.nix {};
@@ -13,6 +13,7 @@ in
                         geometryChange
                         gruvbox-plus-icons-git
                         pkgs.kdePackages.karousel
+                        plasma-manager-pkgs.rc2nix
                 ];
 
                 gtk = {
