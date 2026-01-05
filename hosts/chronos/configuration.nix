@@ -9,7 +9,7 @@
 
         plasma-apps.enable = true;
         plasma.enable = true;
-        niri.enable = true;
+        # niri.enable = true;
         ripping.enable = true;
 
         gaming.steam.enable = true;
