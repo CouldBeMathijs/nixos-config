@@ -17,7 +17,7 @@
                 jetbrains.clion.enable = true;
                 latex.enable = true;
                 minecraft.enable = true;
-                niri-config.enable = true;
+                # niri-config.enable = true;
                 ollama.enable = true;
                 shell.enable = true;
                 plasma-theming.enable = true;

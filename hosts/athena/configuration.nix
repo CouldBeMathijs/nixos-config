@@ -10,7 +10,7 @@
         # Enable Desktops and all packages around it
         plasma.enable = true;
         plasma-apps.enable = true;
-        niri.enable = true;
+        # niri.enable = true;
 
         ripping.enable = true;
 
