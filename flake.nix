@@ -110,6 +110,7 @@
                                                 microfetch = inputs.microfetch-git.packages.${system};
                                                 pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
                                                 gruvbox-plus-icons-git = self.packages.${system}.gruvbox-plus-icons-git;
+                                                plasma-manager-pkgs = inputs.plasma-manager.packages.${system};
                                         };
                                 };
 
