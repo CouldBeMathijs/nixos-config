@@ -1,6 +1,7 @@
 { lib, config, pkgs, gruvbox-plus-icons-git, ... }:
 let
         wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
+        geometryChange = pkgs.callPackage ../../../packages/kwin-script-geometry-change.nix {};
 in
 {
         options = {
@@ -8,7 +9,11 @@ in
         };
 
         config = lib.mkIf config.plasma-theming.enable {
-                home.packages = [ gruvbox-plus-icons-git ];
+                home.packages = [ 
+                        geometryChange
+                        gruvbox-plus-icons-git
+                        pkgs.kdePackages.karousel
+                ];
 
                 gtk = {
                         enable = true;
@@ -39,7 +44,18 @@ in
                                 theme = "breeze-dark";
                                 wallpaper = wallpaperPath;
                         };
-
+                        configFile = {
+                                kwinrc = {
+                                        Plugins = {
+                                                karouselEnabled = true;
+                                                kwin4_effect_geometry_changeEnabled = true;
+                                        };
+                                        Script-karousel = {
+                                                gestureScroll = true;
+                                                gestureScrollInvert = true;
+                                        };
+                                };
+                        };
                         kscreenlocker.appearance.wallpaper = wallpaperPath;
 
                         kwin = {
