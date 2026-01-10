@@ -1,4 +1,4 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs, lib, config, ... }:
 {
         options = {
                 git.enable = lib.mkEnableOption "Enable git configuration";
@@ -19,6 +19,7 @@
                 home.packages = with pkgs; [
                         gh # Github client
                         git # Duh
+                        git-filter-repo
                 ];
         };
 }
