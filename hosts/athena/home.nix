@@ -56,6 +56,7 @@
                         audacity # Audio recording and editing
                         shotcut # Video editing
                         kdePackages.kwordquiz # Flash card builder
+                        kooha
 
                         # Messaging apps
                         signal-desktop
