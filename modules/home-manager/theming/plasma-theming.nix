@@ -60,6 +60,7 @@ in
                                                 gestureScrollInvert = true;
                                         };
                                 };
+                                kdeglobals.General.accentColorFromWallpaper = true;
                         };
                         kscreenlocker.appearance.wallpaper = wallpaperPath;
 
