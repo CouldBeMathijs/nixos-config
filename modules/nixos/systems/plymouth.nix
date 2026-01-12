@@ -1,6 +1,6 @@
 { pkgs, lib, config, ...}:
 let
-        selectedTheme = "pixels";
+        selectedTheme = "hexagon_2";
 in
         {
         options = {
