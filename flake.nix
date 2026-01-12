@@ -28,7 +28,6 @@
                         url = "github:sodiboo/niri-flake";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-
                 nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
                 nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.05";
 
@@ -45,12 +44,12 @@
                         url = "github:NotAShelf/nvf";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-
+                /*
                 stylix = {
                         url = "github:nix-community/stylix/master";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-
+                */
                 zen-browser = {
                         url = "github:0xc000022070/zen-browser-flake/beta";
                         inputs.nixpkgs.follows = "nixpkgs";
@@ -73,7 +72,7 @@
 
                                                         inputs.nix-index-database.nixosModules.nix-index
                                                         { programs.nix-index-database.comma.enable = true; }
-
+                                                        
                                                         inputs.niri.nixosModules.niri
                                                 ]
                                                 ++ extraModules;
@@ -98,10 +97,11 @@
                                                                         self.packages.${system}.my-neovim
                                                                 ];
                                                         }
-
+                                                        
                                                         inputs.niri.homeModules.niri
                                                         inputs.plasma-manager.homeModules.plasma-manager
-                                                        inputs.stylix.homeModules.stylix
+                                                        # inputs.stylix.homeModules.stylix
+                                                        
                                                 ]
                                                 ++ extraModules;
 
