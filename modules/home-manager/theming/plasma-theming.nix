@@ -33,6 +33,18 @@ in
                         shortcuts = {
                                 kwin.karousel-focus-left = "Meta+Left";
                                 kwin.karousel-focus-right = "Meta+Right";
+
+                                plasmashell."activate task manager entry 1" = "Meta+1";
+                                plasmashell."activate task manager entry 2" = "Meta+2";
+                                plasmashell."activate task manager entry 3" = "Meta+3";
+                                plasmashell."activate task manager entry 4" = "Meta+4";
+                                plasmashell."activate task manager entry 5" = "Meta+5";
+                                plasmashell."activate task manager entry 6" = "Meta+6";
+                                plasmashell."activate task manager entry 7" = "Meta+7";
+                                plasmashell."activate task manager entry 8" = "Meta+8";
+                                plasmashell."activate task manager entry 9" = "Meta+9";
+                                plasmashell."activate task manager entry 10" = "Meta+0";
+
                         };
                         input = {
                                 keyboard.layouts = [
