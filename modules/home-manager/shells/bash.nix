@@ -8,10 +8,10 @@ in
         };
 
         config = lib.mkIf config.shell.enable {
+                bat.enable = true;
                 home.packages = [
                         microfetch.microfetch # Nix specific fetcher, as fast as can be
                         pkgs.atuin # Better up arrow
-                        pkgs.bat # Better cat
                         pkgs.eza # Better ls
                         pkgs.tldr # When man is overkill
                         pkgs.trash-cli # rm on safe mode
@@ -28,6 +28,7 @@ in
                                 "clear" = "clear; microfetch";
                                 "ll" = "eza -l";
                                 "ls" = "eza";
+                                "man" = "batman";
                                 "open" = "xdg-open";
                                 "switch-all" = "nh os switch ${flake} && home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
                                 "switch-home" = "home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
