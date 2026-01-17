@@ -27,7 +27,6 @@
 
                 # Enable Jetbrains IDE's
                 jetbrains.clion.enable = true;
-                jetbrains.datagrip.enable = true;
 
                 # Enable logisim and mars-mips
                 csa-utils.enable = false;
