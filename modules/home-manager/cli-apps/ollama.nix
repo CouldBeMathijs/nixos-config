@@ -6,9 +6,7 @@
 
         config = lib.mkIf config.ollama.enable {
                 home.packages = [
-                        (pkgs.ollama.override { 
-                                acceleration = "cuda";
-                        })
+                        pkgs.ollama
                 ];
         };
 }
