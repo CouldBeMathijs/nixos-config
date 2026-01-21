@@ -40,16 +40,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    nvf = {
-      url = "github:NotAShelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    /*
-      stylix = {
-              url = "github:nix-community/stylix/master";
-              inputs.nixpkgs.follows = "nixpkgs";
-      };
-    */
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -117,13 +107,11 @@
             {
               home.packages = [
                 self.packages.${system}.my-bash-scripts
-                self.packages.${system}.my-neovim
               ];
             }
 
             inputs.niri.homeModules.niri
             inputs.plasma-manager.homeModules.plasma-manager
-            # inputs.stylix.homeModules.stylix
 
           ]
           ++ extraModules;
@@ -166,12 +154,6 @@
           '';
         };
 
-        my-neovim-pkg =
-          (inputs.nvf.lib.neovimConfiguration {
-            inherit pkgs;
-            modules = [ ./nvf-configuration.nix ];
-          }).neovim;
-
         gruvbox-plus-icons-git = pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
           inherit (inputs) gruvbox-icons;
         };
@@ -179,13 +161,7 @@
       {
         packages = {
           my-bash-scripts = my-bash-scripts-pkg;
-          my-neovim = my-neovim-pkg;
           inherit gruvbox-plus-icons-git;
-        };
-
-        apps.default = {
-          type = "app";
-          program = "${my-neovim-pkg}/bin/nvim";
         };
       }
     )
