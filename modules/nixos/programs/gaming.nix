@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 # These helper functions are used to create a new derivation that holds a patched
 # desktop entry, giving it higher priority than the original.
@@ -9,15 +14,17 @@ let
   gnused = pkgs.gnused;
 
   # Helper to patch a desktop file in a package using a simple substitution
-  patchDesktop = pkg: appName: from: to: lib.hiPrio (
-    pkgs.runCommand "patched-desktop-entry-for-${appName}" {} ''
-      # Create directory structure in the output
-      ${coreutils}/bin/mkdir -p $out/share/applications
+  patchDesktop =
+    pkg: appName: from: to:
+    lib.hiPrio (
+      pkgs.runCommand "patched-desktop-entry-for-${appName}" { } ''
+        # Create directory structure in the output
+        ${coreutils}/bin/mkdir -p $out/share/applications
 
-      # Use sed to perform the substitution and write the patched file to $out
-      ${gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
-    ''
-  );
+        # Use sed to perform the substitution and write the patched file to $out
+        ${gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
+      ''
+    );
 
   # Specific patch to prepend 'Exec=' with 'Exec=nvidia-offload '
   GPUOffloadApp = pkg: desktopName: patchDesktop pkg desktopName "^Exec=" "Exec=nvidia-offload ";
@@ -26,12 +33,14 @@ let
   isNvidiaOffloadEnabled = config.hardware.nvidia.prime.offload.enable or false;
 
   # Conditionally applies the offload patch for Steam
-  steamOffloadPatch = lib.mkIf (config.gaming.steam.enable && isNvidiaOffloadEnabled)
-    (GPUOffloadApp pkgs.steam "steam");
+  steamOffloadPatch = lib.mkIf (config.gaming.steam.enable && isNvidiaOffloadEnabled) (
+    GPUOffloadApp pkgs.steam "steam"
+  );
 
   # Conditionally applies the offload patch for Heroic
-  heroicOffloadPatch = lib.mkIf (config.gaming.heroic.enable && isNvidiaOffloadEnabled)
-    (GPUOffloadApp pkgs.heroic "com.heroicgameslauncher.hgl");
+  heroicOffloadPatch = lib.mkIf (config.gaming.heroic.enable && isNvidiaOffloadEnabled) (
+    GPUOffloadApp pkgs.heroic "com.heroicgameslauncher.hgl"
+  );
 
 in
 {
@@ -51,13 +60,14 @@ in
       };
 
       # Enable the AMDVLK Vulkan driver and its 32-bit support.
-        /**
-      amdgpu.amdvlk = {
-        enable = true;
-        support32Bit.enable = true;
-      };
-        **/
-      
+      /**
+        amdgpu.amdvlk = {
+          enable = true;
+          support32Bit.enable = true;
+        };
+          *
+      */
+
     };
 
     environment.systemPackages = lib.mkMerge [

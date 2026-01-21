@@ -1,4 +1,12 @@
-{ lib, stdenvNoCC, gruvbox-icons, gtk3, plasma5Packages, gnome-icon-theme, hicolor-icon-theme }:
+{
+  lib,
+  stdenvNoCC,
+  gruvbox-icons,
+  gtk3,
+  plasma5Packages,
+  gnome-icon-theme,
+  hicolor-icon-theme,
+}:
 
 stdenvNoCC.mkDerivation rec {
   pname = "gruvbox-plus-icons-git";
@@ -20,7 +28,7 @@ stdenvNoCC.mkDerivation rec {
     runHook preInstall
     mkdir -p $out/share/icons/Gruvbox-Plus-Dark
     cp -r Gruvbox-Plus-Dark/* $out/share/icons/Gruvbox-Plus-Dark/
-    
+
     # Generate cache here
     gtk-update-icon-cache $out/share/icons/Gruvbox-Plus-Dark
     runHook postInstall

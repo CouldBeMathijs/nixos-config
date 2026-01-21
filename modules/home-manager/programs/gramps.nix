@@ -1,12 +1,18 @@
-{ pkgs, lib, config, options, ... }:
 {
-        options = {
-                gramps.enable = lib.mkEnableOption "Enable gramps configuration";
-        };
+  pkgs,
+  lib,
+  config,
+  options,
+  ...
+}:
+{
+  options = {
+    gramps.enable = lib.mkEnableOption "Enable gramps configuration";
+  };
 
-        config = lib.mkIf config.gramps.enable {
-                home.packages = with pkgs; [
-                        gramps
-                ];
-        };
+  config = lib.mkIf config.gramps.enable {
+    home.packages = with pkgs; [
+      gramps
+    ];
+  };
 }
