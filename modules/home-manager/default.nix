@@ -26,4 +26,5 @@
         browser.enable = lib.mkDefault true;
         nix-direnv.enable = lib.mkDefault true;
         git.enable = lib.mkDefault true;
+        helix.enable = lib.mkDefault true;
 }
