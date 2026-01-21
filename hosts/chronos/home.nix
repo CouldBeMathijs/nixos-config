@@ -14,13 +14,13 @@
                 dosbox.enable = true;
                 fastfetch.enable = true;
                 gramps.enable = true;
+                helix.enable = true;
                 jetbrains.clion.enable = true;
                 latex.enable = true;
                 minecraft.enable = true;
-                # niri-config.enable = true;
                 ollama.enable = true;
-                shell.enable = true;
                 plasma-theming.enable = true;
+                shell.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
