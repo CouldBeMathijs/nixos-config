@@ -1,141 +1,157 @@
-{ lib, config, pkgs, gruvbox-plus-icons-git, plasma-manager-pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  gruvbox-plus-icons-git,
+  plasma-manager-pkgs,
+  ...
+}:
 let
-        wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
-        geometryChange = pkgs.callPackage ../../../packages/kwin-script-geometry-change.nix {};
+  wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
+  geometryChange = pkgs.callPackage ../../../packages/kwin-script-geometry-change.nix { };
 in
+{
+  options = {
+    plasma-theming.enable = lib.mkEnableOption "enable plasma-theming";
+  };
+
+  config = lib.mkIf config.plasma-theming.enable {
+    home.packages = [
+      geometryChange
+      gruvbox-plus-icons-git
+      pkgs.kdePackages.karousel
+      plasma-manager-pkgs.rc2nix
+    ];
+
+    gtk = {
+      enable = true;
+      gtk2.enable = false;
+      theme = {
+        name = "Breeze-Dark";
+        package = pkgs.kdePackages.breeze-gtk;
+      };
+      gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+      gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+    };
+
+    programs.plasma = {
+      enable = true;
+      overrideConfig = true;
+      shortcuts = {
+        kwin.karousel-focus-left = "Meta+Left";
+        kwin.karousel-focus-right = "Meta+Right";
+
+        plasmashell."activate task manager entry 1" = "Meta+1";
+        plasmashell."activate task manager entry 2" = "Meta+2";
+        plasmashell."activate task manager entry 3" = "Meta+3";
+        plasmashell."activate task manager entry 4" = "Meta+4";
+        plasmashell."activate task manager entry 5" = "Meta+5";
+        plasmashell."activate task manager entry 6" = "Meta+6";
+        plasmashell."activate task manager entry 7" = "Meta+7";
+        plasmashell."activate task manager entry 8" = "Meta+8";
+        plasmashell."activate task manager entry 9" = "Meta+9";
+        plasmashell."activate task manager entry 10" = "Meta+0";
+
+      };
+      input = {
+        keyboard.layouts = [
+          {
+            displayName = "usi";
+            layout = "us";
+            variant = "intl";
+          }
+        ];
+      };
+      workspace = {
+        iconTheme = "Gruvbox-Plus-Dark";
+        lookAndFeel = "org.kde.breezedark.desktop";
+        theme = "breeze-dark";
+        wallpaper = wallpaperPath;
+      };
+      configFile = {
+        kwinrc = {
+          Plugins = {
+            karouselEnabled = true;
+            kwin4_effect_geometry_changeEnabled = true;
+          };
+          Script-karousel = {
+            gestureScroll = true;
+            gestureScrollInvert = true;
+          };
+          Windows = {
+            DelayFocusInterval = 200;
+            FocusPolicy = "FocusFollowsMouse";
+            NextFocusPrefersMouse = true;
+          };
+        };
+        kdeglobals.General.accentColorFromWallpaper = true;
+      };
+      kscreenlocker.appearance.wallpaper = wallpaperPath;
+
+      kwin = {
+        titlebarButtons.left = [
+          "close"
+          "minimize"
+          "maximize"
+        ];
+        titlebarButtons.right = [ "keep-above-windows" ];
+      };
+      panels = [
+        # Bottom Panel (Centered Icon Tasks)
         {
-        options = {
-                plasma-theming.enable = lib.mkEnableOption "enable plasma-theming";
-        };
-
-        config = lib.mkIf config.plasma-theming.enable {
-                home.packages = [ 
-                        geometryChange
-                        gruvbox-plus-icons-git
-                        pkgs.kdePackages.karousel
-                        plasma-manager-pkgs.rc2nix
-                ];
-
-                gtk = {
-                        enable = true;
-                        gtk2.enable = false;
-                        theme = {
-                                name = "Breeze-Dark";
-                                package = pkgs.kdePackages.breeze-gtk;
-                        };
-                        gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-                        gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+          location = "bottom";
+          height = 56;
+          floating = true;
+          hiding = "dodgewindows";
+          widgets = [
+            "org.kde.plasma.panelspacer"
+            {
+              name = "org.kde.plasma.icontasks";
+              config = {
+                General = {
+                  # List the .desktop files for the apps you want to pin
+                  launchers = [
+                    "applications:zen-beta.desktop"
+                    "applications:org.kde.konsole.desktop"
+                    "applications:org.kde.dolphin.desktop"
+                    "applications:vesktop.desktop"
+                  ];
                 };
-
-                programs.plasma = {
-                        enable = true;
-                        overrideConfig = true;
-                        shortcuts = {
-                                kwin.karousel-focus-left = "Meta+Left";
-                                kwin.karousel-focus-right = "Meta+Right";
-
-                                plasmashell."activate task manager entry 1" = "Meta+1";
-                                plasmashell."activate task manager entry 2" = "Meta+2";
-                                plasmashell."activate task manager entry 3" = "Meta+3";
-                                plasmashell."activate task manager entry 4" = "Meta+4";
-                                plasmashell."activate task manager entry 5" = "Meta+5";
-                                plasmashell."activate task manager entry 6" = "Meta+6";
-                                plasmashell."activate task manager entry 7" = "Meta+7";
-                                plasmashell."activate task manager entry 8" = "Meta+8";
-                                plasmashell."activate task manager entry 9" = "Meta+9";
-                                plasmashell."activate task manager entry 10" = "Meta+0";
-
-                        };
-                        input = {
-                                keyboard.layouts = [
-                                        {
-                                                displayName = "usi";
-                                                layout = "us";
-                                                variant = "intl";
-                                        }
-                                ];
-                        };
-                        workspace = {
-                                iconTheme = "Gruvbox-Plus-Dark";
-                                lookAndFeel = "org.kde.breezedark.desktop";
-                                theme = "breeze-dark";
-                                wallpaper = wallpaperPath;
-                        };
-                        configFile = {
-                                kwinrc = {
-                                        Plugins = {
-                                                karouselEnabled = true;
-                                                kwin4_effect_geometry_changeEnabled = true;
-                                        };
-                                        Script-karousel = {
-                                                gestureScroll = true;
-                                                gestureScrollInvert = true;
-                                        };
-                                };
-                                kdeglobals.General.accentColorFromWallpaper = true;
-                        };
-                        kscreenlocker.appearance.wallpaper = wallpaperPath;
-
-                        kwin = {
-                                titlebarButtons.left = [ "close" "minimize" "maximize" ];
-                                titlebarButtons.right = [ "keep-above-windows" ];
-                        };
-                        panels = [
-                                # Bottom Panel (Centered Icon Tasks)
-                                {
-                                        location = "bottom";
-                                        height = 56;
-                                        floating = true;
-                                        hiding = "dodgewindows";
-                                        widgets = [
-                                                "org.kde.plasma.panelspacer"
-                                                {
-                                                        name = "org.kde.plasma.icontasks";
-                                                        config = {
-                                                                General = {
-                                                                        # List the .desktop files for the apps you want to pin
-                                                                        launchers = [
-                                                                                "applications:zen-beta.desktop"
-                                                                                "applications:org.kde.konsole.desktop"
-                                                                                "applications:org.kde.dolphin.desktop"
-                                                                                "applications:vesktop.desktop"
-                                                                        ];
-                                                                };
-                                                        };
-                                                }
-                                                "org.kde.plasma.panelspacer"
-                                        ];
-                                }
-                                # Top Panel
-                                {
-                                        location = "top";
-                                        height = 30;
-                                        floating = true;
-                                        widgets = [
-                                                {
-                                                        name = "org.kde.plasma.kicker";
-                                                        config = {
-                                                                General = {
-                                                                        icon = "distributor-logo-nixos";
-                                                                        systemFavorites = "suspend\\,hibernate\\,reboot\\,shutdown";
-                                                                        favoritesPortedToKAstats = true;
-                                                                };
-                                                                Configuration = {
-                                                                        PreloadWeight = 100;
-                                                                        popupHeight = 440;
-                                                                        popupWidth = 300;
-                                                                };
-                                                        };
-                                                }
-                                                "org.kde.plasma.pager"
-                                                "org.kde.plasma.panelspacer"
-                                                "org.kde.plasma.digitalclock"
-                                                "org.kde.plasma.panelspacer"
-                                                "org.kde.plasma.systemtray"
-                                                "org.kde.plasma.showdesktop"
-                                        ];
-                                }
-                        ];
+              };
+            }
+            "org.kde.plasma.panelspacer"
+          ];
+        }
+        # Top Panel
+        {
+          location = "top";
+          height = 30;
+          floating = true;
+          widgets = [
+            {
+              name = "org.kde.plasma.kicker";
+              config = {
+                General = {
+                  icon = "distributor-logo-nixos";
+                  systemFavorites = "suspend\\,hibernate\\,reboot\\,shutdown";
+                  favoritesPortedToKAstats = true;
                 };
-        };
+                Configuration = {
+                  PreloadWeight = 100;
+                  popupHeight = 440;
+                  popupWidth = 300;
+                };
+              };
+            }
+            "org.kde.plasma.pager"
+            "org.kde.plasma.panelspacer"
+            "org.kde.plasma.digitalclock"
+            "org.kde.plasma.panelspacer"
+            "org.kde.plasma.systemtray"
+            "org.kde.plasma.showdesktop"
+          ];
+        }
+      ];
+    };
+  };
 }
