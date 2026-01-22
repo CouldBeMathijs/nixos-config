@@ -1,6 +1,11 @@
 { lib, ... }:
 {
   imports = [
+    ./DE-WM/cinnamon-theming.nix
+    ./DE-WM/gnome-extensions.nix
+    ./DE-WM/gnome-theming.nix
+    ./DE-WM/niri.nix
+    ./DE-WM/plasma-theming.nix
     ./cli-apps/bat.nix
     ./cli-apps/direnv.nix
     ./cli-apps/fastfetch.nix
@@ -17,12 +22,7 @@
     ./programs/jetbrains.nix
     ./programs/latex.nix
     ./programs/minecraft.nix
-    ./programs/niri.nix
     ./shells/bash.nix
-    ./theming/cinnamon-theming.nix
-    ./theming/gnome-extensions.nix
-    ./theming/gnome-theming.nix
-    ./theming/plasma-theming.nix
   ];
   browser.enable = lib.mkDefault true;
   nix-direnv.enable = lib.mkDefault true;
