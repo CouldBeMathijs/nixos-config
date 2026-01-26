@@ -18,7 +18,7 @@
       kdePackages.isoimagewriter # dd but Gnome
       kdePackages.kapman # Pacman in all but name
       kdePackages.kbreakout
-      kdePackages.kdenlive # Video editor
+      # kdePackages.kdenlive # Video editor
       kdePackages.kolourpaint # Paint
       kdePackages.konquest
       kdePackages.okular # Pdf reader

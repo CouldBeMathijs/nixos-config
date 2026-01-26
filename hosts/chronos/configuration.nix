@@ -14,8 +14,7 @@
 
   plasma-apps.enable = true;
   plasma.enable = true;
-  # niri.enable = true;
-  ripping.enable = true;
+  # ripping.enable = false;
 
   gaming.steam.enable = true;
   gaming.heroic.enable = true;
