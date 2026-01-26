@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./DE-WM/cinnamon-theming.nix
@@ -23,6 +23,12 @@
     ./programs/latex.nix
     ./programs/minecraft.nix
     ./shells/bash.nix
+  ];
+  home.packages = with pkgs; [
+    jq
+    git
+    zip
+    unzip
   ];
   browser.enable = lib.mkDefault true;
   nix-direnv.enable = lib.mkDefault true;
