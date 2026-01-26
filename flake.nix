@@ -152,12 +152,6 @@
               chmod +x "$out/bin/$(basename "$script" .sh)"
             done
           '';
-          runtimePrograms = [
-            pkgs.git
-            pkgs.jq
-            pkgs.zip
-            pkgs.unzip
-          ];
         };
 
         gruvbox-plus-icons-git = pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
