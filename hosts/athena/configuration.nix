@@ -12,7 +12,7 @@
   plasma-apps.enable = true;
   # niri.enable = true;
 
-  ripping.enable = true;
+  ripping.enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
