@@ -11,6 +11,7 @@
   config = lib.mkIf config.fonts.enable {
     # Set nerd-fonts and ms-fonts
     fonts.packages = with pkgs; [
+      ubuntu-sans
       # Microsoft fonts
       vista-fonts
       corefonts

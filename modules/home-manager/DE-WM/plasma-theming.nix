@@ -9,6 +9,8 @@
 let
   wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
   geometryChange = pkgs.callPackage ../../../packages/kwin-script-geometry-change.nix { };
+  fontName = "JetBrainsMono Nerd Font";
+  fontPackage = pkgs.nerd-fonts.jetbrains-mono;
 in
 {
   options = {
@@ -21,6 +23,7 @@ in
       gruvbox-plus-icons-git
       pkgs.kdePackages.karousel
       plasma-manager-pkgs.rc2nix
+      fontPackage
     ];
 
     gtk = {
@@ -29,6 +32,10 @@ in
       theme = {
         name = "Breeze-Dark";
         package = pkgs.kdePackages.breeze-gtk;
+      };
+      font = {
+        name = "${fontName} 10";
+        package = fontPackage;
       };
       gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
       gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
@@ -87,7 +94,32 @@ in
         kdeglobals.General.accentColorFromWallpaper = true;
       };
       kscreenlocker.appearance.wallpaper = wallpaperPath;
-
+      fonts = {
+        general = {
+          family = fontName;
+          pointSize = 10;
+        };
+        fixedWidth = {
+          family = fontName;
+          pointSize = 10;
+        };
+        small = {
+          family = fontName;
+          pointSize = 8;
+        };
+        toolbar = {
+          family = fontName;
+          pointSize = 10;
+        };
+        menu = {
+          family = fontName;
+          pointSize = 10;
+        };
+        windowTitle = {
+          family = fontName;
+          pointSize = 10;
+        };
+      };
       kwin = {
         titlebarButtons.left = [
           "close"
