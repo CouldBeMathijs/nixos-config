@@ -20,16 +20,16 @@
       url = "github:NotAShelf/microfetch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    my-bash-scripts = {
+    my-bash-scripts-repo = {
       url = "github:CouldBeMathijs/bash-scripts";
-      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.11";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -141,26 +141,13 @@
           config.allowUnfree = true;
         };
 
-        my-bash-scripts-pkg = pkgs.stdenv.mkDerivation {
-          pname = "my-bash-scripts";
-          version = "1.0.0";
-          src = inputs.my-bash-scripts;
-          installPhase = ''
-            mkdir -p $out/bin
-            for script in $src/*.sh; do
-              cp "$script" "$out/bin/$(basename "$script" .sh)"
-              chmod +x "$out/bin/$(basename "$script" .sh)"
-            done
-          '';
-        };
-
         gruvbox-plus-icons-git = pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
           inherit (inputs) gruvbox-icons;
         };
       in
       {
         packages = {
-          my-bash-scripts = my-bash-scripts-pkg;
+          my-bash-scripts = inputs.my-bash-scripts-repo.packages.${system}.default;
           inherit gruvbox-plus-icons-git;
         };
       }
