@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769427314,
-        "narHash": "sha256-wCJ+cqVEsPna2HxvBXVNlCo1a4ejq7MGQP0mRQw7hY4=",
+        "lastModified": 1769431799,
+        "narHash": "sha256-o3hrapkUCWySFQ2K3d3hXq96Wy75xa5yti71Bp+K9l4=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "868aa981c9a661c4b9abef51a99c59f67f500c0e",
+        "rev": "63deedffc6474ae8ea710850ef4d0eb9a9319960",
         "type": "github"
       },
       "original": {
@@ -117,14 +117,18 @@
         "type": "github"
       }
     },
-    "my-bash-scripts": {
-      "flake": false,
+    "my-bash-scripts-repo": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1769429412,
-        "narHash": "sha256-lqPpkevuz4J1rzxElLxaAze/r9GCYhZ35e6ptN/Kbvc=",
+        "lastModified": 1769432985,
+        "narHash": "sha256-w5//lA/N215MG4ilKXhZEbane1UykfMK9LQ5UpHFoQA=",
         "owner": "CouldBeMathijs",
         "repo": "bash-scripts",
-        "rev": "db04bd0d378e2519bea82b812cb9e7ad3883ad6f",
+        "rev": "8b2e02d7137a92f9617a5e3d8c85a8acc1e84d96",
         "type": "github"
       },
       "original": {
@@ -245,16 +249,16 @@
     },
     "nixpkgs-stable_2": {
       "locked": {
-        "lastModified": 1768649915,
-        "narHash": "sha256-jc21hKogFnxU7KXSVTRmxC7u5D4RHwm9BAvDf5/Z1Uo=",
+        "lastModified": 1769433129,
+        "narHash": "sha256-FK27zfHizU0fh/D9x9tdmh80QPEOwNoqw9sJxvAxIkw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3e3f3c7f9977dc123c23ee21e8085ed63daf8c37",
+        "rev": "bb9d92d29732104befc85ac0abb11e6eb5a17520",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "release-25.05",
+        "ref": "release-25.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -289,7 +293,7 @@
         "gruvbox-icons": "gruvbox-icons",
         "home-manager": "home-manager",
         "microfetch-git": "microfetch-git",
-        "my-bash-scripts": "my-bash-scripts",
+        "my-bash-scripts-repo": "my-bash-scripts-repo",
         "niri": "niri",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
