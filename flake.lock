@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769431799,
-        "narHash": "sha256-o3hrapkUCWySFQ2K3d3hXq96Wy75xa5yti71Bp+K9l4=",
+        "lastModified": 1769504656,
+        "narHash": "sha256-N/5q0TEFfboNeREY78shU22QHykB5On9QimPmqBr3qY=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "63deedffc6474ae8ea710850ef4d0eb9a9319960",
+        "rev": "27ab6777a029b9800e970a8d36d21c6b3ce13957",
         "type": "github"
       },
       "original": {
@@ -41,11 +41,11 @@
     "gruvbox-icons": {
       "flake": false,
       "locked": {
-        "lastModified": 1769427824,
-        "narHash": "sha256-2zmSsPPymwmv2B/nQkHiXQB+4ZZ5PsihaFplGiuKbzQ=",
+        "lastModified": 1769511483,
+        "narHash": "sha256-ZJIki4YEhCzyLJzxC0ro0//b4rCpbWglQrhstXHnAhk=",
         "owner": "SylEleuth",
         "repo": "gruvbox-plus-icon-pack",
-        "rev": "ff6fd815f2b2f29cca5a9eceb6cb2290d2314322",
+        "rev": "169d95cdcacfab5dee98f8e13f514187bb9508f6",
         "type": "github"
       },
       "original": {
@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769450270,
-        "narHash": "sha256-pdVm/zJazDUAasTyHFX/Pbrlk9Upjxi0yzgn7GjGe4g=",
+        "lastModified": 1769577069,
+        "narHash": "sha256-cQC2opXBeij+44CLOZfOSuf+lOsJZJmvXLrLUcAKNXE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a10c1e8f5ad2589414407f4851c221cb66270257",
+        "rev": "ef5da062697f9edb622724b6127c997ee417bd1b",
         "type": "github"
       },
       "original": {
@@ -149,11 +149,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1769429762,
-        "narHash": "sha256-kiWNe34XXo7wneh1PzaAPBvueVbjrZ8cCLcW18EB95Y=",
+        "lastModified": 1769577504,
+        "narHash": "sha256-GtGlTaAoZ+inLVXjgkq3ssUBQPeW8AZrcmfiQGhDdhI=",
         "owner": "sodiboo",
         "repo": "niri-flake",
-        "rev": "6bb07820013d6164df76c658b2dfab2a634300ac",
+        "rev": "72e8797ae8af01fd9ef9f031acdbae9c1487b9d1",
         "type": "github"
       },
       "original": {
@@ -182,11 +182,11 @@
     "niri-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1769397515,
-        "narHash": "sha256-VNfKIuHzNYPcaJxG+RxNgY4jK9CPf0nKovRDNFvdgAw=",
+        "lastModified": 1769536345,
+        "narHash": "sha256-VX7kY+ehj54igwZEcTRcnvXZldS0TcJMQQAwezUOvNI=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "a34ed51586a8a440899396a9746eb413f05045e1",
+        "rev": "765a241c5a5075d6d6d20d0b8f9786220a7317ba",
         "type": "github"
       },
       "original": {
@@ -217,11 +217,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1769170682,
-        "narHash": "sha256-oMmN1lVQU0F0W2k6OI3bgdzp2YOHWYUAw79qzDSjenU=",
+        "lastModified": 1769461804,
+        "narHash": "sha256-msG8SU5WsBUfVVa/9RPLaymvi5bI8edTavbIq3vRlhI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c5296fdd05cfa2c187990dd909864da9658df755",
+        "rev": "bfc1b8a4574108ceef22f02bafcf6611380c100d",
         "type": "github"
       },
       "original": {
@@ -249,11 +249,11 @@
     },
     "nixpkgs-stable_2": {
       "locked": {
-        "lastModified": 1769484787,
-        "narHash": "sha256-0UPiGNOAQ0OcP3XdL5awTHMNqL/W1TsIFU+YTv0uMrk=",
+        "lastModified": 1769566947,
+        "narHash": "sha256-UpkIqCn9t4DYgzjoY87pYYVklmWcse+QDJjW4czz3BE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "999ca0e5484922624254294ea1adc2b90081579e",
+        "rev": "b8b099e0cf8cf14c3ff5482bf3c3cd92f8efa628",
         "type": "github"
       },
       "original": {
