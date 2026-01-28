@@ -24,10 +24,12 @@
       url = "github:CouldBeMathijs/bash-scripts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    /*
+      niri = {
+        url = "github:sodiboo/niri-flake";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    */
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.11";
 
@@ -74,8 +76,7 @@
 
             inputs.nix-index-database.nixosModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
-
-            inputs.niri.nixosModules.niri
+            # inputs.niri.nixosModules.niri
           ]
           ++ extraModules;
 
@@ -84,7 +85,7 @@
               inherit system;
               config.allowUnfree = true;
             };
-            inherit (inputs) niri;
+            # inherit (inputs) niri;
           };
         };
 
@@ -109,8 +110,7 @@
                 self.packages.${system}.my-bash-scripts
               ];
             }
-
-            inputs.niri.homeModules.niri
+            # inputs.niri.homeModules.niri
             inputs.plasma-manager.homeModules.plasma-manager
 
           ]
@@ -136,6 +136,7 @@
           inherit system;
           config.allowUnfree = true;
         };
+
         pkgs-stable = import nixpkgs-stable {
           inherit system;
           config.allowUnfree = true;

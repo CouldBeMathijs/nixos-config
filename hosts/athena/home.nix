@@ -28,7 +28,7 @@
     latex.enable = true;
     latex.gnome-apps = true;
 
-    # niri-config.enable = true;
+    # niri-config.enable = false;
     fun-cli.enable = true;
     dosbox.enable = true;
 
