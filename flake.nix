@@ -121,7 +121,6 @@
                 inherit username;
                 homeDirectory = "/home/${username}";
                 # Auto-align stateVersion to the branch
-                stateVersion = if useStable then "25.11" else "26.05";
                 packages = [ self.packages.${system}.my-bash-scripts ];
               };
             }
