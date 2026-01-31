@@ -8,10 +8,19 @@
       url = "github:asus-linux-drivers/asus-numberpad-driver";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Unstable branch (Master)
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Stable branch (Match your Nixpkgs version)
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     gruvbox-icons = {
       url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
       flake = false;
@@ -24,6 +33,7 @@
       url = "github:CouldBeMathijs/bash-scripts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.11";
 
@@ -49,35 +59,41 @@
       nixpkgs,
       nixpkgs-stable,
       home-manager,
+      home-manager-stable,
       ...
     }:
-
     let
-      # Hosts that actually run NixOS
-      linuxSystems = [ "x86_64-linux" ];
+      genPkgs =
+        pkgsSource: system:
+        import pkgsSource {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
       mkHost =
         {
           hostname,
           system,
+          useStable ? false,
           extraModules ? [ ],
         }:
-        nixpkgs.lib.nixosSystem {
+        let
+          baseNixpkgs = if useStable then nixpkgs-stable else nixpkgs;
+        in
+        baseNixpkgs.lib.nixosSystem {
           inherit system;
+          pkgs = genPkgs baseNixpkgs system;
           modules = [
             ./hosts/${hostname}/configuration.nix
             ./hosts/${hostname}/hardware-configuration.nix
-
             inputs.nix-index-database.nixosModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
           ]
           ++ extraModules;
-
           specialArgs = {
-            pkgs-stable = import nixpkgs-stable {
-              inherit system;
-              config.allowUnfree = true;
-            };
+            inherit inputs;
+            pkgs-unstable = genPkgs nixpkgs system;
+            pkgs-stable = genPkgs nixpkgs-stable system;
           };
         };
 
@@ -86,105 +102,93 @@
           username,
           hostname,
           system,
+          useStable ? false,
           extraModules ? [ ],
         }:
-        inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-
+        let
+          # --- AUTOMATIC VERSION SELECTION ---
+          # Pick the correct Home Manager library
+          hmLib = if useStable then home-manager-stable.lib else home-manager.lib;
+          # Pick the correct base Nixpkgs
+          baseNixpkgs = if useStable then nixpkgs-stable else nixpkgs;
+        in
+        hmLib.homeManagerConfiguration {
+          pkgs = genPkgs baseNixpkgs system;
           modules = [
             ./hosts/${hostname}/home.nix
-
             {
-              home.packages = [
-                self.packages.${system}.my-bash-scripts
-              ];
+              home = {
+                inherit username;
+                homeDirectory = "/home/${username}";
+                # Auto-align stateVersion to the branch
+                stateVersion = if useStable then "25.11" else "26.05";
+                packages = [ self.packages.${system}.my-bash-scripts ];
+              };
             }
             inputs.plasma-manager.homeModules.plasma-manager
-
           ]
           ++ extraModules;
 
           extraSpecialArgs = {
             inherit (inputs) niri zen-browser;
             microfetch = inputs.microfetch-git.packages.${system};
-            pkgs-stable = import nixpkgs-stable {
-              inherit system;
-              config.allowUnfree = true;
-            };
+            pkgs-unstable = genPkgs nixpkgs system;
+            pkgs-stable = genPkgs nixpkgs-stable system;
             gruvbox-plus-icons-git = self.packages.${system}.gruvbox-plus-icons-git;
             plasma-manager-pkgs = inputs.plasma-manager.packages.${system};
           };
         };
 
     in
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
+    flake-utils.lib.eachDefaultSystem (system: {
+      packages = {
+        my-bash-scripts = inputs.my-bash-scripts-repo.packages.${system}.default;
+        gruvbox-plus-icons-git =
+          (genPkgs nixpkgs system).callPackage ./packages/gruvbox-plus-icons-git.nix
+            {
+              inherit (inputs) gruvbox-icons;
+            };
+      };
+    })
+    // {
+      nixosConfigurations = {
+        athena = mkHost {
+          hostname = "athena";
+          system = "x86_64-linux";
+          useStable = false;
+          extraModules = [ inputs.asus-numberpad-driver.nixosModules.default ];
         };
-
-        pkgs-stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
+        chronos = mkHost {
+          hostname = "chronos";
+          system = "x86_64-linux";
+          useStable = false;
         };
-
-        gruvbox-plus-icons-git = pkgs.callPackage ./packages/gruvbox-plus-icons-git.nix {
-          inherit (inputs) gruvbox-icons;
-        };
-      in
-      {
-        packages = {
-          my-bash-scripts = inputs.my-bash-scripts-repo.packages.${system}.default;
-          inherit gruvbox-plus-icons-git;
-        };
-      }
-    )
-    //
-
-      {
-        nixosConfigurations = {
-          athena = mkHost {
-            hostname = "athena";
-            system = "x86_64-linux";
-            extraModules = [
-              inputs.asus-numberpad-driver.nixosModules.default
-            ];
-          };
-
-          chronos = mkHost {
-            hostname = "chronos";
-            system = "x86_64-linux";
-          };
-
-          dionysus = mkHost {
-            hostname = "dionysus";
-            system = "x86_64-linux";
-          };
-        };
-
-        homeConfigurations = {
-          "mathijs@athena" = mkHome {
-            username = "mathijs";
-            hostname = "athena";
-            system = "x86_64-linux";
-          };
-
-          "mathijs@chronos" = mkHome {
-            username = "mathijs";
-            hostname = "chronos";
-            system = "x86_64-linux";
-          };
-
-          "mathijs@dionysus" = mkHome {
-            username = "mathijs";
-            hostname = "dionysus";
-            system = "x86_64-linux";
-          };
+        dionysus = mkHost {
+          hostname = "dionysus";
+          system = "x86_64-linux";
+          useStable = false;
         };
       };
+
+      homeConfigurations = {
+        "mathijs@athena" = mkHome {
+          username = "mathijs";
+          hostname = "athena";
+          system = "x86_64-linux";
+          useStable = false;
+        };
+        "mathijs@chronos" = mkHome {
+          username = "mathijs";
+          hostname = "chronos";
+          system = "x86_64-linux";
+          useStable = false;
+        };
+        "mathijs@dionysus" = mkHome {
+          username = "mathijs";
+          hostname = "dionysus";
+          system = "x86_64-linux";
+          useStable = false;
+        };
+      };
+    };
 }
