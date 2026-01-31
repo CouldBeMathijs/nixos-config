@@ -5,6 +5,7 @@
     ./DE-WM/gnome.nix
     ./DE-WM/niri.nix
     ./DE-WM/plasma.nix
+    ./DE-WM/xfce.nix
     ./programs/cli-utils.nix
     ./programs/fonts.nix
     ./programs/gaming.nix
