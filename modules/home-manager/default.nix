@@ -36,4 +36,5 @@
   git.enable = lib.mkDefault true;
   helix.enable = lib.mkDefault true;
   nh.enable = lib.mkDefault true;
+  shell.enable = lib.mkDefault true;
 }
