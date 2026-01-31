@@ -1,5 +1,5 @@
 {
-  pkgs-stable,
+  pkgs,
   lib,
   config,
   ...
@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf config.discord.enable {
-    home.packages = with pkgs-stable; [
+    home.packages = with pkgs; [
       vesktop # My discord client of choice
     ];
     xdg = {
