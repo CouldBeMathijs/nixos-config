@@ -14,7 +14,6 @@
     ./systems/audio.nix
     ./systems/lix.nix
     ./systems/locale.nix
-    ./systems/nh.nix
     ./systems/plymouth.nix
     ./systems/printing.nix
     ./systems/sddm-minimal-theme.nix
@@ -24,7 +23,6 @@
   fonts.enable = lib.mkDefault true;
   lix.enable = lib.mkDefault true;
   locale.enable = lib.mkDefault true;
-  nh.enable = lib.mkDefault true;
   plymouth.enable = lib.mkDefault true;
   printing.enable = lib.mkDefault true;
 }
