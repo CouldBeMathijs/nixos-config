@@ -26,14 +26,8 @@
 
   locale.language = "irish";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-
   printing.enable = true;
+  xfce.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zeus = {
