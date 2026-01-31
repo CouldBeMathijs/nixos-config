@@ -12,6 +12,7 @@
     ./cli-apps/fun-cli.nix
     ./cli-apps/git.nix
     ./cli-apps/helix.nix
+    ./cli-apps/nh.nix
     ./cli-apps/ollama.nix
     ./programs/browser.nix
     ./programs/composing.nix
@@ -34,4 +35,5 @@
   nix-direnv.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
   helix.enable = lib.mkDefault true;
+  nh.enable = lib.mkDefault true;
 }
