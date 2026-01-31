@@ -7,6 +7,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '30 5 * * *'
+
 jobs:
   nix-flake-update:
     permissions:
@@ -15,6 +16,7 @@ jobs:
       issues: write
       pull-requests: write
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
         # Important: Fetch full history so we can commit
@@ -23,12 +25,12 @@ jobs:
 
       - uses: DeterminateSystems/determinate-nix-action@main
 
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
       - name: Update flake.lock
-        # Run the update command
         run: nix flake update
-      
+
       - name: Check for Changes
-        # Check if the lock file has actually changed and set output via $GITHUB_OUTPUT
         id: git_status
         run: |
           if git diff --exit-code flake.lock; then
@@ -36,20 +38,13 @@ jobs:
           else
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
-      
+
       - name: Commit and Push
-        # Only run the commit if there are changes
         if: steps.git_status.outputs.changed == 'true'
         run: |
-          # Configure Git user
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Add the changed lock file
+
           git add flake.lock
-          
-          # Commit the changes
           git commit -m "chore(deps): Update Nix flake dependencies"
-          
-          # Push directly to the default branch (assuming it is 'main')
           git push
