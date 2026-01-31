@@ -10,12 +10,8 @@
   # Enable Desktops and all packages around it
   plasma.enable = true;
   plasma-apps.enable = true;
-  # niri.enable = true;
 
   ripping.enable = false;
-
-  # Allow unfree packages
-  
 
   # Enable networking
   networking.networkmanager.enable = true;

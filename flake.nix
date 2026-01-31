@@ -168,6 +168,12 @@
           system = "x86_64-linux";
           useStable = false;
         };
+        zeus = mkHost {
+          hostname = "zeus";
+          username = "zeus";
+          system = "x86_64-linux";
+          useStable = true;
+        };
       };
     };
 }
