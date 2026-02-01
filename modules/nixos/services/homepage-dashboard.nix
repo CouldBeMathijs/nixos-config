@@ -56,12 +56,44 @@ in
         {
           "Media" = [
             {
+              Immich = {
+                icon = "immich";
+                href = "http://${hostName}:2283";
+              };
+            }
+            {
               Jellyfin = {
                 icon = "jellyfin";
                 href = "http://${hostName}:8096";
               };
             }
           ];
+        }
+        {
+          "Networking" = [
+            {
+              "Pi-Hole" = {
+                icon = "pi-hole";
+                href = "http://${hostName}:8080";
+              };
+            }
+          ];
+        }
+      ];
+
+      widgets = [
+        {
+          resources = {
+            cpu = true;
+            memory = true;
+            disk = "/"; # Monitors the root partition
+          };
+        }
+        {
+          search = {
+            provider = "duckduckgo";
+            target = "_blank";
+          };
         }
       ];
     };

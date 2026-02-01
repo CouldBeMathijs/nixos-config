@@ -13,6 +13,7 @@
     ./programs/plasma-apps.nix
     ./programs/ripping.nix
     ./services/homepage-dashboard.nix
+    ./services/immich.nix
     ./services/jellyfin.nix
     ./services/pihole.nix
     ./services/ssh.nix

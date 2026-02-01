@@ -31,6 +31,7 @@
   jellyfin.enable = true;
   homepage-dashboard.enable = true;
   ssh.enable = true;
+  immich.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zeus = {
