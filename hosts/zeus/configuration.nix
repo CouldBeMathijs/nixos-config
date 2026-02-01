@@ -26,8 +26,7 @@
 
   locale.language = "irish";
 
-  printing.enable = true;
-  xfce.enable = true;
+  printing.enable = false;
   pihole.enable = true;
   jellyfin.enable = true;
   homepage-dashboard.enable = true;
