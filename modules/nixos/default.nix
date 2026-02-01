@@ -12,6 +12,10 @@
     ./programs/gnome-apps.nix
     ./programs/plasma-apps.nix
     ./programs/ripping.nix
+    ./services/homepage-dashboard.nix
+    ./services/jellyfin.nix
+    ./services/pihole.nix
+    ./services/ssh.nix
     ./systems/audio.nix
     ./systems/lix.nix
     ./systems/locale.nix

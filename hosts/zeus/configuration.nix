@@ -28,6 +28,10 @@
 
   printing.enable = true;
   xfce.enable = true;
+  pihole.enable = true;
+  jellyfin.enable = true;
+  homepage-dashboard.enable = true;
+  ssh.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zeus = {
@@ -38,6 +42,20 @@
       "wheel"
     ];
   };
+
+  # Hardware acceleration
+  services.xserver = {
+    videoDrivers = [ "amdgpu" ];
+  };
+
+  hardware.graphics.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    libva
+    libvdpau
+    vulkan-tools
+    vulkan-validation-layers
+  ];
 
   # Install firefox.
   programs.firefox.enable = true;
