@@ -7,50 +7,47 @@
 
 let
   cfg = config.immich;
+  hostName = "${config.networking.hostName}.local";
 in
 {
   options.immich = {
     enable = lib.mkEnableOption "Enable immich";
-
-    # New option for the storage path
     mediaLocation = lib.mkOption {
       type = lib.types.path;
       default = "/var/lib/immich";
-      description = "The path where Immich stores its photos and videos.";
     };
   };
 
   config = lib.mkIf cfg.enable {
-    services.postgresql.package = pkgs.postgresql_16;
-    environment.systemPackages = with pkgs; [ immich-go ];
-    # Automatically create the directory with correct permissions
-    systemd.tmpfiles.rules = [
-      "d ${cfg.mediaLocation} 0750 immich immich -"
-    ];
-
     services.immich = {
       enable = true;
       port = 2283;
       host = "0.0.0.0";
-      openFirewall = true;
-
-      # Use the path defined in the option
       mediaLocation = cfg.mediaLocation;
-
-      database = {
-        enable = true;
-        enableVectors = true;
-      };
-
+      database.enable = true;
+      database.enableVectorChord = true;
       redis.enable = true;
       machine-learning.enable = true;
     };
 
-    users.users.immich.extraGroups = [
-      "video"
-      "render"
-    ];
+    services.nginx.virtualHosts."immich.${hostName}" = {
+      locations."/".proxyPass = "http://127.0.0.1:2283";
+      locations."/".proxyWebsockets = true;
+    };
 
-    hardware.graphics.enable = true;
+    services.dnsmasq.settings.address = [ "/immich.${hostName}/${config.custom.staticIP}" ];
+
+    services.homepage-dashboard.services = lib.mkOrder 300 [
+      {
+        "Photos" = [
+          {
+            Immich = {
+              icon = "immich";
+              href = "http://immich.${hostName}";
+            };
+          }
+        ];
+      }
+    ];
   };
 }

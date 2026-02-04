@@ -20,6 +20,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  custom.staticIP = "192.168.1.100";
 
   # Set your time zone.
   time.timeZone = "Europe/Brussels";

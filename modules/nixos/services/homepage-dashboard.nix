@@ -9,7 +9,6 @@ let
   rawHost = config.networking.hostName;
   hostName = "${rawHost}.local";
   port = 8082;
-
   allowedList = [
     "${hostName}"
     "${hostName}:${toString port}"
@@ -25,10 +24,9 @@ in
   options.homepage-dashboard.enable = lib.mkEnableOption "Enable homepage-dashboard media server";
 
   config = lib.mkIf config.homepage-dashboard.enable {
-
     # Automatically enable the reverse proxy module when homepage is enabled
     services.reverse-proxy.enable = true;
-
+    # mDNS configuration for local network discovery
     services.avahi = {
       enable = lib.mkDefault true;
       nssmdns4 = lib.mkDefault true;
@@ -39,6 +37,7 @@ in
       };
     };
 
+    # Security: restrict allowed hosts for the dashboard
     systemd.services.homepage-dashboard.environment = {
       HOMEPAGE_ALLOWED_HOSTS = lib.mkForce (lib.concatStringsSep "," allowedList);
     };
@@ -54,35 +53,7 @@ in
         };
       };
 
-      services = [
-        {
-          "Media" = [
-            {
-              Immich = {
-                icon = "immich";
-                href = "http://immich.${hostName}"; # Updated to Reverse Proxy URL
-              };
-            }
-            {
-              Jellyfin = {
-                icon = "jellyfin";
-                href = "http://jellyfin.${hostName}"; # Updated to Reverse Proxy URL
-              };
-            }
-          ];
-        }
-        {
-          "Networking" = [
-            {
-              "Pi-Hole" = {
-                icon = "pi-hole";
-                href = "http://pihole.${hostName}"; # Updated to Reverse Proxy URL
-              };
-            }
-          ];
-        }
-      ];
-
+      # System-wide performance and utility widgets
       widgets = [
         {
           resources = {
