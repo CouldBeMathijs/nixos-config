@@ -6,27 +6,25 @@
 }:
 
 let
-  # Load secrets from the local JSON file.
   secretsFile = ./secrets.json;
   secrets =
     if builtins.pathExists secretsFile then
       builtins.fromJSON (builtins.readFile secretsFile)
     else
       { pihole_hash = ""; };
+
+  hostName = "${config.networking.hostName}.local";
+  serverIP = config.custom.staticIP;
 in
 {
-  options = {
-    pihole.enable = lib.mkEnableOption "Enable Pi-hole DNS and web interface";
-  };
+  options.pihole.enable = lib.mkEnableOption "Enable Pi-hole DNS and web interface";
 
   config = lib.mkIf config.pihole.enable {
+    # 1. Core Service Configuration
     services = {
       dnsmasq.enable = false;
-
       pihole-ftl = {
         enable = true;
-
-        # These lists require webserver logic to be "enabled" to pass Nix checks
         lists = [
           {
             url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
@@ -90,50 +88,55 @@ in
         useDnsmasqConfig = true;
 
         settings = {
-          dns = {
-            upstreams = [
-              "8.8.8.8"
-              "8.8.4.4"
-              "208.67.222.222"
-              "208.67.220.220"
-              "1.1.1.1"
-              "1.0.0.1"
-            ];
-            domain = "local";
-            domainNeeded = true;
-            expandHosts = true;
-            bogusPriv = true;
-          };
-
-          dhcp.active = false; # Set to false as requested for "no hardcoded network"
-
+          dns.upstreams = [
+            "8.8.8.8"
+            "8.8.4.4"
+            "1.1.1.1"
+            "1.0.0.1"
+          ];
+          dns.domain = "local";
           webserver = {
             active = true;
-            # v6 requirement: Port must be a STRING to satisfy the Nix module's parser
             port = "8080";
             api.pwhash = secrets.pihole_hash;
-            session.timeout = 1800;
           };
-
-          misc.privacylevel = 0;
         };
       };
-
       pihole-web = {
-        # Set to true to satisfy the Nix Assertion
         enable = true;
         ports = [ 8080 ];
       };
-
-      # CRITICAL: Force-disable the legacy lighttpd webserver so it doesn't
-      # conflict with the new v6 integrated webserver on port 8080.
       lighttpd.enable = lib.mkForce false;
-
       resolved.extraConfig = "DNSStubListener=no";
     };
 
-    systemd.tmpfiles.rules = [
-      "f /etc/pihole/versions 0644 pihole pihole - -"
+    systemd.tmpfiles.rules = [ "f /etc/pihole/versions 0644 pihole pihole - -" ];
+
+    # 2. Reverse Proxy Configuration
+    services.nginx.virtualHosts."pihole.${hostName}" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8080";
+        proxyWebsockets = true;
+      };
+    };
+
+    # 3. DNS Configuration
+    services.dnsmasq.settings.address = [
+      "/pihole.${hostName}/${serverIP}"
+    ];
+
+    # 4. Homepage Dashboard Entry
+    services.homepage-dashboard.services = [
+      {
+        "Networking" = [
+          {
+            "Pi-Hole" = {
+              icon = "pi-hole";
+              href = "http://pihole.${hostName}";
+            };
+          }
+        ];
+      }
     ];
   };
 }
