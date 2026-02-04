@@ -17,7 +17,7 @@ let
     "${rawHost}:${toString port}"
     "localhost"
     "127.0.0.1"
-    "localhost:${toString port}" # Added these for good measure
+    "localhost:${toString port}"
     "127.0.0.1:${toString port}"
   ];
 in
@@ -25,6 +25,9 @@ in
   options.homepage-dashboard.enable = lib.mkEnableOption "Enable homepage-dashboard media server";
 
   config = lib.mkIf config.homepage-dashboard.enable {
+
+    # Automatically enable the reverse proxy module when homepage is enabled
+    services.reverse-proxy.enable = true;
 
     services.avahi = {
       enable = lib.mkDefault true;
@@ -36,7 +39,6 @@ in
       };
     };
 
-    # We use mkForce here to override the module's internal default
     systemd.services.homepage-dashboard.environment = {
       HOMEPAGE_ALLOWED_HOSTS = lib.mkForce (lib.concatStringsSep "," allowedList);
     };
@@ -58,13 +60,13 @@ in
             {
               Immich = {
                 icon = "immich";
-                href = "http://${hostName}:2283";
+                href = "http://immich.${hostName}"; # Updated to Reverse Proxy URL
               };
             }
             {
               Jellyfin = {
                 icon = "jellyfin";
-                href = "http://${hostName}:8096";
+                href = "http://jellyfin.${hostName}"; # Updated to Reverse Proxy URL
               };
             }
           ];
@@ -74,7 +76,7 @@ in
             {
               "Pi-Hole" = {
                 icon = "pi-hole";
-                href = "http://${hostName}:8080";
+                href = "http://pihole.${hostName}"; # Updated to Reverse Proxy URL
               };
             }
           ];
@@ -86,7 +88,7 @@ in
           resources = {
             cpu = true;
             memory = true;
-            disk = "/"; # Monitors the root partition
+            disk = "/";
           };
         }
         {

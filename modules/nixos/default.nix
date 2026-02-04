@@ -16,6 +16,7 @@
     ./services/immich.nix
     ./services/jellyfin.nix
     ./services/pihole.nix
+    ./services/reverse-proxy.nix
     ./services/ssh.nix
     ./systems/audio.nix
     ./systems/lix.nix
