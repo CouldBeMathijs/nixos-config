@@ -24,6 +24,7 @@
     ./programs/latex.nix
     ./programs/minecraft.nix
     ./shells/bash.nix
+    ./shells/fish.nix
   ];
   home.packages = with pkgs; [
     jq
@@ -36,5 +37,5 @@
   git.enable = lib.mkDefault true;
   helix.enable = lib.mkDefault true;
   nh.enable = lib.mkDefault true;
-  shell.enable = lib.mkDefault true;
+  shell.bash.enable = lib.mkDefault true;
 }

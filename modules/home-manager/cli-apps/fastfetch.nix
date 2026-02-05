@@ -10,7 +10,7 @@
     fastfetch.enable = lib.mkEnableOption "Enable fastfetch configuration";
   };
 
-  config = lib.mkIf config.shell.enable {
+  config = lib.mkIf config.fastfetch.enable {
     home.packages = with pkgs; [ fastfetch ];
     # Fastfetch configuration
     programs.fastfetch = {
