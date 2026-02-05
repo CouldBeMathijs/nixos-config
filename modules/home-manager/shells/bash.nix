@@ -5,26 +5,30 @@
   microfetch,
   ...
 }:
-let
-  flake = "${config.home.homeDirectory}/.dotfiles";
-in
-{
-  options = {
-    shell.enable = lib.mkEnableOption "enable shell";
-  };
 
-  config = lib.mkIf config.shell.enable {
-    bat.enable = true;
-    home.packages = [
-      microfetch.microfetch # Nix specific fetcher, as fast as can be
-      pkgs.atuin # Better up arrow
-      pkgs.eza # Better ls
-      pkgs.tldr # When man is overkill
-      pkgs.trash-cli # rm on safe mode
-      pkgs.yazi # Terminal File Manager
-      pkgs.zoxide # cd^2
+{
+  options.shell.bash.enable = lib.mkEnableOption "enable shell";
+
+  config = lib.mkIf config.shell.bash.enable {
+    programs.bat.enable = true;
+    programs.zoxide = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+    programs.atuin = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+    programs.eza.enable = true;
+
+    home.packages = with pkgs; [
+      microfetch.microfetch
+      tealdeer
+      trash-cli
+      yazi
+      bat-extras.batman
     ];
-    # Shell configuration
+
     programs.bash = {
       enable = true;
       initExtra = "microfetch";
@@ -36,22 +40,9 @@ in
         "ls" = "eza";
         "man" = "batman";
         "open" = "xdg-open";
-        "switch-all" =
-          "nh os switch ${flake} && home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
-        "switch-home" =
-          "home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
-        "z" = "zoxide";
       };
     };
-    programs = {
-      atuin = {
-        enable = true;
-      };
-      zoxide = {
-        enable = true;
-        enableBashIntegration = true;
-      };
-    };
+
     xdg = {
       enable = true;
       desktopEntries."btop" = {

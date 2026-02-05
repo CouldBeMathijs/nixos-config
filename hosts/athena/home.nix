@@ -10,7 +10,7 @@
 
   config = {
     # Enable shell configuration
-    shell.enable = true;
+    shell.fish.enable = true;
 
     # Enable fastfetch configuration
     fastfetch.enable = true;

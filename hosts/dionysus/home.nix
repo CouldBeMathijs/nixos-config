@@ -19,7 +19,7 @@
     fastfetch.enable = true;
     gramps.enable = true;
     minecraft.enable = true;
-    shell.enable = true;
+    shell.fish.enable = true;
     jetbrains.clion.enable = true;
 
     home.homeDirectory = "/home/mathijs";
