@@ -38,7 +38,7 @@
       shellAliases = {
         ".." = "cd ..";
         "cat" = "bat";
-        "clear" = "clear; microfetch";
+        "clear" = "command clear; microfetch";
         "ll" = "eza -l";
         "ls" = "eza";
         "man" = "batman";
