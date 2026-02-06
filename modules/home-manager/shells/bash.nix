@@ -42,6 +42,9 @@
         "open" = "xdg-open";
       };
     };
+    programs.starship = {
+      enableBashIntegration = true;
+    };
 
     xdg = {
       enable = true;
