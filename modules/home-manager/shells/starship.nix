@@ -2,13 +2,20 @@
 
 {
   options.starship.enable = lib.mkEnableOption "enable my starship config";
-  config = lib.mkIf config.starship.enable {
+
+  config = lib.mkIf config.shell.fish.enable {
     programs.starship = {
       enable = true;
       enableFishIntegration = true;
       settings = {
+        format = "$hostname$directory$character";
         right_format = "$cmd_duration$nix_shell$git_branch$git_status";
-        format = "$directory$character";
+
+        hostname = {
+          ssh_only = true;
+          format = "[$hostname]($style) in ";
+          style = "bold dim white";
+        };
 
         directory = {
           style = "bold blue";
@@ -29,7 +36,7 @@
 
         git_branch = {
           symbol = " ";
-          style = "bold purple"; # Fixed typo: 'pule' to 'purple'
+          style = "bold purple";
         };
 
         cmd_duration = {

@@ -61,9 +61,6 @@
     vulkan-validation-layers
   ];
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   system.stateVersion = "25.11"; # Did you read the comment?
   nix.settings.experimental-features = [
     "nix-command"
