@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  gruvbox-plus-icons-git,
   ...
 }:
 
@@ -18,6 +17,8 @@
     home.homeDirectory = "/home/zeus";
     home.username = "zeus";
     browser.enable = false;
+    shell.fish.enable = true;
+
     # This value determines the Home Manager release that your configuration is
     # compatible with.
     home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
