@@ -46,6 +46,7 @@
       };
     };
 
+    # Make fish launch immidiatly while keeping bash as the default shell
     programs.bash = {
       enable = true;
       initExtra = ''
@@ -55,6 +56,17 @@
           exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
         fi
       '';
+    };
+
+    programs.starship = {
+      enable = true;
+      enableFishIntegration = true;
+      settings = {
+        nix_shell = {
+          symbol = "❄️ ";
+          format = "via [$symbol$state]($style) ";
+        };
+      };
     };
 
     xdg = {
