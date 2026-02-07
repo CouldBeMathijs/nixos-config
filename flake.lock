@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770318660,
-        "narHash": "sha256-yFVde8QZK7Dc0Xa8eQDsmxLX4NJNfL1NKfctSyiQgMY=",
+        "lastModified": 1770476834,
+        "narHash": "sha256-cyxgVsNfHnJ4Zn6G1EOzfTXbjTy7Ds9zMOsZaX7VZWs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "471e6a065f9efed51488d7c51a9abbd387df91b8",
+        "rev": "6cee0821577643e0b34e2c5d9a90d0b1b5cdca70",
         "type": "github"
       },
       "original": {
@@ -115,26 +115,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "microfetch-git": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1768830134,
-        "narHash": "sha256-mb9S5jPQuiWPn9t6EX8/5KMyhtEMQ6wKghL61C/umQg=",
-        "owner": "NotAShelf",
-        "repo": "microfetch",
-        "rev": "d2ae1a9af76a8a5fc7b8f611c76b9242eceeead9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NotAShelf",
-        "repo": "microfetch",
         "type": "github"
       }
     },
@@ -196,11 +176,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1770475031,
-        "narHash": "sha256-6RMRaeK9Fx1pqx+rA5xdqFcp38VTkla1RQVJR+LZy00=",
+        "lastModified": 1770479084,
+        "narHash": "sha256-dE0zmd6bbWiwLLemE85F3KLSLew9DMuEx4m/oht9QBU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ed5ffc101ba995a3d16aa87ba72954e9c813115f",
+        "rev": "ee66ec67a4288f1bd6cc3f1ef532823b561ad907",
         "type": "github"
       },
       "original": {
@@ -240,7 +220,6 @@
         "gruvbox-icons": "gruvbox-icons",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
-        "microfetch-git": "microfetch-git",
         "my-bash-scripts-repo": "my-bash-scripts-repo",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
