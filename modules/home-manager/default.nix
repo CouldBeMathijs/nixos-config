@@ -15,6 +15,7 @@
     ./cli-apps/nh.nix
     ./cli-apps/ollama.nix
     ./programs/browser.nix
+    ./programs/calibre.nix
     ./programs/composing.nix
     ./programs/csa-utils.nix
     ./programs/discord.nix
@@ -26,12 +27,6 @@
     ./shells/bash.nix
     ./shells/fish.nix
     ./shells/starship.nix
-  ];
-  home.packages = with pkgs; [
-    jq
-    git
-    zip
-    unzip
   ];
   browser.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
