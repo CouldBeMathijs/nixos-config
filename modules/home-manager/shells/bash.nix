@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  microfetch,
   ...
 }:
 
@@ -22,7 +21,7 @@
     programs.eza.enable = true;
 
     home.packages = with pkgs; [
-      microfetch.microfetch
+      microfetch
       tealdeer
       trash-cli
       yazi

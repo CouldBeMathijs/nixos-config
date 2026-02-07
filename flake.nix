@@ -24,11 +24,6 @@
       flake = false;
     };
 
-    microfetch-git = {
-      url = "github:NotAShelf/microfetch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     my-bash-scripts-repo = {
       url = "github:CouldBeMathijs/bash-scripts";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -103,8 +98,6 @@
 
               home-manager.extraSpecialArgs = {
                 inherit (inputs) zen-browser;
-                # inherit (inputs) niri;
-                microfetch = inputs.microfetch-git.packages.${system};
                 pkgs-unstable = genPkgs nixpkgs system;
                 pkgs-stable = genPkgs nixpkgs-stable system;
                 gruvbox-plus-icons-git = self.packages.${system}.gruvbox-plus-icons-git;

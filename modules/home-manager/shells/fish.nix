@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  microfetch,
   ...
 }:
 
@@ -21,11 +20,11 @@
 
     home.packages = with pkgs; [
       bat-extras.batman
+      microfetch
       procps
       tealdeer
       trash-cli
       yazi
-      microfetch.microfetch
     ];
 
     programs.fish = {
