@@ -10,21 +10,20 @@
   };
   config = lib.mkIf config.plasma-apps.enable {
     environment.systemPackages = with pkgs; [
+      # kdePackages.kdenlive # Video editor
       devtoolbox # Just some nicities
       gtranslator # PO translation editor
-      karp # Pdf merger
+      karp # Pdf page editor
       kdePackages.dragon # Video player
       kdePackages.elisa # Music player
       kdePackages.isoimagewriter # dd but Gnome
       kdePackages.kapman # Pacman in all but name
       kdePackages.kbreakout
-      # kdePackages.kdenlive # Video editor
       kdePackages.kolourpaint # Paint
       kdePackages.konquest
       kdePackages.okular # Pdf reader
       krename # Bulk rename tol
-      parabolic # Media downloader
-      pdfarranger # Pdf arranger
+      media-downloader # A, you will not believe this, media downloader
       qalculate-qt # Calculator
       rnote # Handdrawn note taking
     ];
