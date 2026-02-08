@@ -1,14 +1,42 @@
-{ stdenvNoCC, pkgs }:
-stdenvNoCC.mkDerivation {
-  pname = "Effect geometry change";
+{
+  lib,
+  stdenvNoCC,
+  fetchFromGitHub,
+  kdePackages,
+}:
+stdenvNoCC.mkDerivation (finalAttrs: {
+  pname = "kwin-effect-geometry-change";
   version = "1.5";
-  src = pkgs.fetchzip {
-    url = "https://github.com/peterfajdiga/kwin4_effect_geometry_change/releases/download/v1.5/kwin4_effect_geometry_change_1_5.tar.gz";
-    sha256 = "sha256-1xjG6tIaUj97T2yHq+W7MLcODS0BN/yOzKgpql1/q1k=";
-    stripRoot = false;
+
+  src = fetchFromGitHub {
+    owner = "peterfajdiga";
+    repo = "kwin4_effect_geometry_change";
+    rev = "v${finalAttrs.version}";
+    hash = "sha256-p4FpqagR8Dxi+r9A8W5rGM5ybaBXP0gRKAuzigZ1lyA=";
   };
+
+  nativeBuildInputs = [
+    kdePackages.kpackage
+    kdePackages.kwin
+  ];
+
+  dontBuild = true;
+
+  dontWrapQtApps = true;
+
   installPhase = ''
-    mkdir -p $out/share/kwin/effects
-    cp -r "$src"/* "$out/share/kwin/effects/"
+    runHook preInstall
+
+    kpackagetool6 --type=KWin/Effect --install=./package --packageroot=$out/share/kwin/effects
+
+    runHook postInstall
   '';
-}
+
+  meta = {
+    description = "A KWin animation for windows moved or resized by programs or scripts";
+    homepage = "https://github.com/peterfajdiga/kwin4_effect_geometry_change";
+    license = lib.licenses.gpl3Only;
+    platforms = lib.platforms.linux;
+    maintainers = with lib.maintainers; [ CouldBeMathijs ];
+  };
+})
