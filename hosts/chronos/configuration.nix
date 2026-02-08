@@ -31,7 +31,7 @@
   ];
   services = {
     envfs.enable = true;
-    fwupd.enable = true;
+    
     hardware = {
       openrgb.enable = true;
     };
