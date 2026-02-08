@@ -22,7 +22,7 @@
 
   services = {
     envfs.enable = true;
-    fwupd.enable = true;
+    
   };
 
   security = {
