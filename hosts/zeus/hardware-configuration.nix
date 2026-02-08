@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -42,7 +41,16 @@
   fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-uuid/0ecc2944-2322-4471-87e7-be8c0e913365";
     fsType = "ext4";
-    # options = [ "nofail" ]; # "nofail" prevents the system from crashing if the drive is unplugged
+    options = [ "nofail" ]; # "nofail" prevents the system from crashing if the drive is unplugged
+  };
+
+  fileSystems."/mnt/jellyfin" = {
+    device = "/dev/disk/by-uuid/20a15152-1540-4ff3-a2d3-11112ce284f4";
+    fsType = "ext4";
+    options = [
+      "nofail"
+      "defaults"
+    ];
   };
   swapDevices = [ ];
 

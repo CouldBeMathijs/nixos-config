@@ -14,7 +14,8 @@ in
   };
   config = lib.mkIf cfg.enable {
 
-    programs.bat.enable = true;
+    bat.enable = true;
+    tldr.enable = true;
     programs.zoxide = {
       enable = true;
       enableBashIntegration = true;
@@ -27,7 +28,6 @@ in
 
     home.packages = with pkgs; [
       microfetch
-      tealdeer
       trash-cli
       yazi
       bat-extras.batman
