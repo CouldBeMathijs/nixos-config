@@ -12,6 +12,7 @@
     ./programs/gnome-apps.nix
     ./programs/plasma-apps.nix
     ./programs/ripping.nix
+    ./services/fwupd.nix
     ./services/homepage-dashboard.nix
     ./services/immich.nix
     ./services/jellyfin.nix
@@ -42,5 +43,6 @@
     locale.enable = lib.mkDefault true;
     plymouth.enable = lib.mkDefault true;
     printing.enable = lib.mkDefault true;
+    fwupd.enable = lib.mkDefault true;
   };
 }

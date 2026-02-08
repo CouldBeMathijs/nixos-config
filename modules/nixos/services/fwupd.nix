@@ -4,7 +4,7 @@
   ...
 }:
 let
-  name = "nh";
+  name = "fwupd";
   cfg = config.${name};
 in
 {
@@ -12,13 +12,8 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
-    programs.nh = {
+    services.fwupd = {
       enable = true;
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 1d --keep 3";
-      };
-      flake = config.custom.flake-dir;
     };
   };
 }

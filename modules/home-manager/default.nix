@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   imports = [
     ./DE-WM/cinnamon-theming.nix
@@ -29,11 +33,22 @@
     ./shells/fish.nix
     ./shells/starship.nix
   ];
-  browser.enable = lib.mkDefault true;
-  git.enable = lib.mkDefault true;
-  helix.enable = lib.mkDefault true;
-  nh.enable = lib.mkDefault true;
-  nix-direnv.enable = lib.mkDefault true;
-  shell.bash.enable = lib.mkDefault true;
-  starship.enable = lib.mkDefault true;
+
+  options = {
+    custom.flake-dir = lib.mkOption {
+      type = lib.types.path;
+      description = "The path where the flake is stored";
+      default = "${config.home.homeDirectory}/.dotfiles";
+    };
+  };
+
+  config = {
+    browser.enable = lib.mkDefault true;
+    git.enable = lib.mkDefault true;
+    helix.enable = lib.mkDefault true;
+    nh.enable = lib.mkDefault true;
+    nix-direnv.enable = lib.mkDefault true;
+    shell.bash.enable = lib.mkDefault true;
+    starship.enable = lib.mkDefault true;
+  };
 }
