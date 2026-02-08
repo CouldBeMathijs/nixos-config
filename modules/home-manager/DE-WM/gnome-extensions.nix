@@ -4,12 +4,16 @@
   config,
   ...
 }:
+let
+  name = "gnome-extensions";
+  cfg = config.${name};
+in
 {
-  options = {
-    gnome-extensions.enable = lib.mkEnableOption "enable gnome-extensions";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.gnome-extensions.enable {
     home.packages = with pkgs.gnomeExtensions; [
       alphabetical-app-grid # Back to GNOME 3.2x
       appindicator # Yes, I know I shouldn't

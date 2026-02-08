@@ -5,12 +5,16 @@
   options,
   ...
 }:
+let
+  name = "composing";
+  cfg = config.${name};
+in
 {
-  options = {
-    composing.enable = lib.mkEnableOption "Enable composing configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.composing.enable {
     home.packages = with pkgs; [
       musescore # Writing music scores
       muse-sounds-manager # Write music scores with better playback

@@ -4,13 +4,15 @@
   config,
   ...
 }:
-
+let
+  name = "nh";
+  cfg = config.${name};
+in
 {
-  options.nh.enable = lib.mkEnableOption "enable nh configuration for clean-up";
-
-  config = lib.mkIf config.nh.enable {
-    home.packages = [ pkgs.nh ];
-
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
+  };
+  config = lib.mkIf cfg.enable {
     programs.nh = {
       enable = true;
       clean = {

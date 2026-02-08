@@ -1,17 +1,15 @@
 {
-  pkgs,
   lib,
   config,
   ...
 }:
-
 let
   cfg = config.immich;
   hostName = "${config.networking.hostName}.local";
 in
 {
   options.immich = {
-    enable = lib.mkEnableOption "Enable immich";
+    enable = lib.mkEnableOption "Enable my immich configuration";
     mediaLocation = lib.mkOption {
       type = lib.types.path;
       default = "/var/lib/immich";

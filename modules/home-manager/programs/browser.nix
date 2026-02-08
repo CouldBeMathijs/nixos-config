@@ -6,12 +6,16 @@
   zen-browser,
   ...
 }:
+let
+  name = "browser";
+  cfg = config.${name};
+in
 {
-  options = {
-    browser.enable = lib.mkEnableOption "Enable zen-browser configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.browser.enable {
     home.packages = [
       zen-browser.packages."x86_64-linux".beta
       pkgs.tor-browser

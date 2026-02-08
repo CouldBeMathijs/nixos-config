@@ -4,11 +4,15 @@
   config,
   ...
 }:
+let
+  name = "fonts";
+  cfg = config.${name};
+in
 {
-  options = {
-    fonts.enable = lib.mkEnableOption "enable fonts.nix";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-  config = lib.mkIf config.fonts.enable {
+  config = lib.mkIf cfg.enable {
     # Set nerd-fonts and ms-fonts
     fonts.packages = with pkgs; [
       ubuntu-sans

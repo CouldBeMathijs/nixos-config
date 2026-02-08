@@ -5,15 +5,20 @@
   options,
   ...
 }:
+let
+  name = "nix-direnv";
+  cfg = config.${name};
+in
 {
-  options = {
-    nix-direnv.enable = lib.mkEnableOption "Enable direnv configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.nix-direnv.enable {
     programs.direnv = {
       enable = true;
       enableBashIntegration = true; # see note on other shells below
+      enableFishIntegration = true;
       nix-direnv.enable = true;
     };
     home.packages = with pkgs; [

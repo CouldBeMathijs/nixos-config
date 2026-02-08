@@ -4,12 +4,16 @@
   config,
   ...
 }:
-
+let
+  name = "fish";
+  cfg = config.shell.${name};
+in
 {
-  options.shell.fish.enable = lib.mkEnableOption "enable shell";
-
-  config = lib.mkIf config.shell.fish.enable {
-    programs.bat.enable = true;
+  options.shell.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
+  };
+  config = lib.mkIf cfg.enable {
+    bat.enable = true;
 
     programs.zoxide = {
       enable = true;

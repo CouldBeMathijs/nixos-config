@@ -4,12 +4,15 @@
   config,
   ...
 }:
+let
+  name = "discord";
+  cfg = config.${name};
+in
 {
-  options = {
-    discord.enable = lib.mkEnableOption "Enable discord configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-
-  config = lib.mkIf config.discord.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       vesktop # My discord client of choice
     ];

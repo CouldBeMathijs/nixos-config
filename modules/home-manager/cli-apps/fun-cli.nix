@@ -6,14 +6,15 @@
   ...
 }:
 let
+  name = "fun-cli";
+  cfg = config.${name};
   fortuneWithOffensive = pkgs.fortune.override { withOffensive = true; };
 in
 {
-  options = {
-    fun-cli.enable = lib.mkEnableOption "Enable fun-cli configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-
-  config = lib.mkIf config.fun-cli.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       pipes
       fortuneWithOffensive

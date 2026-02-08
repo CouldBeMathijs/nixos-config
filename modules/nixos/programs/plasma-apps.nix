@@ -4,11 +4,15 @@
   config,
   ...
 }:
+let
+  name = "plasma-apps";
+  cfg = config.${name};
+in
 {
-  options = {
-    plasma-apps.enable = lib.mkEnableOption "enable plasma-apps.nix";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-  config = lib.mkIf config.plasma-apps.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       # kdePackages.kdenlive # Video editor
       devtoolbox # Just some nicities

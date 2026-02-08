@@ -4,13 +4,15 @@
   config,
   ...
 }:
-
+let
+  name = "xfce";
+  cfg = config.${name};
+in
 {
-  options = {
-    xfce.enable = lib.mkEnableOption "Enable xfce desktop environment";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-
-  config = lib.mkIf config.xfce.enable {
+  config = lib.mkIf cfg.enable {
     services.xserver = {
       enable = true;
 

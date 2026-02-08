@@ -5,12 +5,16 @@
   options,
   ...
 }:
+let
+  name = "gramps";
+  cfg = config.${name};
+in
 {
-  options = {
-    gramps.enable = lib.mkEnableOption "Enable gramps configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.gramps.enable {
     home.packages = with pkgs; [
       gramps
     ];

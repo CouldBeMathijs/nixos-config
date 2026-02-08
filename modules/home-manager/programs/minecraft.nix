@@ -5,12 +5,16 @@
   options,
   ...
 }:
+let
+  name = "minecraft";
+  cfg = config.${name};
+in
 {
-  options = {
-    minecraft.enable = lib.mkEnableOption "Enable minecraft configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.minecraft.enable {
     home.packages = with pkgs; [
       prismlauncher
     ];

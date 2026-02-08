@@ -1,9 +1,13 @@
 { lib, config, ... }:
-
+let
+  name = "starship";
+  cfg = config.${name};
+in
 {
-  options.starship.enable = lib.mkEnableOption "enable my starship config";
-
-  config = lib.mkIf config.shell.fish.enable {
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
+  };
+  config = lib.mkIf cfg.enable {
     programs.starship = {
       enable = true;
       enableFishIntegration = true;

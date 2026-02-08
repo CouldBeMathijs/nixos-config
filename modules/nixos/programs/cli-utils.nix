@@ -4,15 +4,18 @@
   config,
   ...
 }:
+let
+  name = "cli-utils";
+  cfg = config.${name};
+in
 {
-  options = {
-    cli-utils.enable = lib.mkEnableOption "enable cli-utils.nix";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-  config = lib.mkIf config.cli-utils.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       btop # System monitor
       file # File information
-      ghostty # You never want to end up without terminal emulator
       git # Version control for the modern age
       killall # Kill all instances of a program
       pbpctrl # Control Pixel Buds Pro from the cli

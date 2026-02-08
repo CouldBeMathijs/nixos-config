@@ -4,12 +4,16 @@
   config,
   ...
 }:
+let
+  name = "git";
+  cfg = config.${name};
+in
 {
-  options = {
-    git.enable = lib.mkEnableOption "Enable git configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.git.enable {
     # Git configuration
     programs.git = {
       enable = true;

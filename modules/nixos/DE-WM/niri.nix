@@ -5,12 +5,15 @@
   niri,
   ...
 }:
+let
+  name = "niri";
+  cfg = config.${name};
+in
 {
-  options = {
-    niri.enable = lib.mkEnableOption "enable niri.nix";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-
-  config = lib.mkIf config.niri.enable {
+  config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [ niri.overlays.niri ];
 
     programs.niri = {

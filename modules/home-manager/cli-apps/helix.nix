@@ -5,13 +5,14 @@
   ...
 }:
 let
-  cfg = config.helix;
+  name = "helix";
+  cfg = config.${name};
   # Reference the external latex option
   latexEnabled = config.latex.enable;
 in
 {
   options.helix = {
-    enable = lib.mkEnableOption "enable helix";
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
 
   config = lib.mkIf cfg.enable {

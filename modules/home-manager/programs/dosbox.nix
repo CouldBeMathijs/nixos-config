@@ -5,12 +5,16 @@
   options,
   ...
 }:
+let
+  name = "dosbox";
+  cfg = config.${name};
+in
 {
-  options = {
-    dosbox.enable = lib.mkEnableOption "Enable dosbox configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.dosbox.enable {
     home.packages = with pkgs; [
       dosbox
     ];
