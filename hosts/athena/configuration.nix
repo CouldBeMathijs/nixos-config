@@ -22,7 +22,7 @@
 
   services = {
     envfs.enable = true;
-    
+
   };
 
   security = {
@@ -46,11 +46,7 @@
   environment.systemPackages = with pkgs; [
     # Media
     gimp # GNU Image Manipulation Program
-
-    # Back-ups
-    deja-dup
   ];
-
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {

@@ -52,7 +52,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     gimp # GNU Image Manipulation Program
-    deja-dup # Back-ups
+    
   ];
 
   boot = {

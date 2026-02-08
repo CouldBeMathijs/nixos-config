@@ -55,7 +55,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    deja-dup # Back-ups
+    
     gimp # GNU Image Manipulation Program
     openrgb-with-all-plugins # RGB Color control
     bluez
