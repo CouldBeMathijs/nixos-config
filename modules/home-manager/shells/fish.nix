@@ -12,6 +12,7 @@ in
   options.shell.${name} = {
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+
   config = lib.mkIf cfg.enable {
     bat.enable = true;
     tldr.enable = true;
@@ -34,9 +35,21 @@ in
 
     programs.fish = {
       enable = true;
+
+      functions = {
+        last_history_item = "echo $history[1]";
+      };
+
+      shellAbbrs = {
+        "!!" = {
+          position = "anywhere";
+          function = "last_history_item";
+        };
+      };
+
       interactiveShellInit = ''
         microfetch
-        set -g fish_greeting "" # Optional: Disables the default fish welcome message
+        set -g fish_greeting "" 
       '';
 
       shellAliases = {
@@ -50,7 +63,6 @@ in
       };
     };
 
-    # Make fish launch immidiatly while keeping bash as the default shell
     programs.bash = {
       enable = true;
       initExtra = ''
