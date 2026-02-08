@@ -14,6 +14,7 @@ in
   };
   config = lib.mkIf cfg.enable {
     bat.enable = true;
+    tldr.enable = true;
 
     programs.zoxide = {
       enable = true;

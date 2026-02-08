@@ -14,6 +14,7 @@
     ./cli-apps/helix.nix
     ./cli-apps/nh.nix
     ./cli-apps/ollama.nix
+    ./cli-apps/tldr.nix
     ./programs/browser.nix
     ./programs/calibre.nix
     ./programs/composing.nix
