@@ -5,21 +5,21 @@
   config,
   ...
 }:
-
+let
+  name = "cinnamon-theming";
+  cfg = config.${name};
+in
 {
-  options = {
-    cinnamon-theming.enable = lib.mkEnableOption "enable cinnamon theming";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.cinnamon-theming.enable {
     xdg.enable = true;
     home.packages = with pkgs; [ dconf-editor ];
     dconf.enable = true;
     dconf.settings = {
-      # Cinnamon-specific settings go here
-      # Example: change panel button layout or other settings if applicable
-
-      # Privacy settings - similar to GNOME but check if applicable for Cinnamon
+      # Privacy settings
       "org/cinnamon/desktop/privacy" = {
         recent-files-max-age = 30;
         old-files-age = 30;
@@ -38,8 +38,6 @@
         button-layout = "close,minimize,maximize:appmenu";
       };
 
-      # Fractional scaling for mutter might not apply to Cinnamon's muffin (fork of mutter),
-      # but you could try enabling experimental features or relevant Cinnamon compositor settings here
     };
 
     # GTK theming setup
@@ -60,13 +58,8 @@
       # Enable GTK4 theming explicitly
       gtk4.extraConfig = {
         "gtk-application-prefer-dark-theme" = 1;
-        # Optional: you can add more GTK4-specific configs here if needed
       };
     };
-
-    # Cinnamon-specific theming configuration (if supported)
-    # Cinnamon doesn’t have a native “programs.cinnamon-shell.theme” config like GNOME
-    # but you can still override via XDG config files:
 
     xdg.configFile = {
       "gtk-4.0/assets".source =

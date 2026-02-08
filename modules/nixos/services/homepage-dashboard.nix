@@ -6,6 +6,8 @@
 }:
 
 let
+  name = "homepage-dashboard";
+  cfg = config.${name};
   rawHost = config.networking.hostName;
   hostName = "${rawHost}.local";
   port = 8082;
@@ -21,9 +23,11 @@ let
   ];
 in
 {
-  options.homepage-dashboard.enable = lib.mkEnableOption "Enable homepage-dashboard media server";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
+  };
 
-  config = lib.mkIf config.homepage-dashboard.enable {
+  config = lib.mkIf cfg.enable {
     # Automatically enable the reverse proxy module when homepage is enabled
     services.reverse-proxy.enable = true;
     # mDNS configuration for local network discovery

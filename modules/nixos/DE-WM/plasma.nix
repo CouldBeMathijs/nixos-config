@@ -4,12 +4,15 @@
   config,
   ...
 }:
+let
+  name = "plasma";
+  cfg = config.${name};
+in
 {
-  options = {
-    plasma.enable = lib.mkEnableOption "enable plasma.nix";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-
-  config = lib.mkIf config.plasma.enable {
+  config = lib.mkIf cfg.enable {
 
     services.xserver.enable = true;
     services.gvfs.enable = true;

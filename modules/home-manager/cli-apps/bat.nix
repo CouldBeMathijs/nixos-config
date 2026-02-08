@@ -4,11 +4,15 @@
   config,
   ...
 }:
+let
+  name = "bat";
+  cfg = config.${name};
+in
 {
-  options = {
-    bat.enable = lib.mkEnableOption "enable bat";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-  config = lib.mkIf config.bat.enable {
+  config = lib.mkIf cfg.enable {
 
     programs.bat = {
       enable = true;

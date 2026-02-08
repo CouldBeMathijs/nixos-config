@@ -5,12 +5,15 @@
   options,
   ...
 }:
+let
+  name = "ollama";
+  cfg = config.${name};
+in
 {
-  options = {
-    ollama.enable = lib.mkEnableOption "Enable ollama configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-
-  config = lib.mkIf config.ollama.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = [
       pkgs.ollama
     ];

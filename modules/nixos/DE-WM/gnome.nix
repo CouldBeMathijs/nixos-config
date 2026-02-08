@@ -4,11 +4,15 @@
   config,
   ...
 }:
+let
+  name = "gnome";
+  cfg = config.${name};
+in
 {
-  options = {
-    gnome.enable = lib.mkEnableOption "enable gnome.nix";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-  config = lib.mkIf config.gnome.enable {
+  config = lib.mkIf cfg.enable {
     services.xserver = {
       excludePackages = with pkgs; [
         xterm # Why is it here by default

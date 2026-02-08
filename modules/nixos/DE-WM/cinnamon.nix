@@ -4,13 +4,15 @@
   config,
   ...
 }:
-
+let
+  name = "cinnamon";
+  cfg = config.${name};
+in
 {
-  options = {
-    cinnamon.enable = lib.mkEnableOption "Enable Cinnamon desktop environment";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-
-  config = lib.mkIf config.cinnamon.enable {
+  config = lib.mkIf cfg.enable {
     services.xserver = {
       enable = true;
 

@@ -7,7 +7,6 @@
 
 # These helper functions are used to create a new derivation that holds a patched
 # desktop entry, giving it higher priority than the original.
-with pkgs;
 let
   # The essential packages for the script to run (coreutils for mkdir, gnused for sed)
   coreutils = pkgs.coreutils;

@@ -7,17 +7,19 @@
   ...
 }:
 let
+  name = "plasma-theming";
+  cfg = config.${name};
   wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
   geometryChange = pkgs.callPackage ../../../packages/kwin-script-geometry-change.nix { };
   fontName = "JetBrainsMono Nerd Font";
   fontPackage = pkgs.nerd-fonts.jetbrains-mono;
 in
 {
-  options = {
-    plasma-theming.enable = lib.mkEnableOption "enable plasma-theming";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
 
-  config = lib.mkIf config.plasma-theming.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = [
       geometryChange
       gruvbox-plus-icons-git

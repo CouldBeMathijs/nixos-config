@@ -4,11 +4,16 @@
   config,
   ...
 }:
-
+let
+  name = "bash";
+  cfg = config.shell.${name};
+in
 {
-  options.shell.bash.enable = lib.mkEnableOption "enable shell";
+  options.shell.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
+  };
+  config = lib.mkIf cfg.enable {
 
-  config = lib.mkIf config.shell.bash.enable {
     programs.bat.enable = true;
     programs.zoxide = {
       enable = true;

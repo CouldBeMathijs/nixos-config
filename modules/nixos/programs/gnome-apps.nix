@@ -4,11 +4,15 @@
   config,
   ...
 }:
+let
+  name = "gnome-apps";
+  cfg = config.${name};
+in
 {
-  options = {
-    gnome-apps.enable = lib.mkEnableOption "enable gnome-apps.nix";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-  config = lib.mkIf config.gnome-apps.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       amberol # Music player
       clapper # Video player

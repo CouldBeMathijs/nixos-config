@@ -4,14 +4,17 @@
   config,
   ...
 }:
-
 let
+  name = "bat";
+  cfg = config.${name};
   hostName = "${config.networking.hostName}.local";
 in
 {
-  options.jellyfin.enable = lib.mkEnableOption "Enable Jellyfin";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
+  };
 
-  config = lib.mkIf config.jellyfin.enable {
+  config = lib.mkIf cfg.enable {
     services.jellyfin.enable = true;
 
     environment.systemPackages = with pkgs; [

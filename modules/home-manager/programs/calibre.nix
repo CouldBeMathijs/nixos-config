@@ -5,12 +5,15 @@
   options,
   ...
 }:
+let
+  name = "calibre";
+  cfg = config.${name};
+in
 {
-  options = {
-    calibre.enable = lib.mkEnableOption "Enable calibre configuration";
+  options.${name} = {
+    enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
-
-  config = lib.mkIf config.calibre.enable {
+  config = lib.mkIf cfg.enable {
     programs.calibre = {
       enable = true;
     };
