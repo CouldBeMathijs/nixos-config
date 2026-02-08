@@ -21,7 +21,7 @@
 
     # This value determines the Home Manager release that your configuration is
     # compatible with.
-    home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
+    home.stateVersion = "25.11"; # Do not change unless you know what you are doing!
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
