@@ -27,10 +27,12 @@
 
   locale.language = "irish";
 
-  printing.enable = false;
-  pihole.enable = true;
-  jellyfin.enable = true;
+  fonts.enable = false;
   homepage-dashboard.enable = true;
+  jellyfin.enable = true;
+  pihole.enable = true;
+  plymouth.enable = false;
+  printing.enable = false;
   ssh.enable = true;
   immich = {
     enable = true;

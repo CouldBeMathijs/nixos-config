@@ -5,7 +5,7 @@
   ...
 }:
 let
-  name = "bat";
+  name = "jellyfin";
   cfg = config.${name};
   hostName = "${config.networking.hostName}.local";
 in

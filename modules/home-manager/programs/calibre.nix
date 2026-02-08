@@ -14,9 +14,11 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
-    programs.calibre = {
-      enable = true;
-    };
+    home.packages = with pkgs; [ calibre ];
+    # This code will only work once stable is 26.05
+    # programs.calibre = {
+    #   enable = true;
+    # };
   };
 }
 /*
