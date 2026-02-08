@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   config,
   ...
@@ -19,7 +18,7 @@ in
         enable = true;
         extraArgs = "--keep-since 1d --keep 3";
       };
-      flake = "${config.home.homeDirectory}/.dotfiles";
+      flake = config.custom.flake-dir;
     };
   };
 }

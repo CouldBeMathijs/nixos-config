@@ -9,7 +9,7 @@
 let
   name = "plasma-theming";
   cfg = config.${name};
-  wallpaperPath = /home/mathijs/.dotfiles/images/bulbs.jpg;
+  wallpaperPath = "${config.custom.flake-dir}/images/bulbs.jpg";
   geometryChange = pkgs.callPackage ../../../packages/kwin-script-geometry-change.nix { };
   fontName = "JetBrainsMono Nerd Font";
   fontPackage = pkgs.nerd-fonts.jetbrains-mono;
