@@ -16,3 +16,8 @@ Hosts:
  - Dionysus: Lenovo Legion - Gaming laptop
      - KDE Plasma
      - Steam + Heroic
+ - Zeus: Server
+     - PiHole
+     - Jellyfin
+     - Immich
+     ...
