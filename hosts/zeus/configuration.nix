@@ -9,13 +9,6 @@
     ./../../modules/nixos
   ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking.hostName = "zeus"; # Define your hostname.
 
   # Enable networking
@@ -62,6 +55,13 @@
     vulkan-tools
     vulkan-validation-layers
   ];
+  boot = {
+    # kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   system.stateVersion = "25.11"; # Did you read the comment?
   nix.settings.experimental-features = [
