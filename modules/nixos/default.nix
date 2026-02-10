@@ -12,6 +12,7 @@
     ./programs/gnome-apps.nix
     ./programs/plasma-apps.nix
     ./programs/ripping.nix
+    ./services/auto-updater.nix
     ./services/fwupd.nix
     ./services/homepage-dashboard.nix
     ./services/immich.nix
