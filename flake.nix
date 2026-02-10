@@ -30,7 +30,7 @@
     };
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
