@@ -18,6 +18,8 @@
     ./services/immich.nix
     ./services/jellyfin.nix
     ./services/pihole.nix
+    ./services/restic-client.nix
+    ./services/restic-server.nix
     ./services/reverse-proxy.nix
     ./services/ssh.nix
     ./systems/audio.nix
