@@ -19,14 +19,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.restic.rest-server = {
+    services.restic.server = {
       enable = true;
       dataDir = cfg.dataDir;
-      extraFlags = [ "--no-auth" ]; # Use this only in a secure local network
+      extraFlags = [ "--no-auth" ];
       listenAddress = "8000";
     };
 
-    # Open the firewall for the REST server
     networking.firewall.allowedTCPPorts = [ 8000 ];
   };
 }
