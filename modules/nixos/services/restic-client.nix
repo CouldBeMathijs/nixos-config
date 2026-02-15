@@ -30,10 +30,34 @@ in
       passwordFile = cfg.passwordFile;
 
       paths = [ "/home" ];
+
+      # Comprehensive exclusion list
       exclude = [
+        # --- General Bloat ---
         "**/.cache"
-        "**/node_modules"
         "**/Downloads"
+        "**/.local/share/Trash"
+        "**/.thumbnails"
+        "**/direnv/prev"
+
+        # --- Development (The "Ignore These" Hall of Fame) ---
+        "**/node_modules"
+        "**/venv"
+        "**/.venv"
+        "**/cmake-build*"
+        "**/target" # Rust build artifacts
+        "**/dist" # General distribution folders
+        "**/build" # General build folders
+        "**/.direnv" # Cache for direnv
+
+        # --- Gaming (Steam) ---
+        "**/.local/share/Steam/steamapps/common" # The actual game files
+        "**/.local/share/Steam/steamapps/downloading" # Temporary update files
+        "**/.local/share/Steam/steamapps/shadercache" # Precompiled shaders
+
+        # --- AI Stuff ---
+        "**/easy-diffusion"
+        "**/.ollama"
       ];
 
       timerConfig = {

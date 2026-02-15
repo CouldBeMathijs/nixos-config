@@ -20,8 +20,11 @@
   gaming.heroic.enable = true;
   locale.language = "irish";
 
-  # Allow unfree packages
-  
+  restic-client = {
+    enable = true;
+    remoteLocation = "rest:http://zeus.local:8000/chronos";
+    passwordFile = "/var/lib/restic-password";
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -31,7 +34,7 @@
   ];
   services = {
     envfs.enable = true;
-    
+
     hardware = {
       openrgb.enable = true;
     };
@@ -55,7 +58,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    
     gimp # GNU Image Manipulation Program
     openrgb-with-all-plugins # RGB Color control
     bluez
