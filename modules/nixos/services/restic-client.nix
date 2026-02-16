@@ -33,27 +33,32 @@ in
 
       # Comprehensive exclusion list
       exclude = [
-        # --- General Bloat ---
+        # --- General Bloat and caches ---
         "**/.cache"
         "**/Downloads"
         "**/.local/share/Trash"
         "**/.thumbnails"
-        "**/direnv/prev"
+        "**/direnv/prev" # Direnv stuff
+        "**/.direnv"
+        "**/vesktop/sessionData/Cache" # Vesktop cache does not support XDG
 
         # --- Development (The "Ignore These" Hall of Fame) ---
         "**/node_modules"
-        "**/venv"
+        "**/venv" # Python virtual enviorment
         "**/.venv"
-        "**/cmake-build*"
+        "**/cmake-build*" # Cmake data directories (created by CLion)
         "**/target" # Rust build artifacts
         "**/dist" # General distribution folders
         "**/build" # General build folders
         "**/.direnv" # Cache for direnv
 
-        # --- Gaming (Steam) ---
+        # --- Gaming ---
         "**/.local/share/Steam/steamapps/common" # The actual game files
         "**/.local/share/Steam/steamapps/downloading" # Temporary update files
         "**/.local/share/Steam/steamapps/shadercache" # Precompiled shaders
+        "**/.paradoxlauncher"
+        "**/GE-Proton-latest"
+        "**/Games/Heroic"
 
         # --- AI Stuff ---
         "**/easy-diffusion"
