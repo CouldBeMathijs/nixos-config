@@ -31,6 +31,10 @@
     enable = true;
     mediaLocation = "/mnt/storage/immich";
   };
+  restic-server = {
+    enable = true;
+    dataDir = "/mnt/storage/backups";
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zeus = {
