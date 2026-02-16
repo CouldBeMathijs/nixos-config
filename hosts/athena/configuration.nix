@@ -19,6 +19,12 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  restic-client = {
+    enable = true;
+    remoteLocation = "rest:http://zeus.local:8000/athena";
+    passwordFile = "/var/lib/restic-password";
+  };
+
   imports = [
     ./../../modules/nixos
   ];

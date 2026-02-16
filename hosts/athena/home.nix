@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-
   imports = [
     ../../modules/home-manager
   ];
@@ -19,9 +16,7 @@
     plasma-theming.enable = true;
 
     # School things
-    csa-utils.enable = false;
-    jetbrains.clion.enable = true;
-    jetbrains.pycharm.enable = true;
+    jetbrains.enable = true;
     latex.enable = true;
 
     composing.enable = true;
