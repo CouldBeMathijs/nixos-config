@@ -13,8 +13,15 @@
     home.packages =
       with pkgs;
       [
-        texliveMedium # Always installed if latex.enable is true
+        texliveMedium
       ]
-      ++ (if config.gnome-theming.enable then [ setzer ] else [ texmaker ]);
+      ++ (
+        if config.gnome-theming.enable then
+          [ setzer ]
+        else if config.plasma-theming.enable then
+          [ kile ]
+        else
+          [ texmaker ]
+      );
   };
 }
