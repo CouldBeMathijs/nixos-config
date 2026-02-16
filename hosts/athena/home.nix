@@ -18,23 +18,16 @@
     # Enable Plasma config
     plasma-theming.enable = true;
 
-    # Enable Jetbrains IDE's
-    jetbrains.clion.enable = true;
-
-    # Enable logisim and mars-mips
+    # School things
     csa-utils.enable = false;
-
-    # Enable LaTeX
+    jetbrains.clion.enable = true;
+    jetbrains.pycharm.enable = true;
     latex.enable = true;
-    latex.gnome-apps = true;
 
-    # niri-config.enable = false;
-    fun-cli.enable = true;
-    dosbox.enable = true;
-
-    # Enable musescore
     composing.enable = true;
     discord.enable = true;
+    dosbox.enable = true;
+    fun-cli.enable = true;
     gramps.enable = true;
     minecraft.enable = true;
 

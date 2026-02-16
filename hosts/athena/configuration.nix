@@ -11,6 +11,9 @@
   plasma.enable = true;
   plasma-apps.enable = true;
 
+  virtualbox.enable = true;
+  cn-utils.enable = true;
+
   ripping.enable = false;
 
   # Enable networking
@@ -37,6 +40,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "wireshark"
     ];
   };
   locale.language = "irish";
@@ -48,7 +52,7 @@
     gimp # GNU Image Manipulation Program
   ];
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
