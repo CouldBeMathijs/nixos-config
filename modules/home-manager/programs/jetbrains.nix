@@ -29,7 +29,7 @@
     jetbrains.clion.enable = lib.mkIf config.jetbrains.enable true;
 
     home.packages =
-      lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm-professional
+      lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm
       ++ lib.optional config.jetbrains.clion.enable pkgs.jetbrains.clion
       ++ lib.optional config.jetbrains.datagrip.enable pkgs.jetbrains.datagrip;
   };
