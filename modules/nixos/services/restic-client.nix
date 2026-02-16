@@ -8,6 +8,13 @@ let
   name = "restic-client";
   cfg = config.${name};
 in
+/*
+  Extra steps needed:
+  sudo vim /var/lib/restic-password # Create your password here
+  sudo chmod 600 /var/lib/restic-password # Set permissions for the password file
+  sudo restic -r [rest:http://nas-ip:8000/my-repo] init --password-file /var/lib/restic-password
+*/
+
 {
   options.${name} = {
     enable = lib.mkEnableOption "Enable Restic backup client";
@@ -75,6 +82,36 @@ in
         "--keep-weekly 4"
         "--keep-monthly 6"
       ];
+    };
+
+    # Custom Systemd adjustments for retries and portability
+    systemd.services.restic-backups-home-backup = {
+      # The preStart script extracts the hostname/IP from the remoteLocation variable
+      preStart = ''
+        # Extract host: Remove protocol (rest:http://) and path/port suffix
+        # Example: rest:http://zeus.local:8000/athena -> zeus.local
+        REMOTE_HOST=$(echo "${cfg.remoteLocation}" | sed -e 's|.*://||' -e 's|[:/].*||')
+
+        echo "Checking if backup target $REMOTE_HOST is reachable..."
+        if ! ${pkgs.iputils}/bin/ping -c 1 "$REMOTE_HOST" > /dev/null 2>&1; then
+          echo "Target $REMOTE_HOST unreachable. Service will retry in 1 hour."
+          exit 1
+        fi
+      '';
+
+      serviceConfig = {
+        # Retry logic
+        Restart = "on-failure";
+        RestartSec = "1h";
+
+        # Security: ensure it can't do much else
+        PrivateTmp = true;
+      };
+
+      # Ensure it doesn't stop retrying after a few failures
+      unitConfig = {
+        StartLimitIntervalSec = 0;
+      };
     };
   };
 }
