@@ -45,6 +45,8 @@ in
           position = "anywhere";
           function = "last_history_item";
         };
+        restic-log = "journalctl -u restic-backups-home-backup";
+        ".." = "cd ..";
       };
 
       interactiveShellInit = ''
@@ -53,7 +55,6 @@ in
       '';
 
       shellAliases = {
-        ".." = "cd ..";
         "cat" = "bat";
         "clear" = "command clear; microfetch";
         "ll" = "eza -l";
