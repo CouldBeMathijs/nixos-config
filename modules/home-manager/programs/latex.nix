@@ -13,7 +13,7 @@
     home.packages =
       with pkgs;
       [
-        texliveMedium
+        texliveFull
       ]
       ++ (
         if config.gnome-theming.enable then
