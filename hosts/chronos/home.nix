@@ -21,7 +21,7 @@
     fastfetch.enable = true;
     gramps.enable = true;
     helix.enable = true;
-    jetbrains.clion.enable = true;
+    jetbrains.enable = true;
     latex.enable = true;
     minecraft.enable = true;
     ollama.enable = true;
