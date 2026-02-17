@@ -19,6 +19,7 @@
   gaming.steam.enable = true;
   gaming.heroic.enable = true;
   locale.language = "irish";
+  virtualbox.enable = true;
 
   restic-client = {
     enable = true;
