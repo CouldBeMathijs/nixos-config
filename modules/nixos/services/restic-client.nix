@@ -70,6 +70,9 @@ in
         # --- AI Stuff ---
         "**/easy-diffusion"
         "**/.ollama"
+
+        # --- Virtualbox ---
+        "**/Virtualbox VMs"
       ];
 
       timerConfig = {
