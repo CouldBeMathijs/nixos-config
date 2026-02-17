@@ -15,6 +15,7 @@
     ./programs/ripping.nix
     ./programs/virtualbox.nix
     ./services/auto-updater.nix
+    ./services/calibre-web.nix
     ./services/fwupd.nix
     ./services/homepage-dashboard.nix
     ./services/immich.nix

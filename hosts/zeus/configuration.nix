@@ -20,13 +20,16 @@
 
   locale.language = "irish";
 
+  # Disable some desktop defaults not needed on servers
   fonts.enable = false;
+  plymouth.enable = false;
+  printing.enable = false;
+
+  # Server Services
+  ssh.enable = true;
   homepage-dashboard.enable = true;
   jellyfin.enable = true;
   pihole.enable = true;
-  plymouth.enable = false;
-  printing.enable = false;
-  ssh.enable = true;
   immich = {
     enable = true;
     mediaLocation = "/mnt/storage/immich";
@@ -34,6 +37,10 @@
   restic-server = {
     enable = true;
     dataDir = "/mnt/storage/backups";
+  };
+  calibre-web = {
+    enable = true;
+    libraryLocation = "/mnt/storage/calibre-web";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
