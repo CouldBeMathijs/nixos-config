@@ -25,6 +25,7 @@
     ./services/restic-server.nix
     ./services/reverse-proxy.nix
     ./services/ssh.nix
+    ./services/tailscale.nix
     ./systems/audio.nix
     ./systems/lix.nix
     ./systems/locale.nix

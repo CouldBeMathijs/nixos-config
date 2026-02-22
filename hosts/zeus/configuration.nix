@@ -28,6 +28,7 @@
   # Server Services
   ssh.enable = true;
   homepage-dashboard.enable = true;
+  tailscale.enable = true;
   jellyfin.enable = true;
   pihole.enable = true;
   immich = {
@@ -55,7 +56,6 @@
 
   # Hardware acceleration
   services.xserver = {
-    tailscale.enable = true;
     videoDrivers = [ "amdgpu" ];
   };
 
