@@ -11,10 +11,10 @@
   plasma.enable = true;
   plasma-apps.enable = true;
 
-  virtualbox.enable = true;
   cn-utils.enable = true;
-
   ripping.enable = false;
+  tailscale.enable = true;
+  virtualbox.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -31,7 +31,6 @@
 
   services = {
     envfs.enable = true;
-    tailscale.enable = true;
   };
 
   security = {

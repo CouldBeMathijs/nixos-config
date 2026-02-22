@@ -12,13 +12,15 @@
 {
   networking.hostName = "chronos";
 
+  # Enable plasma
   plasma-apps.enable = true;
   plasma.enable = true;
-  # ripping.enable = false;
 
-  gaming.steam.enable = true;
   gaming.heroic.enable = true;
+  gaming.steam.enable = true;
   locale.language = "irish";
+  ripping.enable = false;
+  tailscale.enable = true;
   virtualbox.enable = true;
 
   restic-client = {
@@ -35,7 +37,6 @@
   ];
   services = {
     envfs.enable = true;
-    tailscale.enable = true;
     hardware = {
       openrgb.enable = true;
     };
