@@ -55,6 +55,7 @@
 
   # Hardware acceleration
   services.xserver = {
+    tailscale.enable = true;
     videoDrivers = [ "amdgpu" ];
   };
 
