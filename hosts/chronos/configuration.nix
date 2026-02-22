@@ -35,7 +35,7 @@
   ];
   services = {
     envfs.enable = true;
-
+    tailscale.enable = true;
     hardware = {
       openrgb.enable = true;
     };

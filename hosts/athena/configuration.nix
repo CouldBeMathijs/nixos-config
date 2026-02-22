@@ -31,7 +31,7 @@
 
   services = {
     envfs.enable = true;
-
+    tailscale.enable = true;
   };
 
   security = {
