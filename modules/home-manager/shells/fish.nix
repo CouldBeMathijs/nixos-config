@@ -7,61 +7,32 @@
 let
   name = "fish";
   cfg = config.shell.${name};
+  common = config.shell.common;
 in
 {
-  options.shell.${name} = {
-    enable = lib.mkEnableOption "Enable my ${name} configuration";
-  };
+  imports = [ ./common.nix ];
+
+  options.shell.${name}.enable = lib.mkEnableOption "Enable my ${name} configuration";
 
   config = lib.mkIf cfg.enable {
-    bat.enable = true;
-    tldr.enable = true;
-
-    programs.zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    programs.eza.enable = true;
-
-    home.packages = with pkgs; [
-      bat-extras.batman
-      microfetch
-      procps
-      tealdeer
-      trash-cli
-      yazi
-    ];
+    shell.common.enable = true;
 
     programs.fish = {
       enable = true;
-
-      functions = {
-        last_history_item = "echo $history[1]";
-      };
-
-      shellAbbrs = {
+      shellAliases = common.aliases;
+      shellAbbrs = common.abbrs // {
         "!!" = {
           position = "anywhere";
           function = "last_history_item";
         };
-        restic-log = "journalctl -u restic-backups-home-backup";
-        ".." = "cd ..";
       };
+
+      functions.last_history_item = "echo $history[1]";
 
       interactiveShellInit = ''
         microfetch
         set -g fish_greeting "" 
       '';
-
-      shellAliases = {
-        "cat" = "bat";
-        "clear" = "command clear; microfetch";
-        "ll" = "eza -l";
-        "ls" = "eza";
-        "man" = "batman";
-        "open" = "xdg-open";
-      };
     };
 
     programs.bash = {
@@ -75,16 +46,7 @@ in
       '';
     };
 
-    programs.starship = {
-      enableFishIntegration = true;
-    };
-
-    xdg = {
-      enable = true;
-      desktopEntries."btop" = {
-        name = "btop++";
-        noDisplay = true;
-      };
-    };
+    programs.starship.enableFishIntegration = true;
+    programs.zoxide.enableFishIntegration = true;
   };
 }

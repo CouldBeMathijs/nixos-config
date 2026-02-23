@@ -7,55 +7,29 @@
 let
   name = "bash";
   cfg = config.shell.${name};
+  common = config.shell.common;
 in
 {
-  options.shell.${name} = {
-    enable = lib.mkEnableOption "Enable my ${name} configuration";
-  };
-  config = lib.mkIf cfg.enable {
+  imports = [ ./common.nix ];
 
-    bat.enable = true;
-    tldr.enable = true;
-    programs.zoxide = {
+  options.shell.${name}.enable = lib.mkEnableOption "Enable my ${name} configuration";
+
+  config = lib.mkIf cfg.enable {
+    shell.common.enable = true;
+
+    programs.bash = {
       enable = true;
-      enableBashIntegration = true;
+      # Merge both sets into aliases since Bash only supports one type
+      shellAliases = common.aliases // common.abbrs;
+      initExtra = "microfetch";
     };
+
     programs.atuin = {
       enable = true;
       enableBashIntegration = true;
     };
-    programs.eza.enable = true;
 
-    home.packages = with pkgs; [
-      microfetch
-      trash-cli
-      yazi
-      bat-extras.batman
-    ];
-
-    programs.bash = {
-      enable = true;
-      initExtra = "microfetch";
-      shellAliases = {
-        ".." = "cd ..";
-        "cat" = "bat";
-        "clear" = "clear; microfetch";
-        "ll" = "eza -l";
-        "ls" = "eza";
-        "man" = "batman";
-        "open" = "xdg-open";
-      };
-    };
-    programs.starship = {
-      enableBashIntegration = true;
-    };
-
-    xdg = {
-      enable = true;
-      desktopEntries."btop" = {
-        name = "btop++";
-        noDisplay = true;
-      };
-    };
+    programs.starship.enableBashIntegration = true;
+    programs.zoxide.enableBashIntegration = true;
   };
 }
