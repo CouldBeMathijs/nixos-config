@@ -14,7 +14,7 @@
   ];
 
   config = {
-    calibre.enable = true;
+    calibre.enable = false;
     composing.enable = true;
     discord.enable = true;
     dosbox.enable = true;

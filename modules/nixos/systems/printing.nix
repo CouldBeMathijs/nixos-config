@@ -26,13 +26,10 @@
     hardware.sane = {
       enable = true;
       extraBackends = [
-        pkgs.utsushi
         pkgs.sane-airscan
       ];
-      disabledDefaultBackends = [ "escl" ];
     };
     services.udev.packages = [
-      pkgs.utsushi
       pkgs.sane-airscan
     ];
   };
