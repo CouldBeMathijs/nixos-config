@@ -15,7 +15,6 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       # kdePackages.kdenlive # Video editor
-      devtoolbox # Just some nicities
       gtranslator # PO translation editor
       karp # Pdf page editor
       kdePackages.dragon # Video player
@@ -23,10 +22,10 @@ in
       kdePackages.filelight # Disk Usage Analyser
       kdePackages.isoimagewriter # dd but Gnome
       kdePackages.kapman # Pacman in all but name
-      kdePackages.kbreakout
       kdePackages.kolourpaint # Paint
-      kdePackages.konquest
+      kdePackages.konquest # A small game
       kdePackages.okular # Pdf reader
+      kdePackages.plasma-keyboard # Virtual keyboard
       krename # Bulk rename tol
       media-downloader # A, you will not believe this, media downloader
       qalculate-qt # Calculator

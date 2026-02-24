@@ -94,6 +94,14 @@ in
           };
         };
         kdeglobals.General.accentColorFromWallpaper = true;
+        ktrashrc."${config.home.homeDirectory}\\/.local\\/share\\/Trash" = {
+          Days = 60;
+          LimitReachedAction = 1;
+          Percent = 10;
+          UseSizeLimit = false;
+          UseTimeLimit = true;
+        };
+
       };
       kscreenlocker.appearance.wallpaper = wallpaperPath;
       fonts = {
