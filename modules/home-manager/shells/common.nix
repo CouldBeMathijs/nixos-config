@@ -29,7 +29,7 @@ in
       default = {
         ".." = "cd ..";
         "gp" = "git pull";
-        "restic-log" = "journalctl -u restic-backups-home-backup";
+        "restic-log" = "journalctl -u restic-backups-home-backup --since yesterday";
       };
     };
   };
