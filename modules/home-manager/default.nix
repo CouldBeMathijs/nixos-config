@@ -22,7 +22,6 @@
     ./programs/browser.nix
     ./programs/calibre.nix
     ./programs/composing.nix
-    ./programs/csa-utils.nix
     ./programs/discord.nix
     ./programs/dosbox.nix
     ./programs/gramps.nix

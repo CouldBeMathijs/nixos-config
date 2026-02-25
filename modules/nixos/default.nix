@@ -7,12 +7,12 @@
     ./DE-WM/plasma.nix
     ./DE-WM/xfce.nix
     ./programs/cli-utils.nix
-    ./programs/cn-utils.nix
     ./programs/fonts.nix
     ./programs/gaming.nix
     ./programs/gnome-apps.nix
     ./programs/plasma-apps.nix
     ./programs/ripping.nix
+    ./programs/schoolutils.nix
     ./programs/virtualbox.nix
     ./services/auto-updater.nix
     ./services/calibre-web.nix
