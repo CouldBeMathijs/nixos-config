@@ -132,7 +132,10 @@
     in
     flake-utils.lib.eachDefaultSystem (system: {
       packages = {
-        my-bash-scripts = inputs.my-bash-scripts-repo.packages.${system}.default;
+        my-bash-scripts = inputs.my-bash-scripts-repo.packages.${system}.default.override {
+          withWayland = true;
+          withX11 = false;
+        };
         gruvbox-plus-icons-git =
           (genPkgs nixpkgs system).callPackage ./packages/gruvbox-plus-icons-git.nix
             {
