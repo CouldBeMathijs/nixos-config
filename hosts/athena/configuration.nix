@@ -11,7 +11,7 @@
   plasma.enable = true;
   plasma-apps.enable = true;
 
-  cn-utils.enable = true;
+  schoolutils.cn.enable = true;
   ripping.enable = false;
   tailscale.enable = true;
   virtualbox.enable = true;
