@@ -28,6 +28,7 @@
     ./programs/jetbrains.nix
     ./programs/latex.nix
     ./programs/minecraft.nix
+    ./programs/zed.nix
     ./shells/bash.nix
     ./shells/fish.nix
     ./shells/starship.nix

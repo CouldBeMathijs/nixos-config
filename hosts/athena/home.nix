@@ -25,6 +25,7 @@
     fun-cli.enable = true;
     gramps.enable = true;
     minecraft.enable = true;
+    zed.enable = true;
 
     home.homeDirectory = "/home/mathijs";
     home.username = "mathijs";

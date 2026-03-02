@@ -21,6 +21,7 @@
     minecraft.enable = true;
     shell.fish.enable = true;
     jetbrains.clion.enable = true;
+    zed.enable = true;
 
     home.homeDirectory = "/home/mathijs";
     home.username = "mathijs";
