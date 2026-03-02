@@ -26,6 +26,7 @@
     ollama.enable = true;
     plasma-theming.enable = true;
     shell.fish.enable = true;
+    zed.enable = true;
 
     home.homeDirectory = "/home/mathijs";
     home.username = "mathijs";
