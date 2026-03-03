@@ -35,24 +35,14 @@ in
         # --- UI & Window Management ---
         "theme" = "Gruvbox Dark";
 
-        # macOS-style buttons (fixes the yellow underline deprecations)
-        "window" = {
-          "controls_style" = "classic"; # Circular 'traffic light' buttons
-        };
-
-        "title_bar" = {
-          "content_left" = "window_controls"; # Move buttons to the left
-          "show_title" = true;
-        };
-
         "project_panel" = {
           "dock" = "left";
           "default_width" = 240;
         };
 
         # --- Modal Editing (Helix) ---
-        "helix_mode" = true; # Replaces the older modal_editing_enabled
-        "cursor_shape" = "block";
+        "helix_mode" = true;
+        "autosave" = "on_window_change";
         "ui_font_size" = 18;
         "buffer_font_size" = 14;
 
