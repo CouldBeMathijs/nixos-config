@@ -41,14 +41,15 @@ in
         "**/vesktop/sessionData/Cache" # Vesktop cache does not support XDG
 
         # --- Development (The "Ignore These" Hall of Fame) ---
-        "**/node_modules"
-        "**/venv" # Python virtual enviorment
-        "**/.venv"
-        "**/cmake-build*" # Cmake data directories (created by CLion)
-        "**/target" # Rust build artifacts
-        "**/dist" # General distribution folders
-        "**/build" # General build folders
         "**/.direnv" # Cache for direnv
+        "**/.venv*"
+        "**/__pycache__"
+        "**/build" # General build folders
+        "**/cmake-build*" # Cmake data directories (created by CLion)
+        "**/dist" # General distribution folders
+        "**/node_modules"
+        "**/target" # Rust build artifacts
+        "**/venv" # Python virtual enviorment
 
         # --- Gaming ---
         "**/.local/share/Steam/steamapps/common" # The actual game files
