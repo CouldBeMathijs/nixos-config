@@ -101,7 +101,7 @@ in
           UseSizeLimit = false;
           UseTimeLimit = true;
         };
-
+        ksmserverrc.General.loginMode = "emptySession";
       };
       kscreenlocker.appearance.wallpaper = wallpaperPath;
       fonts = {
