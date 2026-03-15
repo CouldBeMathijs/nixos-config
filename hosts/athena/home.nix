@@ -38,6 +38,7 @@
       shotcut # Video editing
       kdePackages.kwordquiz # Flash card builder
       kooha
+      xournalpp
 
       # Messaging apps
       signal-desktop
