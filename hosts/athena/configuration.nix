@@ -45,6 +45,7 @@
   users.users.mathijs = {
     isNormalUser = true;
     description = "Mathijs Pittoors";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"

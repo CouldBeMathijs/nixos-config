@@ -7,7 +7,7 @@
 
   config = {
     # Enable shell configuration
-    shell.fish.enable = true;
+    shell.zsh.enable = true;
 
     # Enable fastfetch configuration
     fastfetch.enable = true;

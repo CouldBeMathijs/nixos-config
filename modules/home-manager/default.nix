@@ -32,6 +32,7 @@
     ./shells/bash.nix
     ./shells/fish.nix
     ./shells/starship.nix
+    ./shells/zsh.nix
   ];
 
   options = {
