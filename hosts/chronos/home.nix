@@ -25,7 +25,7 @@
     minecraft.enable = true;
     ollama.enable = true;
     plasma-theming.enable = true;
-    shell.fish.enable = true;
+    shell.zsh.enable = true;
     zed.enable = true;
 
     home.homeDirectory = "/home/mathijs";
