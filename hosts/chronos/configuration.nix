@@ -18,7 +18,7 @@
 
   gaming.heroic.enable = true;
   gaming.steam.enable = true;
-  locale.language = "irish";
+  locale.language = "finnish";
   ripping.enable = false;
   tailscale.enable = true;
   virtualbox.enable = true;
@@ -44,18 +44,19 @@
 
   security = {
     rtkit.enable = true;
-    sudo-rs.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mathijs = {
     isNormalUser = true;
     description = "Mathijs Pittoors";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
     ];
   };
+  programs.zsh.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -65,6 +66,7 @@
     bluez
     bluez-tools
   ];
+  services.xserver.windowManager.openbox.enable = true;
 
   boot = {
     # kernelPackages = pkgs.linuxPackages_latest;
