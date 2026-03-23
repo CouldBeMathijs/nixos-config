@@ -40,16 +40,4 @@
       description = "The static IP address of the server.";
     };
   };
-
-  # Global Defaults
-  config = {
-    audio.enable = lib.mkDefault true;
-    cli-utils.enable = lib.mkDefault true;
-    fonts.enable = lib.mkDefault true;
-    lix.enable = lib.mkDefault true;
-    locale.enable = lib.mkDefault true;
-    plymouth.enable = lib.mkDefault true;
-    printing.enable = lib.mkDefault true;
-    fwupd.enable = lib.mkDefault true;
-  };
 }

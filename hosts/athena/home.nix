@@ -1,93 +1,29 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     ../../modules/home-manager
+    ../../modules/home-manager/common.nix
+    ../../modules/home-manager/desktop.nix
   ];
 
-  config = {
-    # Enable shell configuration
-    shell.zsh.enable = true;
+  shell.zsh.enable = true;
+  plasma-theming.enable = true;
 
-    # Enable fastfetch configuration
-    fastfetch.enable = true;
+  # School things
+  jetbrains.enable = true;
+  latex.enable = true;
 
-    # Enable Plasma config
-    plasma-theming.enable = true;
+  # Extras
+  dosbox.enable = true;
+  fun-cli.enable = true;
 
-    # School things
-    jetbrains.enable = true;
-    latex.enable = true;
-
-    composing.enable = true;
-    discord.enable = true;
-    dosbox.enable = true;
-    fun-cli.enable = true;
-    gramps.enable = true;
-    minecraft.enable = true;
-    zed.enable = true;
-
-    home.homeDirectory = "/home/mathijs";
-    home.username = "mathijs";
-    # This value determines the Home Manager release that your configuration is
-    # compatible with.
-    home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
-    home.packages = with pkgs; [
-      obs-studio # Record you screen
-      audacity # Audio recording and editing
-      shotcut # Video editing
-      kdePackages.kwordquiz # Flash card builder
-      kooha
-      xournalpp
-
-      # Messaging apps
-      signal-desktop
-
-      # Documents
-      libreoffice-fresh
-    ];
-
-    xdg = {
-      enable = true;
-      desktopEntries = {
-        "cups" = {
-          name = "Cups Printer Manager";
-          noDisplay = true;
-        };
-
-        "com.mitchellh.ghostty" = {
-          name = "Ghostty";
-          genericName = "Terminal Emulator";
-          comment = "A terminal emulator";
-          exec = "ghostty";
-          icon = "terminal";
-          categories = [
-            "System"
-            "TerminalEmulator"
-          ];
-          startupNotify = true;
-          terminal = false;
-          actions = {
-            new-window = {
-              name = "New Window";
-              exec = "ghostty";
-            };
-          };
-        };
-      };
-    };
-
-    # Ghostty terminal configuration
-    programs.ghostty = {
-      enable = true;
-      enableBashIntegration = true;
-      installBatSyntax = true;
-      settings = {
-        theme = "Gruvbox Dark Hard";
-      };
-    };
-
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
-  };
+  home.packages = with pkgs; [
+    obs-studio
+    audacity
+    shotcut
+    kdePackages.kwordquiz
+    kooha
+    xournalpp
+  ];
 }

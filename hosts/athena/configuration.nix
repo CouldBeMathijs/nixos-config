@@ -26,6 +26,7 @@
 
   imports = [
     ./../../modules/nixos
+    ./../../modules/desktop.nix
   ];
 
   services = {
