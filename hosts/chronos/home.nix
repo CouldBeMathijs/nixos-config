@@ -1,85 +1,23 @@
-{
-  config,
-  pkgs,
-  gruvbox-plus-icons-git,
-  ...
-}:
+{ pkgs, gruvbox-plus-icons-git, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-
   imports = [
     ../../modules/home-manager
+    ../../modules/home-manager/common.nix
+    ../../modules/home-manager/desktop.nix
   ];
 
-  config = {
-    calibre.enable = false;
-    composing.enable = true;
-    discord.enable = true;
-    dosbox.enable = true;
-    fastfetch.enable = true;
-    gramps.enable = true;
-    helix.enable = true;
-    latex.enable = true;
-    minecraft.enable = true;
-    ollama.enable = true;
-    plasma-theming.enable = true;
-    shell.zsh.enable = true;
-    zed.enable = true;
+  shell.zsh.enable = true;
+  plasma-theming.enable = true;
+  latex.enable = true;
+  dosbox.enable = true;
+  helix.enable = true;
+  ollama.enable = true;
+  calibre.enable = false;
 
-    home.homeDirectory = "/home/mathijs";
-    home.username = "mathijs";
-    # This value determines the Home Manager release that your configuration is
-    # compatible with.
-    home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
-    home.packages = with pkgs; [
-      signal-desktop
-      libreoffice-fresh
-      gruvbox-plus-icons-git
-      subtitlecomposer
-      obs-studio
-    ];
-
-    xdg = {
-      enable = true;
-      desktopEntries = {
-        "cups" = {
-          name = "Cups Printer Manager";
-          noDisplay = true;
-        };
-        "com.mitchellh.ghostty" = {
-          name = "Ghostty";
-          genericName = "Terminal Emulator";
-          comment = "A terminal emulator";
-          exec = "ghostty";
-          icon = "terminal";
-          categories = [
-            "System"
-            "TerminalEmulator"
-          ];
-          startupNotify = true;
-          terminal = false;
-          actions = {
-            new-window = {
-              name = "New Window";
-              exec = "ghostty";
-            };
-          };
-        };
-      };
-    };
-    # Ghostty terminal configuration
-    programs.ghostty = {
-      enable = true;
-      enableBashIntegration = true;
-      installBatSyntax = true;
-      settings = {
-        theme = "Gruvbox Dark Hard";
-      };
-    };
-
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
-  };
+  home.packages = with pkgs; [
+    gruvbox-plus-icons-git
+    subtitlecomposer
+    obs-studio
+  ];
 }

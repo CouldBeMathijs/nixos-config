@@ -30,6 +30,7 @@
 
   imports = [
     ./../../modules/nixos
+    ./../../modules/nixos/desktop.nix
   ];
   services = {
     envfs.enable = true;
