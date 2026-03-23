@@ -19,9 +19,6 @@
   gaming.heroic.enable = true;
   locale.language = "irish";
 
-  # Allow unfree packages
-  
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -30,7 +27,6 @@
   ];
   services = {
     envfs.enable = true;
-    
   };
 
   security = {
@@ -46,21 +42,6 @@
       "networkmanager"
       "wheel"
     ];
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    gimp # GNU Image Manipulation Program
-    
-  ];
-
-  boot = {
-    # kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
   };
 
   # Nvidia
@@ -139,13 +120,4 @@
       };
     };
   };
-
-  # Do not change me unless you know what you are doing!! Check documentation first!!
-  system.stateVersion = "25.05"; # Did you read the comment?
-
-  # Enable Flakes
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 }
