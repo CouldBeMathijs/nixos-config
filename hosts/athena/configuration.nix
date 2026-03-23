@@ -7,7 +7,6 @@
 {
   networking.hostName = "athena";
 
-  # Enable Desktops and all packages around it
   plasma.enable = true;
   plasma-apps.enable = true;
 
@@ -15,9 +14,6 @@
   ripping.enable = false;
   tailscale.enable = true;
   virtualbox.enable = true;
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   restic-client = {
     enable = true;
@@ -54,27 +50,4 @@
   };
   programs.zsh.enable = true;
   locale.language = "irish";
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # Media
-    gimp # GNU Image Manipulation Program
-  ];
-  boot = {
-    # kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
-
-  # Do not change me unless you know what you are doing!! Check documentation first!!
-  system.stateVersion = "25.05"; # Did you read the comment?
-
-  # Enable Flakes
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 }

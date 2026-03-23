@@ -1,6 +1,8 @@
 { inputs, self, ... }:
 
 let
+  lib = inputs.nixpkgs.lib;
+
   genPkgs =
     pkgsSource: system:
     import pkgsSource {
@@ -8,15 +10,18 @@ let
       config.allowUnfree = true;
     };
 
+  # mkHost now takes a single argument: the hostname
   mkHost =
-    {
-      hostname,
-      username,
-      system,
-      useStable ? false,
-      extraModules ? [ ],
-    }:
+    hostname:
     let
+      # Import the host-specific metadata
+      meta = import ../hosts/${hostname}/meta.nix { inherit inputs; };
+
+      system = meta.system or "x86_64-linux";
+      username = meta.username;
+      useStable = meta.useStable or false;
+      extraModules = meta.extraModules or [ ];
+
       baseNixpkgs = if useStable then inputs.nixpkgs-stable else inputs.nixpkgs;
       hmModule =
         if useStable then
@@ -28,14 +33,14 @@ let
       inherit system;
       pkgs = genPkgs baseNixpkgs system;
 
-      # Pass things into configuration.nix
       specialArgs = {
-        inherit inputs self;
+        inherit inputs self hostname;
         pkgs-unstable = genPkgs inputs.nixpkgs system;
         pkgs-stable = genPkgs inputs.nixpkgs-stable system;
       };
 
       modules = [
+        ../modules/nixos/common.nix
         ../hosts/${hostname}/configuration.nix
         ../hosts/${hostname}/hardware-configuration.nix
 
@@ -44,7 +49,6 @@ let
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # Pass things into home.nix
           home-manager.extraSpecialArgs = {
             inherit (inputs) zen-browser;
             inherit self inputs;
@@ -73,36 +77,13 @@ let
       ++ extraModules;
     };
 
+  hostsDir = ../hosts;
+  hostNames = lib.attrNames (
+    lib.filterAttrs (name: type: type == "directory") (builtins.readDir hostsDir)
+  );
+
 in
 {
-  flake.nixosConfigurations = {
-    athena = mkHost {
-      hostname = "athena";
-      username = "mathijs";
-      system = "x86_64-linux";
-      useStable = false;
-      extraModules = [ inputs.asus-numberpad-driver.nixosModules.default ];
-    };
-
-    chronos = mkHost {
-      hostname = "chronos";
-      username = "mathijs";
-      system = "x86_64-linux";
-      useStable = false;
-    };
-
-    dionysus = mkHost {
-      hostname = "dionysus";
-      username = "mathijs";
-      system = "x86_64-linux";
-      useStable = false;
-    };
-
-    zeus = mkHost {
-      hostname = "zeus";
-      username = "zeus";
-      system = "x86_64-linux";
-      useStable = true;
-    };
-  };
+  # lib.genAttrs automatically creates an attribute set like { athena = mkHost "athena"; ... }
+  flake.nixosConfigurations = lib.genAttrs hostNames mkHost;
 }

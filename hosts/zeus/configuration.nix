@@ -67,17 +67,4 @@
     vulkan-tools
     vulkan-validation-layers
   ];
-  boot = {
-    # kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
-
-  system.stateVersion = "25.11"; # Did you read the comment?
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 }
