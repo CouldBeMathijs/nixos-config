@@ -52,6 +52,7 @@
       "wireshark"
     ];
   };
+  programs.zsh.enable = true;
   locale.language = "irish";
 
   # List packages installed in system profile. To search, run:
