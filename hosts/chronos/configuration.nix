@@ -21,7 +21,6 @@
   locale.language = "finnish";
   ripping.enable = false;
   tailscale.enable = true;
-  virtualbox.enable = true;
 
   restic-client = {
     enable = true;
