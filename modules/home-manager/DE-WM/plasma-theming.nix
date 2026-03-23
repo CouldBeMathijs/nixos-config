@@ -63,15 +63,6 @@ in
         plasmashell."activate task manager entry 10" = "Meta+0";
 
       };
-      input = {
-        keyboard.layouts = [
-          {
-            displayName = "usi";
-            layout = "us";
-            variant = "intl";
-          }
-        ];
-      };
       workspace = {
         iconTheme = "Gruvbox-Plus-Dark";
         lookAndFeel = "org.kde.breezedark.desktop";
