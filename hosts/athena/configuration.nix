@@ -50,5 +50,5 @@
     ];
   };
   programs.zsh.enable = true;
-  locale.language = "irish";
+  locale.code = "en_IE";
 }

@@ -18,7 +18,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Brussels";
 
-  locale.language = "irish";
+  locale.code = "en_IE";
 
   # Disable some desktop defaults not needed on servers
   fonts.enable = false;
