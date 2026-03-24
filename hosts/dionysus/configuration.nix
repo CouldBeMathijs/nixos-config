@@ -17,7 +17,7 @@
 
   gaming.steam.enable = true;
   gaming.heroic.enable = true;
-  locale.language = "irish";
+  locale.code = "en_IE";
 
   # Enable networking
   networking.networkmanager.enable = true;

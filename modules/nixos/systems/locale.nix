@@ -5,59 +5,36 @@
   ...
 }:
 let
-  locales = {
-    irish = {
-      code = "en_IE.UTF-8";
-    };
-    finnish = {
-      code = "fi_FI.UTF-8";
-    };
-  };
-
-  selectedLanguage = locales.${config.locale.language} or locales.irish;
+  cfg = config.locale;
+  fullLocale = "${cfg.code}.UTF-8";
 in
 {
   options = {
-    locale.enable = lib.mkEnableOption "enable locale.nix";
+    locale.enable = lib.mkEnableOption "enable locale";
 
-    locale.language = lib.mkOption {
+    locale.code = lib.mkOption {
       type = lib.types.str;
-      default = "irish";
+      default = "en_IE";
+      example = "fi_FI";
       description = ''
-        The language locale to use. Supported values are "irish" (en_IE.UTF-8) or 
-        "finnish" (fi_FI.UTF-8).
+        The locale identifier (language_COUNTRY). 
+        The module will automatically append .UTF-8 where applicable.
       '';
     };
   };
 
-  config = lib.mkIf config.locale.enable {
+  config = lib.mkIf cfg.enable {
+    time.timeZone = lib.mkDefault "Europe/Brussels";
 
-    time.timeZone = "Europe/Brussels";
-    i18n.defaultLocale = selectedLanguage.code;
+    i18n.defaultLocale = fullLocale;
 
     i18n.extraLocaleSettings = {
-      LC_ALL = selectedLanguage.code;
-      /**
-        LANG = selectedLanguage.code;
-        LANGUAGE = selectedLanguage.code;
-        LC_ADDRESS = selectedLanguage.code;
-        LC_COLLATE = selectedLanguage.code;
-        LC_CTYPE = selectedLanguage.code;
-        LC_IDENTIFICATION = selectedLanguage.code;
-        LC_MEASUREMENT = selectedLanguage.code;
-        LC_MESSAGES = selectedLanguage.code;
-        LC_MONETARY = selectedLanguage.code;
-        LC_NAME = selectedLanguage.code;
-        LC_NUMERIC = selectedLanguage.code;
-        LC_PAPER = selectedLanguage.code;
-        LC_TELEPHONE = selectedLanguage.code;
-        LC_TIME = selectedLanguage.code;
-        *
-      */
+      LC_ALL = fullLocale;
     };
 
-    i18n.extraLocales = [
-      "en_GB.UTF-8/UTF-8"
+    i18n.supportedLocales = [
+      "${fullLocale}/UTF-8"
+      "en_IE.UTF-8/UTF-8"
       "nl_BE.UTF-8/UTF-8"
       "fi_FI.UTF-8/UTF-8"
     ];
@@ -70,10 +47,9 @@ in
           symbolsFile = "${pkgs.qwerty-fr}/share/X11/xkb/symbols/us_qwerty-fr";
         };
       };
-
       xkb.layout = "qwerty-fr";
     };
-    console.keyMap = "us";
 
+    console.keyMap = "us";
   };
 }

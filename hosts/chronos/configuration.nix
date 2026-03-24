@@ -18,7 +18,7 @@
 
   gaming.heroic.enable = true;
   gaming.steam.enable = true;
-  locale.language = "finnish";
+  locale.code = "fi_FI";
   ripping.enable = false;
   tailscale.enable = true;
 
