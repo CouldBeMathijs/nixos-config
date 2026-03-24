@@ -1,6 +1,6 @@
 # My NixOS-config
 
-Expects to be put in ~/.dotfiles
+Expects to be put in `~/.dotfiles`
 
 Do not forget to bring your own hardware-configuration.nix!
 
@@ -20,4 +20,5 @@ Hosts:
      - PiHole
      - Jellyfin
      - Immich
-     ...
+     - Restic Back-up server
+     - ...
