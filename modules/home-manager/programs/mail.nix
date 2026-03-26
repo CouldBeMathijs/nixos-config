@@ -3,7 +3,6 @@
   lib,
   config,
   options,
-  zen-browser,
   ...
 }:
 let
@@ -17,7 +16,7 @@ in
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      thunderbird
+      thunderbird-latest
     ];
   };
 }
