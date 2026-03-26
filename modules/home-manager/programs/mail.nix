@@ -19,4 +19,5 @@ in
     home.packages = with pkgs; [
       thunderbird
     ];
-};
+  };
+}
