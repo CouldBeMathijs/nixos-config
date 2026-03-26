@@ -149,6 +149,7 @@ in
                     "applications:org.kde.konsole.desktop"
                     "applications:org.kde.dolphin.desktop"
                     "applications:vesktop.desktop"
+                    "applications:thunderbird.desktop"
                   ];
                 };
               };
