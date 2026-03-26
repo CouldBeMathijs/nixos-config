@@ -21,6 +21,7 @@
   locale.code = "fi_FI";
   ripping.enable = false;
   tailscale.enable = true;
+  schoolutils.cn.enable = true;
 
   restic-client = {
     enable = true;
