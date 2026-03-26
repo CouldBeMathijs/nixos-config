@@ -48,11 +48,13 @@
   users.users.zeus = {
     isNormalUser = true;
     description = "Zeus";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
     ];
   };
+  programs.zsh.enable = true;
 
   # Hardware acceleration
   services.xserver = {
