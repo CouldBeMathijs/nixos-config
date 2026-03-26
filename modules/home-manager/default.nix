@@ -33,6 +33,7 @@
     ./shells/fish.nix
     ./shells/starship.nix
     ./shells/zsh.nix
+    ./programs/mail.nix
   ];
 
   options = {
@@ -41,15 +42,5 @@
       description = "The path where the flake is stored";
       default = "${config.home.homeDirectory}/.dotfiles";
     };
-  };
-
-  config = {
-    browser.enable = lib.mkDefault true;
-    git.enable = lib.mkDefault true;
-    helix.enable = lib.mkDefault true;
-    nh.enable = lib.mkDefault true;
-    nix-direnv.enable = lib.mkDefault true;
-    shell.bash.enable = lib.mkDefault true;
-    starship.enable = lib.mkDefault true;
   };
 }
