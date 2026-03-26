@@ -1,13 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Common desktop apps and utilities
-  composing.enable = true;
-  discord.enable = true;
-  fastfetch.enable = true;
-  gramps.enable = true;
-  minecraft.enable = true;
-  zed.enable = true;
+  browser.enable = lib.mkDefault true;
+  composing.enable = lib.mkDefault true;
+  discord.enable = lib.mkDefault true;
+  mail.enable = lib.mkDefault true;
+  minecraft.enable = lib.mkDefault true;
+  zed.enable = lib.mkDefault true;
 
   # Shared packages across all desktops
   home.packages = with pkgs; [

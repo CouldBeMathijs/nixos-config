@@ -17,13 +17,14 @@
   # Extras
   dosbox.enable = true;
   fun-cli.enable = true;
+  gramps.enable = true;
 
   home.packages = with pkgs; [
-    obs-studio
     audacity
-    shotcut
     kdePackages.kwordquiz
     kooha
+    obs-studio
+    shotcut
     xournalpp
   ];
 }
