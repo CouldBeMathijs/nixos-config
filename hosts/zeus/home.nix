@@ -7,5 +7,5 @@
   ];
 
   browser.enable = false;
-  shell.fish.enable = true;
+  shell.zsh.enable = true;
 }
