@@ -150,6 +150,7 @@ in
                     "applications:org.kde.dolphin.desktop"
                     "applications:vesktop.desktop"
                     "applications:thunderbird.desktop"
+                    "applications:signal.desktop"
                   ];
                 };
               };
