@@ -41,11 +41,11 @@
     "gruvbox-icons": {
       "flake": false,
       "locked": {
-        "lastModified": 1775040877,
-        "narHash": "sha256-3ALVM1dUleW2KIQuVU0oSz2vQpIkotcm8RT1DVNU9zI=",
+        "lastModified": 1775122283,
+        "narHash": "sha256-ubQirmtgzhlH34A46WA44+syH3ZMFNq/JavIzsthO0M=",
         "owner": "SylEleuth",
         "repo": "gruvbox-plus-icon-pack",
-        "rev": "8a2c2fddf419faaf355ba4893253cc77d04e41f5",
+        "rev": "a08cacc7e189d7c25f44f31b464841301813ca41",
         "type": "github"
       },
       "original": {
