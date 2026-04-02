@@ -15,6 +15,7 @@
     ./programs/schoolutils.nix
     ./programs/virtualbox.nix
     ./services/auto-updater.nix
+    ./services/bluetooth.nix
     ./services/calibre-web.nix
     ./services/fwupd.nix
     ./services/homepage-dashboard.nix

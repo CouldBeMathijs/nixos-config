@@ -20,6 +20,11 @@
     "flakes"
   ];
 
+  security = {
+    sudo-rs.enable = lib.mkDefault true;
+    rtkit.enable = lib.mkDefault true;
+  };
+
   # Default State Version
   system.stateVersion = lib.mkDefault "25.11";
 }

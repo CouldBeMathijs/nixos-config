@@ -40,10 +40,6 @@
     };
   };
 
-  security = {
-    rtkit.enable = true;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mathijs = {
     isNormalUser = true;
@@ -55,11 +51,6 @@
     ];
   };
   programs.zsh.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    bluez
-    bluez-tools
-  ];
 
   # Nvidia
 
@@ -104,27 +95,4 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        # Shows battery charge of connected devices on supported
-        # Bluetooth adapters. Defaults to 'false'.
-        Experimental = true;
-        # When enabled other devices can connect faster to us, however
-        # the tradeoff is increased power consumption. Defaults to
-        # 'false'.
-        FastConnectable = false;
-      };
-      Policy = {
-        # Enable all controllers when they are found. This includes
-        # adapters present on start as well as adapters that are plugged
-        # in later on. Defaults to 'true'.
-        AutoEnable = true;
-      };
-    };
-  };
-
 }
