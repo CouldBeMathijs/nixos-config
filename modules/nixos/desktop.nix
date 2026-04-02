@@ -5,4 +5,5 @@
   fonts.enable = lib.mkDefault true;
   plymouth.enable = lib.mkDefault true;
   printing.enable = lib.mkDefault true;
+  bluetooth.enable = lib.mkDefault true;
 }

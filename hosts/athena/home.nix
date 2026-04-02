@@ -11,7 +11,6 @@
   plasma-theming.enable = true;
 
   # School things
-  jetbrains.enable = true;
   latex.enable = true;
 
   # Extras
