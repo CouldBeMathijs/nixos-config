@@ -7,10 +7,14 @@
   locale.enable = true;
   lix.enable = true;
 
-  # Bootloader defaults
-  boot.loader.systemd-boot.enable = lib.mkDefault true;
-  boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
-
+  # Boot
+  boot = {
+    loader = {
+      systemd-boot.enable = lib.mkDefault true;
+      efi.canTouchEfiVariables = lib.mkDefault true;
+    };
+    kernelModules = [ "ntsync" ];
+  };
   # Networking
   networking.networkmanager.enable = lib.mkDefault true;
 
