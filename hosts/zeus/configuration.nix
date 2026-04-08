@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -20,11 +16,6 @@
 
   locale.code = "en_IE";
 
-  # Disable some desktop defaults not needed on servers
-  fonts.enable = false;
-  plymouth.enable = false;
-  printing.enable = false;
-
   # Server Services
   ssh.enable = true;
   homepage-dashboard.enable = true;
@@ -40,8 +31,44 @@
     dataDir = "/mnt/storage/backups";
   };
   calibre-web = {
-    enable = true;
+    enable = false;
     libraryLocation = "/mnt/storage/calibre-web";
+  };
+
+  # Samba Configuration
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "zeus";
+        "netbios name" = "zeus";
+        "security" = "user";
+      };
+      "NAS" = {
+        "path" = "/mnt/storage/NAS";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "zeus";
+      };
+    };
+  };
+
+  # Network Discovery
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      domain = true;
+      workstation = true;
+      userServices = true;
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -66,6 +93,7 @@
   environment.systemPackages = with pkgs; [
     libva
     libvdpau
+    tmux
     vulkan-tools
     vulkan-validation-layers
   ];
