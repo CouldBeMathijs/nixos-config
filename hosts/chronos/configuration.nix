@@ -51,6 +51,7 @@
     ];
   };
   programs.zsh.enable = true;
+  services.solaar.enable = true;
 
   # Nvidia
 
