@@ -26,7 +26,6 @@
     obs-studio
     shotcut
     xournalpp
-    devede
     krita
   ];
 }
