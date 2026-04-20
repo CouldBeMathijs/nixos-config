@@ -50,45 +50,40 @@ in
     environment.systemPackages = [ pkgs.restic ];
 
     services.restic.backups = lib.mapAttrs (backupName: backupCfg: {
-      repository = "placeholder";
+      repository = "env://RESTIC_REPOSITORY";
       passwordFile = cfg.passwordFile;
       paths = backupCfg.paths;
       extraOptions = cfg.extraOptions;
 
       exclude = [
-        # --- General Bloat and caches ---
         "**/.cache"
         "**/Downloads"
         "**/.local/share/Trash"
         "**/.thumbnails"
-        "**/direnv/prev" # Direnv stuff
+        "**/direnv/prev"
         "**/.direnv"
-        "**/vesktop/sessionData/Cache" # Vesktop cache does not support XDG
+        "**/vesktop/sessionData/Cache"
 
-        # --- Development (The "Ignore These" Hall of Fame) ---
-        "**/.direnv" # Cache for direnv
+        "**/.direnv"
         "**/.venv*"
         "**/__pycache__"
-        "**/build" # General build folders
-        "**/cmake-build*" # Cmake data directories (created by CLion)
-        "**/dist" # General distribution folders
+        "**/build"
+        "**/cmake-build*"
+        "**/dist"
         "**/node_modules"
-        "**/target" # Rust build artifacts
-        "**/venv" # Python virtual enviorment
+        "**/target"
+        "**/venv"
 
-        # --- Gaming ---
-        "**/.local/share/Steam/steamapps/common" # The actual game files
-        "**/.local/share/Steam/steamapps/downloading" # Temporary update files
-        "**/.local/share/Steam/steamapps/shadercache" # Precompiled shaders
+        "**/.local/share/Steam/steamapps/common"
+        "**/.local/share/Steam/steamapps/downloading"
+        "**/.local/share/Steam/steamapps/shadercache"
         "**/.paradoxlauncher"
         "**/GE-Proton-latest"
         "**/Games/Heroic"
 
-        # --- AI Stuff ---
         "**/easy-diffusion"
         "**/.ollama"
 
-        # --- Virtualbox ---
         "**/Virtualbox VMs"
         "/mnt/storage/backups"
       ];
@@ -118,11 +113,15 @@ in
         preStart = ''
           FOUND_TARGET=""
           for TARGET in $RESTIC_TARGET_LIST; do
-            # Robust Host Extraction
-            HOST=$(echo "$TARGET" | sed -e 's|^[^:]*:||' -e 's|^//||' -e 's|.*@||' -e 's|[:/].*||')
-            
-            echo "Checking reachability for $HOST..."
-            if [ -z "$HOST" ] || ping -c 1 -W 3 "$HOST" > /dev/null 2>&1; then
+            HOST=$(echo "$TARGET" | sed 's|.*://||' | sed 's|:.*||' | sed 's|/.*||')
+
+            if [ -z "$HOST" ]; then
+              echo "Warning: Could not extract host from target: $TARGET"
+              continue
+            fi
+
+            echo "Checking reachability for $HOST (from $TARGET)..."
+            if ping -c 1 -W 3 "$HOST" > /dev/null 2>&1; then
               echo "Successfully reached $HOST. Selection: $TARGET"
               FOUND_TARGET="$TARGET"
               break

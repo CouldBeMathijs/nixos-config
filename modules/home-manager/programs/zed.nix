@@ -22,6 +22,7 @@ in
         nil # Nix LSP
         pyright # Python LSP
         clang-tools # C/C++ LSP (clangd)
+        markdown-oxide # Markdown LSP
       ]
       ++ lib.optionals latexEnabled [
         texlab # LaTeX LSP
@@ -64,6 +65,10 @@ in
             "language_servers" = [ "clangd" ];
             "format_on_save" = "on";
           };
+          "Markdown" = {
+            "language_servers" = [ "markdown-oxide" ];
+            "format_on_save" = "on";
+          };
         }
         # Inject LaTeX if global option is enabled
         // lib.optionalAttrs latexEnabled {
@@ -75,7 +80,15 @@ in
         };
 
         # --- LSP Specifics ---
-        "lsp" = lib.optionalAttrs latexEnabled {
+        "lsp" = {
+          "markdown-oxide" = {
+            "settings" = {
+              # Add specific markdown-oxide settings here if needed
+              # e.g., "shorthand_links" = true;
+            };
+          };
+        }
+        // lib.optionalAttrs latexEnabled {
           "texlab" = {
             "settings" = {
               "texlab" = {
