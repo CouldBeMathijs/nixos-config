@@ -11,7 +11,6 @@
     ./programs/gaming.nix
     ./programs/gnome-apps.nix
     ./programs/plasma-apps.nix
-    ./programs/ripping.nix
     ./programs/schoolutils.nix
     ./programs/virtualbox.nix
     ./services/auto-updater.nix
@@ -21,6 +20,7 @@
     ./services/homepage-dashboard.nix
     ./services/immich.nix
     ./services/jellyfin.nix
+    ./services/optical.nix
     ./services/pihole.nix
     ./services/restic-client.nix
     ./services/restic-server.nix

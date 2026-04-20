@@ -19,7 +19,6 @@
   gaming.heroic.enable = true;
   gaming.steam.enable = true;
   locale.code = "en_IE";
-  ripping.enable = false;
   tailscale.enable = true;
   schoolutils.cn.enable = true;
 

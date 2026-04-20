@@ -11,7 +11,6 @@
   plasma-apps.enable = true;
 
   schoolutils.cn.enable = true;
-  ripping.enable = false;
   tailscale.enable = true;
   virtualbox.enable = true;
 
@@ -42,6 +41,7 @@
       "networkmanager"
       "wheel"
       "wireshark"
+      "burning"
     ];
   };
   programs.zsh.enable = true;
