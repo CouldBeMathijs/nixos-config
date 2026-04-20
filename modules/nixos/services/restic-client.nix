@@ -20,15 +20,40 @@ in
       type = lib.types.path;
       description = "Path to the file containing the repo password.";
     };
+    extraOptions = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "Extra command line options to pass to restic.";
+      example = [ "sftp.connections=1" ];
+    };
+    backups = lib.mkOption {
+      description = "Definition of backup sets.";
+      default = {
+        home-backup = {
+          paths = [ "/home" ];
+        };
+      };
+      type = lib.types.attrsOf (
+        lib.types.submodule {
+          options = {
+            paths = lib.mkOption {
+              type = lib.types.listOf lib.types.str;
+              description = "Paths to back up for this set.";
+            };
+          };
+        }
+      );
+    };
   };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ pkgs.restic ];
 
-    services.restic.backups.home-backup = {
+    services.restic.backups = lib.mapAttrs (backupName: backupCfg: {
       repository = "placeholder";
       passwordFile = cfg.passwordFile;
-      paths = [ "/home" ];
+      paths = backupCfg.paths;
+      extraOptions = cfg.extraOptions;
 
       exclude = [
         # --- General Bloat and caches ---
@@ -65,62 +90,55 @@ in
 
         # --- Virtualbox ---
         "**/Virtualbox VMs"
+        "/mnt/storage/backups"
       ];
+    }) cfg.backups;
 
-      timerConfig = {
-        OnCalendar = "daily";
-        Persistent = true;
-      };
-
-      pruneOpts = [
-        "--keep-daily 7"
-        "--keep-weekly 4"
-        "--keep-monthly 6"
-      ];
-    };
-
-    systemd.services.restic-backups-home-backup = {
-      path = [
-        pkgs.coreutils
-        pkgs.gnused
-        pkgs.iputils
-      ];
-
-      serviceConfig = {
-        EnvironmentFile = "-/run/restic-home-backup.env";
-
-        # Escaped quotes ensure systemd treats the list as a single variable
-        Environment = [
-          "RESTIC_TARGET_LIST=\"${lib.concatStringsSep " " locations}\""
+    systemd.services = lib.mapAttrs' (
+      backupName: backupCfg:
+      let
+        serviceName = "restic-backups-${backupName}";
+        envFilePath = "/run/restic-${backupName}.env";
+      in
+      lib.nameValuePair serviceName {
+        path = [
+          pkgs.coreutils
+          pkgs.gnused
+          pkgs.iputils
         ];
+        serviceConfig = {
+          EnvironmentFile = "-${envFilePath}";
+          Environment = [
+            "RESTIC_TARGET_LIST=\"${lib.concatStringsSep " " locations}\""
+          ];
+          Restart = "on-failure";
+          RestartSec = "1h";
+        };
 
-        Restart = "on-failure";
-        RestartSec = "1h";
-      };
+        preStart = ''
+          FOUND_TARGET=""
+          for TARGET in $RESTIC_TARGET_LIST; do
+            # Robust Host Extraction
+            HOST=$(echo "$TARGET" | sed -e 's|^[^:]*:||' -e 's|^//||' -e 's|.*@||' -e 's|[:/].*||')
+            
+            echo "Checking reachability for $HOST..."
+            if [ -z "$HOST" ] || ping -c 1 -W 3 "$HOST" > /dev/null 2>&1; then
+              echo "Successfully reached $HOST. Selection: $TARGET"
+              FOUND_TARGET="$TARGET"
+              break
+            else
+              echo "$HOST unreachable, trying next..."
+            fi
+          done
 
-      preStart = ''
-        FOUND_TARGET=""
-        # Iterate through the targets
-        for TARGET in $RESTIC_TARGET_LIST; do
-          HOST=$(echo "$TARGET" | sed -e 's|.*://||' -e 's|[:/].*||')
-          
-          echo "Checking reachability for $HOST..."
-          if ping -c 1 -W 3 "$HOST" > /dev/null 2>&1; then
-            echo "Successfully reached $HOST. Selection: $TARGET"
-            FOUND_TARGET="$TARGET"
-            break
-          else
-            echo "$HOST unreachable, trying next..."
+          if [ -z "$FOUND_TARGET" ]; then
+            echo "Error: No reachable backup targets found."
+            exit 1
           fi
-        done
 
-        if [ -z "$FOUND_TARGET" ]; then
-          echo "Error: No reachable backup targets found."
-          exit 1
-        fi
-
-        echo "RESTIC_REPOSITORY=$FOUND_TARGET" > /run/restic-home-backup.env
-      '';
-    };
+          echo "RESTIC_REPOSITORY=$FOUND_TARGET" > ${envFilePath}
+        '';
+      }
+    ) cfg.backups;
   };
 }

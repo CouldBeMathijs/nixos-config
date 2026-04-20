@@ -34,6 +34,24 @@
     enable = false;
     libraryLocation = "/mnt/storage/calibre-web";
   };
+  restic-client = {
+    enable = true;
+    remoteLocation = "sftp:restic-user@192.168.1.130:/share/Backup/restic-repo";
+
+    passwordFile = "/etc/restic-password";
+    extraOptions = [ "sftp.connections=1" ];
+    backups = {
+      home-backup = {
+        paths = [ "/home" ];
+      };
+      storage-backup = {
+        paths = [
+          "/mnt/jellyfin"
+          "/mnt/storage"
+        ];
+      };
+    };
+  };
 
   # Samba Configuration
   services.samba = {
