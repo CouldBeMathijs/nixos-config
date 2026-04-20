@@ -12,6 +12,7 @@
 
   # School things
   latex.enable = true;
+  jetbrains.pycharm.enable = true;
 
   # Extras
   dosbox.enable = true;
@@ -25,5 +26,7 @@
     obs-studio
     shotcut
     xournalpp
+    devede
+    krita
   ];
 }
