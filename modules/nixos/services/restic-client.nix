@@ -98,8 +98,8 @@ in
       lib.nameValuePair serviceName {
         path = [
           pkgs.coreutils
-          pkgs.gnused
           pkgs.iputils
+          # pkgs.gnused removed as it is no longer needed
         ];
         serviceConfig = {
           EnvironmentFile = "-${envFilePath}";
@@ -113,7 +113,23 @@ in
         preStart = ''
           FOUND_TARGET=""
           for TARGET in $RESTIC_TARGET_LIST; do
-            HOST=$(echo "$TARGET" | sed 's|^[^:]*://||' | sed 's|^[^@]*@||' | sed 's|:.*||' | sed 's|/.*||')
+            # Bypass ping checks entirely if the target is a local folder
+            if [ -d "$TARGET" ]; then
+              echo "Target $TARGET is a local directory. Selection: $TARGET"
+              FOUND_TARGET="$TARGET"
+              break
+            fi
+
+            # Use native shell parameter expansion to reliably extract the hostname.
+            # Note: The ''${} syntax is used to escape Nix's own variable interpolation.
+            HOST="$TARGET"
+            HOST="''${HOST#rest:}"     # Strip 'rest:' prefix
+            HOST="''${HOST#http://}"   # Strip 'http://' prefix
+            HOST="''${HOST#https://}"  # Strip 'https://' prefix
+            HOST="''${HOST#sftp:}"     # Strip 'sftp:' prefix
+            HOST="''${HOST#*@}"        # Strip user authentication up to '@'
+            HOST="''${HOST%%/*}"       # Strip paths from the first '/' to the end
+            HOST="''${HOST%%:*}"       # Strip ports from the first ':' to the end
 
             if [ -z "$HOST" ]; then
               echo "Warning: Could not extract host from target: $TARGET"
