@@ -113,7 +113,7 @@ in
         preStart = ''
           FOUND_TARGET=""
           for TARGET in $RESTIC_TARGET_LIST; do
-            HOST=$(echo "$TARGET" | sed 's|.*://||' | sed 's|:.*||' | sed 's|/.*||')
+            HOST=$(echo "$TARGET" | sed 's|^[^:]*://||' | sed 's|^[^@]*@||' | sed 's|:.*||' | sed 's|/.*||')
 
             if [ -z "$HOST" ]; then
               echo "Warning: Could not extract host from target: $TARGET"

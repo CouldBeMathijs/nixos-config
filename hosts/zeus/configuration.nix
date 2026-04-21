@@ -36,7 +36,7 @@
   };
   restic-client = {
     enable = true;
-    remoteLocation = "sftp:restic-user@192.168.1.130:/share/Backup/restic-repo";
+    remoteLocation = [ "sftp:restic-user@192.168.1.130:/share/Backup/restic-repo" ];
 
     passwordFile = "/etc/restic-password";
     extraOptions = [ "sftp.connections=1" ];
