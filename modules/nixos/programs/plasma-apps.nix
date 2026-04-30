@@ -19,6 +19,7 @@ in
       karp # Pdf page editor
       kdePackages.dragon # Video player
       kdePackages.elisa # Music player
+      kdePackages.falkon # Quick Browser
       kdePackages.filelight # Disk Usage Analyser
       kdePackages.isoimagewriter # dd but Gnome
       kdePackages.kapman # Pacman in all but name
