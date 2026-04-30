@@ -44,6 +44,11 @@
       "burning"
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    android-tools
+  ];
+
   programs.zsh.enable = true;
   locale.code = "en_IE";
 }
