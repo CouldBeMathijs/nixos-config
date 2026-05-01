@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777284944,
-        "narHash": "sha256-4bdnP3w44aXRWvzCy4zWT0+mjcunW/g/CeWjKHQgKvE=",
+        "lastModified": 1777583029,
+        "narHash": "sha256-hakr5Uj80F3GM524AtMZKjHVe3aTGPXAsd/LgCHi+Jw=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "5d2efa38c4b84bdce611d27391c63e374f507b14",
+        "rev": "d326cf486c08e94a97c1f593c5285900b833c3e8",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
     "gruvbox-icons": {
       "flake": false,
       "locked": {
-        "lastModified": 1777373815,
-        "narHash": "sha256-t+MBqevuBl9s2/8hamKI9IOvAYUfHcxeM9+10aSFzlE=",
+        "lastModified": 1777544534,
+        "narHash": "sha256-6lhO7t/Do+FKWYwd8CuV5yQOiWYXrIwtD3047ShNAHM=",
         "owner": "SylEleuth",
         "repo": "gruvbox-plus-icon-pack",
-        "rev": "89239a003ac4325c025e431546c185d0d7c83632",
+        "rev": "6f1caefc0a72b242a62bcbc5a479727d4d71411b",
         "type": "github"
       },
       "original": {
@@ -80,11 +80,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777434174,
-        "narHash": "sha256-KwTyQ5g2qDhWIs/O6vH8HeF8n4JCzZIT/VYE7nYnukQ=",
+        "lastModified": 1777594677,
+        "narHash": "sha256-h90sHwoRJLRvaTpZroTvU2JRHDFj0czUafM8eqLe1RI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d3b4e4b1bd59aedd3d4eb0a8df7162edb6da4607",
+        "rev": "899c08a15beae5da51a5cecd6b2b994777a948da",
         "type": "github"
       },
       "original": {
@@ -188,11 +188,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1777077449,
-        "narHash": "sha256-AIiMJiqvGrN4HyLEbKAoCSRRYn0rnlW5VbKNIMIYqm4=",
+        "lastModified": 1777428379,
+        "narHash": "sha256-ypxFOeDz+CqADEQNL72haqGjvZQdBR5Vc7pyx2JDttI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a4bf06618f0b5ee50f14ed8f0da77d34ecc19160",
+        "rev": "755f5aa91337890c432639c60b6064bb7fe67769",
         "type": "github"
       },
       "original": {
@@ -305,11 +305,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777319996,
-        "narHash": "sha256-R4CU/EnNPobkQmqD6Hy9/O2PXDTzG42/I50WcOg4BpY=",
+        "lastModified": 1777564084,
+        "narHash": "sha256-O9VRkxg+2j+sh+c73wi4VeIBECoqW2PlnCR9Qe1nQKA=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "ee1541938b00f8308d580b184756203bd24ed4e6",
+        "rev": "d93443c0f6fdb3b179bed68856f322dba4842612",
         "type": "github"
       },
       "original": {

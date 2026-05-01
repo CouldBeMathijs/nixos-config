@@ -14,14 +14,17 @@ in
   };
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      # kdePackages.kdenlive # Video editor
       gtranslator # PO translation editor
-      karp # Pdf page editor
       haruna # Video player
+      karp # Pdf page editor
+      kdePackages.dragon # Video player
       # kdePackages.elisa # Music player
+      kdePackages.elisa # Music player
+      kdePackages.falkon # Quick Browser
       kdePackages.filelight # Disk Usage Analyser
       kdePackages.isoimagewriter # dd but Gnome
       kdePackages.kapman # Pacman in all but name
+      # kdePackages.kdenlive # Video editor
       kdePackages.kolourpaint # Paint
       kdePackages.konquest # A small game
       kdePackages.okular # Pdf reader
