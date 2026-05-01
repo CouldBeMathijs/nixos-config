@@ -21,6 +21,7 @@
   locale.code = "en_IE";
   tailscale.enable = true;
   schoolutils.cn.enable = true;
+  optical.ripping.enable = true;
 
   restic-client = {
     enable = true;
@@ -95,4 +96,8 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  environment.systemPackages = with pkgs; [
+    proton-vpn
+  ];
 }

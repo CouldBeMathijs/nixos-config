@@ -17,8 +17,8 @@ in
       # kdePackages.kdenlive # Video editor
       gtranslator # PO translation editor
       karp # Pdf page editor
-      kdePackages.dragon # Video player
-      kdePackages.elisa # Music player
+      haruna # Video player
+      # kdePackages.elisa # Music player
       kdePackages.filelight # Disk Usage Analyser
       kdePackages.isoimagewriter # dd but Gnome
       kdePackages.kapman # Pacman in all but name
