@@ -17,6 +17,7 @@
     ./services/bluetooth.nix
     ./services/calibre-web.nix
     ./services/fwupd.nix
+    ./services/gitea.nix
     ./services/homepage-dashboard.nix
     ./services/immich.nix
     ./services/jellyfin.nix

@@ -34,6 +34,7 @@
     enable = false;
     libraryLocation = "/mnt/storage/calibre-web";
   };
+  gitea.enable = false;
   restic-client = {
     enable = true;
     remoteLocation = [ "sftp:restic-user@192.168.1.130:/share/Backup/restic-repo" ];
