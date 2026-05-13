@@ -10,7 +10,6 @@
   plasma.enable = true;
   plasma-apps.enable = true;
 
-  schoolutils.cn.enable = true;
   tailscale.enable = true;
   virtualbox.enable = true;
 

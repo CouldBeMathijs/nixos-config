@@ -23,9 +23,8 @@
     audacity
     kdePackages.kwordquiz
     kooha
-    obs-studio
+    krita
     shotcut
     xournalpp
-    krita
   ];
 }
