@@ -10,6 +10,7 @@
     ./programs/fonts.nix
     ./programs/gaming.nix
     ./programs/gnome-apps.nix
+    ./programs/obs-studio.nix
     ./programs/plasma-apps.nix
     ./programs/schoolutils.nix
     ./programs/virtualbox.nix

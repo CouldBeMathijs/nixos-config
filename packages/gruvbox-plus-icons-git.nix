@@ -1,11 +1,10 @@
 {
-  lib,
-  stdenvNoCC,
   gruvbox-icons,
   gtk3,
-  plasma5Packages,
-  gnome-icon-theme,
   hicolor-icon-theme,
+  kdePackages,
+  lib,
+  stdenvNoCC,
 }:
 
 stdenvNoCC.mkDerivation rec {
@@ -16,13 +15,13 @@ stdenvNoCC.mkDerivation rec {
   nativeBuildInputs = [ gtk3 ];
 
   propagatedBuildInputs = [
-    plasma5Packages.breeze-icons
-    gnome-icon-theme
+    kdePackages.breeze-icons
     hicolor-icon-theme
   ];
 
   dontBuild = true;
   dontConfigure = true;
+  dontWrapQtApps = true;
 
   installPhase = ''
     runHook preInstall

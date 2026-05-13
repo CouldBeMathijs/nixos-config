@@ -6,4 +6,5 @@
   plymouth.enable = lib.mkDefault true;
   printing.enable = lib.mkDefault true;
   bluetooth.enable = lib.mkDefault true;
+  obs-studio.enable = lib.mkDefault true;
 }
