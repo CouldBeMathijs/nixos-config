@@ -10,7 +10,6 @@ let
   name = "plasma-theming";
   cfg = config.${name};
   wallpaperPath = "${config.custom.flake-dir}/images/bulbs.jpg";
-  geometryChange = pkgs.callPackage ../../../packages/kwin-script-geometry-change.nix { };
   fontName = "JetBrainsMono Nerd Font";
   fontPackage = pkgs.nerd-fonts.jetbrains-mono;
 in
@@ -21,10 +20,10 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      geometryChange
       gruvbox-plus-icons-git
       pkgs.kdePackages.karousel
       plasma-manager-pkgs.rc2nix
+      pkgs.kwin-script-geometry-change
       fontPackage
     ];
 
