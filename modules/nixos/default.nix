@@ -13,7 +13,6 @@
     ./programs/obs-studio.nix
     ./programs/plasma-apps.nix
     ./programs/schoolutils.nix
-    ./programs/virtualbox.nix
     ./services/auto-updater.nix
     ./services/bluetooth.nix
     ./services/calibre-web.nix
