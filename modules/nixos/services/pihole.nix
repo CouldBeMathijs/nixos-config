@@ -107,7 +107,6 @@ in
         ports = [ 8080 ];
       };
       lighttpd.enable = lib.mkForce false;
-      resolved.extraConfig = "DNSStubListener=no";
     };
 
     systemd.tmpfiles.rules = [ "f /etc/pihole/versions 0644 pihole pihole - -" ];

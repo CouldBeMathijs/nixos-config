@@ -23,7 +23,6 @@ in
       host = "0.0.0.0";
       mediaLocation = cfg.mediaLocation;
       database.enable = true;
-      database.enableVectorChord = true;
       redis.enable = true;
       machine-learning.enable = true;
     };
