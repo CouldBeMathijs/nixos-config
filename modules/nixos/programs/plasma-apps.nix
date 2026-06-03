@@ -32,6 +32,7 @@ in
       media-downloader # A, you will not believe this, media downloader
       qalculate-qt # Calculator
       rnote # Handdrawn note taking
+      vlc
     ];
     environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 =
       lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0"
