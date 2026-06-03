@@ -64,12 +64,15 @@
         "server string" = "zeus";
         "netbios name" = "zeus";
         "security" = "user";
+        # Map unauthenticated users to the guest account (nobody)
+        "map to guest" = "Bad User";
       };
       "NAS" = {
         "path" = "/mnt/storage/NAS";
         "browseable" = "yes";
-        "read only" = "no";
-        "guest ok" = "no";
+        "guest ok" = "yes"; # Allowed everyone/guests to access
+        "read only" = "yes"; # Default to read-only for everyone
+        "write list" = "zeus"; # Explicitly allow 'zeus' to write
         "create mask" = "0644";
         "directory mask" = "0755";
         "force user" = "zeus";
