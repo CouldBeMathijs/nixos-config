@@ -55,6 +55,12 @@ in
       paths = backupCfg.paths;
       extraOptions = cfg.extraOptions;
 
+      pruneOpts = [
+        "--keep-daily 7"
+        "--keep-weekly 4"
+        "--keep-monthly 12"
+      ];
+
       exclude = [
         "**/.cache"
         "**/Downloads"
