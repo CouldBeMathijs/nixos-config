@@ -40,7 +40,7 @@
     remoteLocation = [ "sftp:restic-user@192.168.1.130:/share/Backup/restic-repo" ];
 
     passwordFile = "/etc/restic-password";
-    extraOptions = [ "sftp.connections=1" ];
+    extraOptions = [ "sftp.connections=2" ];
     backups = {
       home-backup = {
         paths = [ "/home" ];
@@ -113,6 +113,7 @@
   hardware.graphics.enable = true;
 
   environment.systemPackages = with pkgs; [
+    ffmpeg
     libva
     libvdpau
     tmux
