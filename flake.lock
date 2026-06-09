@@ -59,11 +59,11 @@
     "gruvbox-icons": {
       "flake": false,
       "locked": {
-        "lastModified": 1780916020,
-        "narHash": "sha256-8XiW0184eO4wAxAr8oM0bPhdm9ZbD1zj4GZ8ok6YOGA=",
+        "lastModified": 1781006981,
+        "narHash": "sha256-t6oEIOF8x1I1ZRlRbhvpj6K08Y6NEuFgTAjLEZ86vB8=",
         "owner": "SylEleuth",
         "repo": "gruvbox-plus-icon-pack",
-        "rev": "be20568ccbd5d7fbb3e00ead93579dff49857d22",
+        "rev": "37e89bda9234cb753fa1fefa2b33198f2ecf2729",
         "type": "github"
       },
       "original": {
@@ -80,11 +80,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780943742,
-        "narHash": "sha256-01bTMR9ZPG+uxPaZBeOwagg5uxIaFYs2/3YIrOX+bCA=",
+        "lastModified": 1781009359,
+        "narHash": "sha256-w/mZkRscTatf8NWyUstli8ROzM/eopxZzi0WRjoeYkU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "df39142474950e42d5fc3bf2fef9d6c62abbe8d7",
+        "rev": "c58ead12efcac436afffa93a22099a5595eb4157",
         "type": "github"
       },
       "original": {
