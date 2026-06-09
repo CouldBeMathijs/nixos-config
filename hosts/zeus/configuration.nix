@@ -22,6 +22,7 @@
   tailscale.enable = true;
   jellyfin.enable = true;
   pihole.enable = true;
+  transmission-custom.enable = true;
   immich = {
     enable = true;
     mediaLocation = "/mnt/storage/immich";
