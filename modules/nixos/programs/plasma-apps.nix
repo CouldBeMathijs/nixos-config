@@ -17,6 +17,7 @@ in
       gtranslator # PO translation editor
       haruna # Video player
       karp # Pdf page editor
+      fragments # Torrent Client
       # kdePackages.elisa # Music player
       kdePackages.elisa # Music player
       kdePackages.falkon # Quick Browser
