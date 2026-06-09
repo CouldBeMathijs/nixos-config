@@ -70,9 +70,8 @@
       "NAS" = {
         "path" = "/mnt/storage/NAS";
         "browseable" = "yes";
-        "guest ok" = "yes"; # Allowed everyone/guests to access
-        "read only" = "yes"; # Default to read-only for everyone
-        "write list" = "zeus"; # Explicitly allow 'zeus' to write
+        "guest ok" = "yes";
+        "read only" = "no";
         "create mask" = "0644";
         "directory mask" = "0755";
         "force user" = "zeus";
