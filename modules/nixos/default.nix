@@ -28,6 +28,7 @@
     ./services/reverse-proxy.nix
     ./services/ssh.nix
     ./services/tailscale.nix
+    ./services/transmission.nix
     ./systems/audio.nix
     ./systems/lix.nix
     ./systems/locale.nix
