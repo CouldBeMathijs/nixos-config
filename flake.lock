@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779784375,
-        "narHash": "sha256-PZKffqfdwBW6b7RgnbEG036MI8HxBn7rVnYR8svGbiw=",
+        "lastModified": 1780946693,
+        "narHash": "sha256-AtvjhOGF4fi20EbIxozmdI7U/DtB3Sv5BRgUpjX69BU=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "3aebce77113cf599794c65d4fdd0f40ee8f2ef26",
+        "rev": "c868723bf94b1872e1436176cafd7ec5ed979d5e",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
     "gruvbox-icons": {
       "flake": false,
       "locked": {
-        "lastModified": 1780651431,
-        "narHash": "sha256-khxRZ/sMl0h3zr/twpBDX+VvzqgbJcJEQq4tWZrZwok=",
+        "lastModified": 1780916020,
+        "narHash": "sha256-8XiW0184eO4wAxAr8oM0bPhdm9ZbD1zj4GZ8ok6YOGA=",
         "owner": "SylEleuth",
         "repo": "gruvbox-plus-icon-pack",
-        "rev": "08b6cdda6cbb8b3dabc882760604561c93f4827d",
+        "rev": "be20568ccbd5d7fbb3e00ead93579dff49857d22",
         "type": "github"
       },
       "original": {
@@ -80,11 +80,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780885330,
-        "narHash": "sha256-aMA5oAq2Iv467U9s8YOb50DYQT9w0WJbyWqwlzHuLMs=",
+        "lastModified": 1780943742,
+        "narHash": "sha256-01bTMR9ZPG+uxPaZBeOwagg5uxIaFYs2/3YIrOX+bCA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "4fe95527cbe952713318ada8a4d122e1a6ab120f",
+        "rev": "df39142474950e42d5fc3bf2fef9d6c62abbe8d7",
         "type": "github"
       },
       "original": {
@@ -188,11 +188,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1780734595,
-        "narHash": "sha256-DmTfP92QFYRLOGXlMIE54MAgxSJjDWocl3gRNOu72Os=",
+        "lastModified": 1780902259,
+        "narHash": "sha256-q8yYEC5f1mFlQO9RGna4LTc9QrcvWunX6FYp83munkQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9b696460ac78b5ccfc17c854d8c976f20456e943",
+        "rev": "bd0ff2d3eac24699c3664d5966b9ef36f388e2ca",
         "type": "github"
       },
       "original": {
