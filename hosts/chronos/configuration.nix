@@ -23,6 +23,19 @@
   schoolutils.cn.enable = true;
   optical.ripping.enable = true;
 
+  # Virtmanager & GPU Acceleration Config
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = [ "mathijs" ];
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = false;
+    };
+  };
+  virtualisation.spiceUSBRedirection.enable = true;
+
   restic-client = {
     enable = true;
     remoteLocation = "rest:http://zeus.local:8000/chronos";
@@ -48,6 +61,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "kvm"
+      "render"
     ];
   };
   programs.zsh.enable = true;
