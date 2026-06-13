@@ -40,16 +40,12 @@ in
     ];
 
     services.xserver = {
-      xkb.extraLayouts = {
-        qwerty-fr = {
-          description = "Qwerty FR";
-          languages = [ "fra" ];
-          symbolsFile = "${pkgs.qwerty-fr}/share/X11/xkb/symbols/us_qwerty-fr";
-        };
+      xkb = {
+        layout = "eu";
+        variant = "";
       };
-      xkb.layout = "qwerty-fr";
     };
 
-    console.keyMap = "us";
+    console.keyMap = "eurkey";
   };
 }
