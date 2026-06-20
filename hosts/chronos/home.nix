@@ -9,11 +9,10 @@
 
   shell.zsh.enable = true;
   plasma-theming.enable = true;
-  latex.enable = true;
   dosbox.enable = true;
   helix.enable = true;
   ollama.enable = true;
-  calibre.enable = false;
+  calibre.enable = true;
 
   home.packages = with pkgs; [
     gruvbox-plus-icons-git

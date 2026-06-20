@@ -11,7 +11,6 @@
   plasma-apps.enable = true;
 
   tailscale.enable = true;
-  schoolutils.csa.enable = true;
 
   restic-client = {
     enable = true;
