@@ -20,8 +20,6 @@
   gaming.steam.enable = true;
   locale.code = "en_IE";
   tailscale.enable = true;
-  schoolutils.cn.enable = true;
-  optical.ripping.enable = true;
 
   # Virtmanager & GPU Acceleration Config
   programs.virt-manager.enable = true;

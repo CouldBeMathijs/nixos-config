@@ -9,7 +9,6 @@
 
   shell.zsh.enable = true;
   plasma-theming.enable = true;
-  latex.enable = true;
   dosbox.enable = true;
   helix.enable = true;
   ollama.enable = true;

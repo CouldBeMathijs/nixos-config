@@ -10,10 +10,6 @@
   shell.zsh.enable = true;
   plasma-theming.enable = true;
 
-  # School things
-  latex.enable = true;
-  jetbrains.pycharm.enable = true;
-
   # Extras
   dosbox.enable = true;
   fun-cli.enable = true;
