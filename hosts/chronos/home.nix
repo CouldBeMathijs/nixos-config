@@ -12,6 +12,7 @@
   dosbox.enable = true;
   helix.enable = true;
   ollama.enable = true;
+  vivaldi.enable = true;
   calibre.enable = true;
 
   home.packages = with pkgs; [

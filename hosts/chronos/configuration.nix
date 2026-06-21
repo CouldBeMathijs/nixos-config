@@ -11,7 +11,6 @@
 
 {
   networking.hostName = "chronos";
-
   # Enable plasma
   plasma-apps.enable = true;
   plasma.enable = true;

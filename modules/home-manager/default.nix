@@ -19,7 +19,8 @@
     ./cli-apps/nh.nix
     ./cli-apps/ollama.nix
     ./cli-apps/tldr.nix
-    ./programs/browser.nix
+    ./programs/browsers/vivaldi.nix
+    ./programs/browsers/zen.nix
     ./programs/calibre.nix
     ./programs/composing.nix
     ./programs/discord.nix
@@ -27,13 +28,13 @@
     ./programs/gramps.nix
     ./programs/jetbrains.nix
     ./programs/latex.nix
+    ./programs/mail.nix
     ./programs/minecraft.nix
     ./programs/zed.nix
     ./shells/bash.nix
     ./shells/fish.nix
     ./shells/starship.nix
     ./shells/zsh.nix
-    ./programs/mail.nix
   ];
 
   options = {
