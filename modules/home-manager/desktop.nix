@@ -2,7 +2,7 @@
 
 {
   # Common desktop apps and utilities
-  browser.enable = lib.mkDefault true;
+  zen-browser.enable = lib.mkDefault true;
   composing.enable = lib.mkDefault true;
   discord.enable = lib.mkDefault true;
   mail.enable = lib.mkDefault true;
@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     signal-desktop
     libreoffice-fresh
+    tor-browser
   ];
 
   # Hide the annoying cups entry and define ghostty

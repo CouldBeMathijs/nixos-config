@@ -7,7 +7,7 @@
   ...
 }:
 let
-  name = "browser";
+  name = "zen-browser";
   cfg = config.${name};
 in
 {
@@ -18,7 +18,6 @@ in
 
     home.packages = [
       zen-browser.packages."x86_64-linux".beta
-      pkgs.tor-browser
     ];
     xdg = {
       enable = true;
