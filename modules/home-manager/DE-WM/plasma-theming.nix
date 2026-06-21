@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  osConfig ? { },
   pkgs,
   gruvbox-plus-icons-git,
   plasma-manager-pkgs,
@@ -12,6 +13,16 @@ let
   wallpaperPath = "${config.custom.flake-dir}/images/bulbs.jpg";
   fontName = "JetBrainsMono Nerd Font";
   fontPackage = pkgs.nerd-fonts.jetbrains-mono;
+
+  isInstalled =
+    pkg:
+    (lib.elem pkg (config.home.packages or [ ]))
+    || (lib.elem pkg (osConfig.environment.systemPackages or [ ]));
+
+  hasModule =
+    path:
+    (lib.hasAttrByPath path config && lib.getAttrFromPath path config)
+    || (lib.hasAttrByPath path osConfig && lib.getAttrFromPath path osConfig);
 in
 {
   options.${name} = {
@@ -60,7 +71,6 @@ in
         plasmashell."activate task manager entry 8" = "Meta+8";
         plasmashell."activate task manager entry 9" = "Meta+9";
         plasmashell."activate task manager entry 10" = "Meta+0";
-
       };
       workspace = {
         iconTheme = "Gruvbox-Plus-Dark";
@@ -142,14 +152,37 @@ in
               name = "org.kde.plasma.icontasks";
               config = {
                 General = {
-                  # List the .desktop files for the apps you want to pin
-                  launchers = [
-                    "applications:zen-beta.desktop"
-                    "applications:org.kde.konsole.desktop"
-                    "applications:org.kde.dolphin.desktop"
-                    "applications:vesktop.desktop"
-                    "applications:thunderbird.desktop"
-                    "applications:signal.desktop"
+                  launchers = lib.flatten [
+                    (
+                      if
+                        hasModule [
+                          "zen-browser"
+                          "enable"
+                        ]
+                      then
+                        [ "applications:zen-beta.desktop" ]
+                      else
+                        [ ]
+                    )
+                    (if isInstalled pkgs.vivaldi then [ "applications:vivaldi-stable.desktop" ] else [ ])
+                    [ "applications:org.kde.konsole.desktop" ]
+                    [ "applications:org.kde.dolphin.desktop" ]
+                    (if isInstalled pkgs.vesktop then [ "applications:vesktop.desktop" ] else [ ])
+                    (
+                      if
+                        hasModule [
+                          "programs"
+                          "thunderbird"
+                          "enable"
+                        ]
+                        || isInstalled pkgs.thunderbird
+                      then
+                        [ "applications:thunderbird.desktop" ]
+                      else
+                        [ ]
+                    )
+
+                    (if isInstalled pkgs.signal-desktop then [ "applications:signal.desktop" ] else [ ])
                   ];
                 };
               };
