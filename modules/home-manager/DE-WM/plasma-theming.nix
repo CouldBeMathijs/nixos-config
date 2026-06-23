@@ -79,6 +79,9 @@ in
         wallpaper = wallpaperPath;
       };
       configFile = {
+        baloofilerc.General."exclude folders" =
+          "${config.home.homeDirectory}/Documents/Calibre/,${config.home.homeDirectory}/Documents/Discord exports/,${config.home.homeDirectory}/Documents/Stamboom/haza/";
+
         kwinrc = {
           Plugins = {
             karouselEnabled = true;
