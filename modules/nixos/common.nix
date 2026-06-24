@@ -2,10 +2,10 @@
 
 {
   # Modules enabled in each system
-  cli-utils.enable = true;
-  fwupd.enable = true;
-  locale.enable = true;
-  lix.enable = true;
+  cli-utils.enable = lib.mkDefault true;
+  fwupd.enable = lib.mkDefault true;
+  locale.enable = lib.mkDefault true;
+  lix.enable = lib.mkDefault true;
 
   # Boot
   boot = {

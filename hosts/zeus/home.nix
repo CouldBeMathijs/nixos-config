@@ -6,6 +6,5 @@
     ../../modules/home-manager/common.nix
   ];
 
-  browser.enable = false;
   shell.zsh.enable = true;
 }
