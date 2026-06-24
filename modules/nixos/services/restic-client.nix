@@ -92,6 +92,7 @@ in
 
         "**/Virtualbox VMs"
         "/mnt/storage/backups"
+        "**/share/baloo/*"
       ];
     }) cfg.backups;
 
