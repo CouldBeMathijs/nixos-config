@@ -20,6 +20,10 @@
       url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
       flake = false;
     };
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     my-bash-scripts-repo = {
       url = "github:CouldBeMathijs/bash-scripts";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +43,6 @@
       url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
       inputs.nixpkgs.follows = "nixpkgs";
