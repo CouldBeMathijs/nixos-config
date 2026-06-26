@@ -20,10 +20,13 @@
       url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
       flake = false;
     };
-    mangowm = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    /*
+        mangowm = {
+          url = "github:mangowm/mango";
+          inputs.nixpkgs.follows = "nixpkgs";
+          inputs.flake-parts.follows = "flake-parts";
+        };
+    */
     my-bash-scripts-repo = {
       url = "github:CouldBeMathijs/bash-scripts";
       inputs.nixpkgs.follows = "nixpkgs";
