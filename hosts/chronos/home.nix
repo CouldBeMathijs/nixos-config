@@ -18,5 +18,6 @@
   home.packages = with pkgs; [
     gruvbox-plus-icons-git
     subtitlecomposer
+    qwen-code
   ];
 }

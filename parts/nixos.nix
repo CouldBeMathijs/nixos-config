@@ -6,8 +6,21 @@ let
   genPkgs =
     pkgsSource: system:
     import pkgsSource {
-      inherit system;
+      localSystem = { inherit system; };
       config.allowUnfree = true;
+      overlays = [
+        (final: prev: {
+          zen-browser =
+            inputs.zen-browser.packages.${system}.default or inputs.zen-browser.packages.${system}.zen-browser
+              or null;
+          niri = inputs.niri.packages.${system}.default or inputs.niri.packages.${system}.niri or null;
+          noctalia =
+            inputs.noctalia.packages.${system}.default or inputs.noctalia.packages.${system}.noctalia or null;
+          asus-numberpad-driver =
+            inputs.asus-numberpad-driver.packages.${system}.default
+              or inputs.asus-numberpad-driver.packages.${system}.asus-numberpad-driver or null;
+        })
+      ];
     };
 
   # mkHost now takes a single argument: the hostname
@@ -30,7 +43,6 @@ let
           inputs.home-manager.nixosModules.home-manager;
     in
     baseNixpkgs.lib.nixosSystem {
-      inherit system;
       pkgs = genPkgs baseNixpkgs system;
 
       specialArgs = {
@@ -50,7 +62,6 @@ let
           home-manager.useUserPackages = true;
 
           home-manager.extraSpecialArgs = {
-            inherit (inputs) zen-browser;
             inherit self inputs;
             pkgs-unstable = genPkgs inputs.nixpkgs system;
             pkgs-stable = genPkgs inputs.nixpkgs-stable system;

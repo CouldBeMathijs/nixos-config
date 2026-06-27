@@ -20,15 +20,12 @@
       url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
       flake = false;
     };
-    /*
-        mangowm = {
-          url = "github:mangowm/mango";
-          inputs.nixpkgs.follows = "nixpkgs";
-          inputs.flake-parts.follows = "flake-parts";
-        };
-    */
     my-bash-scripts-repo = {
       url = "github:CouldBeMathijs/bash-scripts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -37,14 +34,14 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    };
-    solaar = {
-      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
