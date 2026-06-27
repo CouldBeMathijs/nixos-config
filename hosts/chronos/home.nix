@@ -8,7 +8,7 @@
   ];
 
   shell.zsh.enable = true;
-  plasma-theming.enable = true;
+  plasma-config.enable = true;
   dosbox.enable = true;
   helix.enable = true;
   ollama.enable = true;

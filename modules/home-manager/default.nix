@@ -5,11 +5,11 @@
 }:
 {
   imports = [
-    ./DE-WM/cinnamon-theming.nix
+    ./DE-WM/cinnamon-config.nix
+    ./DE-WM/gnome-config.nix
     ./DE-WM/gnome-extensions.nix
-    ./DE-WM/gnome-theming.nix
-    ./DE-WM/niri.nix
-    ./DE-WM/plasma-theming.nix
+    ./DE-WM/niri-config.nix
+    ./DE-WM/plasma-config.nix
     ./cli-apps/bat.nix
     ./cli-apps/direnv.nix
     ./cli-apps/fastfetch.nix

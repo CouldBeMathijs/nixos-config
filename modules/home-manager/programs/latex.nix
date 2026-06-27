@@ -16,9 +16,9 @@
         texliveFull
       ]
       ++ (
-        if config.gnome-theming.enable then
+        if config.gnome-config.enable then
           [ setzer ]
-        else if config.plasma-theming.enable then
+        else if config.plasma-config.enable then
           [ kile ]
         else
           [ texmaker ]
