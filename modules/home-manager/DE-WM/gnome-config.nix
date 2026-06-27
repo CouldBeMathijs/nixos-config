@@ -3,11 +3,10 @@
   gruvbox-plus-icons-git,
   lib,
   config,
-  options,
   ...
 }:
 let
-  name = "gnome-theming";
+  name = "gnome-config";
   cfg = config.${name};
 in
 {
@@ -15,6 +14,8 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
+
+    gnome-extensions.enable = lib.mkDefault true;
 
     xdg.enable = true;
     dconf.enable = true;

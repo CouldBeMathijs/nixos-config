@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  options,
   niri,
   ...
 }:
@@ -12,6 +11,7 @@
   };
 
   config = lib.mkIf config.niri-config.enable {
+    # This has never really worked, but it's here if I ever get back to it
     /*
       home.packages = with pkgs; [
         fuzzel

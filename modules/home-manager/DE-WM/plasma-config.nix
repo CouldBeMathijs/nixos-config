@@ -8,9 +8,9 @@
   ...
 }:
 let
-  name = "plasma-theming";
+  name = "plasma-config";
   cfg = config.${name};
-  wallpaperPath = "${config.custom.flake-dir}/images/bulbs.jpg";
+  wallpaperPath = "${config.custom.flake-dir}/images/wallpapers/lumimaa.jpg";
   fontName = "JetBrainsMono Nerd Font";
   fontPackage = pkgs.nerd-fonts.jetbrains-mono;
 

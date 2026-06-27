@@ -6,7 +6,7 @@
   ...
 }:
 let
-  name = "cinnamon-theming";
+  name = "cinnamon-config";
   cfg = config.${name};
 in
 {

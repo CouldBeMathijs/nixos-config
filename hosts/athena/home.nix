@@ -8,7 +8,7 @@
   ];
 
   shell.zsh.enable = true;
-  plasma-theming.enable = true;
+  plasma-config.enable = true;
 
   # Extras
   dosbox.enable = true;
