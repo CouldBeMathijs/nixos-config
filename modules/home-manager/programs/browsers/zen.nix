@@ -3,7 +3,6 @@
   lib,
   config,
   options,
-  zen-browser,
   ...
 }:
 let
@@ -16,8 +15,8 @@ in
   };
   config = lib.mkIf cfg.enable {
 
-    home.packages = [
-      zen-browser.packages."x86_64-linux".beta
+    home.packages = with pkgs; [
+      zen-browser
     ];
     xdg = {
       enable = true;
