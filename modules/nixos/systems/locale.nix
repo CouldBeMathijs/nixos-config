@@ -38,7 +38,6 @@ in
       "nl_BE.UTF-8/UTF-8"
       "fi_FI.UTF-8/UTF-8"
     ];
-
     services.xserver = {
       xkb = {
         layout = "eu";
@@ -46,6 +45,8 @@ in
       };
     };
 
-    console.keyMap = "eurkey";
+    console = {
+      useXkbConfig = true;
+    };
   };
 }

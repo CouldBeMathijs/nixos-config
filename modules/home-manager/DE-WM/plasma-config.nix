@@ -171,6 +171,7 @@ in
                     [ "applications:org.kde.konsole.desktop" ]
                     [ "applications:org.kde.dolphin.desktop" ]
                     (if isInstalled pkgs.vesktop then [ "applications:vesktop.desktop" ] else [ ])
+                    (if isInstalled pkgs.legcord then [ "applications:legcord.desktop" ] else [ ])
                     (
                       if
                         hasModule [
