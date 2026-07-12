@@ -24,7 +24,7 @@
       url = "github:CouldBeMathijs/bash-scripts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

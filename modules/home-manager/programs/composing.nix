@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   lib,
   config,
   options,
@@ -15,9 +16,9 @@ in
   };
   config = lib.mkIf cfg.enable {
 
-    home.packages = with pkgs; [
-      musescore # Writing music scores
-      muse-sounds-manager # Write music scores with better playback
+    home.packages = [
+      pkgs-stable.musescore # Writing music scores
+      pkgs.muse-sounds-manager # Write music scores with better playback
     ];
     xdg.enable = true;
     xdg.desktopEntries."muse-sounds-manager" = {
