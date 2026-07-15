@@ -17,7 +17,7 @@ in
   config = lib.mkIf cfg.enable {
 
     home.packages = [
-      pkgs-stable.musescore # Writing music scores
+      pkgs.musescore # Writing music scores
       pkgs.muse-sounds-manager # Write music scores with better playback
     ];
     xdg.enable = true;
