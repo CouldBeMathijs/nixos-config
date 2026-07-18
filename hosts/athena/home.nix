@@ -14,6 +14,7 @@
   dosbox.enable = true;
   fun-cli.enable = true;
   gramps.enable = true;
+  vivaldi.enable = true;
 
   home.packages = with pkgs; [
     audacity
