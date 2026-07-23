@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783946136,
-        "narHash": "sha256-8Uhdj3vc6eK1+bNfITGXWB/OUhCMLdn+MEZYG8luXWw=",
+        "lastModified": 1784703345,
+        "narHash": "sha256-I6hChxS2UAzLlv7zLMQMzUfPAoUKcjs0bVtQ++AuIps=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "8ae1dfca3e27bf0ca8d51210409416aab35f1fd8",
+        "rev": "1f9bfac78f1d88850f278860a0a032b3d3149ae6",
         "type": "github"
       },
       "original": {
@@ -41,11 +41,11 @@
     "gruvbox-icons": {
       "flake": false,
       "locked": {
-        "lastModified": 1784636002,
-        "narHash": "sha256-nedAJqmSdLKxjbwH4ekUM/9ueNjKxi/aV5r04HO8YNw=",
+        "lastModified": 1784721164,
+        "narHash": "sha256-AGeoUsycGKqPzQgBGVJkKf5kT1/aiCyrD9kGFkajf9k=",
         "owner": "SylEleuth",
         "repo": "gruvbox-plus-icon-pack",
-        "rev": "ceff48df66dbad690b94181ab89fb7ea407790fd",
+        "rev": "6c6e54e4418b92530041eb0153d7bb1d346852ff",
         "type": "github"
       },
       "original": {
@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784690067,
-        "narHash": "sha256-t86pRs7IPs3RTMPueWvvdcxyTFrctHAv2Jl7jnjsSf8=",
+        "lastModified": 1784725727,
+        "narHash": "sha256-J5+C9wsO0lhDyUalQzfplDbRjyHDYeEH5+9sdyXtwa8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6d8d61567802997f9ec3086b2a837e3ef31fac16",
+        "rev": "041a999e8c1c5b731913855909e68d30ca69b8e0",
         "type": "github"
       },
       "original": {
