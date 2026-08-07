@@ -1,7 +1,7 @@
 {
-  pkgs,
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -10,24 +10,18 @@
   };
 
   config = lib.mkIf config.niri-config.enable {
-
     programs.noctalia = {
       enable = true;
+    };
 
-      settings = {
-        theme = {
-          mode = "dark";
-          source = "builtin";
-          builtin = "Catppuccin";
-        };
-
-        wallpaper = {
-          enabled = true;
-        };
+    gtk = {
+      enable = true;
+      iconTheme = {
+        name = "Gruvbox-Plus-Dark";
       };
     };
-    xdg.configFile."niri/config.kdl".text = ''
-      spawn-at-startup "${pkgs.noctalia}/bin/noctalia"
-    '';
+
+    xdg.configFile."niri/config.kdl".source = ../../../kdl/config.kdl;
+    xdg.configFile."niri/noctalia.kdl".source = ../../../kdl/noctalia.kdl;
   };
 }
