@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  niri,
   ...
 }:
 let
@@ -14,11 +13,10 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
-    nixpkgs.overlays = [ niri.overlays.niri ];
 
     programs.niri = {
       enable = true;
-      package = pkgs.niri-stable;
+      package = pkgs.niri;
     };
   };
 }

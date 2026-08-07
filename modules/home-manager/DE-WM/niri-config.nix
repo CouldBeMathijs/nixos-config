@@ -2,37 +2,32 @@
   pkgs,
   lib,
   config,
-  niri,
   ...
 }:
 {
-  options = {
-    niri-config.enable = lib.mkEnableOption "Enable niri-config configuration";
+  options.niri-config = {
+    enable = lib.mkEnableOption "Enable niri-config configuration";
   };
 
   config = lib.mkIf config.niri-config.enable {
-    # This has never really worked, but it's here if I ever get back to it
-    /*
-      home.packages = with pkgs; [
-        fuzzel
-        waybar
-      ];
 
-      nixpkgs.overlays = [ niri.overlays.niri ];
-      programs.niri.settings = {
-        # Basic keybindings
-        binds = {
-          "Mod+T".action.spawn = "ghostty";
-          "Mod+Space".action.spawn = "fuzzel";
-          "Mod+Q".action.close-window = [ ];
+    programs.noctalia = {
+      enable = true;
+
+      settings = {
+        theme = {
+          mode = "dark";
+          source = "builtin";
+          builtin = "Catppuccin";
         };
 
-        # Startup applications
-        spawn-at-startup = [
-          { command = [ "waybar" ]; }
-          { command = [ "fuzzel" ]; }
-        ];
+        wallpaper = {
+          enabled = true;
+        };
       };
-    */
+    };
+    xdg.configFile."niri/config.kdl".text = ''
+      spawn-at-startup "${pkgs.noctalia}/bin/noctalia"
+    '';
   };
 }
