@@ -14,6 +14,8 @@
 
   plasma-apps.enable = true;
   plasma.enable = true;
+  services.displayManager.defaultSession = lib.mkForce "plasma";
+  niri.enable = true;
 
   gaming.steam.enable = true;
   gaming.heroic.enable = true;

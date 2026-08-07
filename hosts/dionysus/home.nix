@@ -1,4 +1,4 @@
-{ pkgs, gruvbox-plus-icons-git, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -11,8 +11,8 @@
   plasma-config.enable = true;
   dosbox.enable = true;
   helix.enable = true;
-  ollama.enable = true;
   calibre.enable = false;
+  niri-config.enable = true;
 
   home.packages = with pkgs; [
     subtitlecomposer

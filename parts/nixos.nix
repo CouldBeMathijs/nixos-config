@@ -13,7 +13,6 @@ let
           zen-browser =
             inputs.zen-browser.packages.${system}.default or inputs.zen-browser.packages.${system}.zen-browser
               or null;
-          niri = inputs.niri.packages.${system}.default or inputs.niri.packages.${system}.niri or null;
           noctalia =
             inputs.noctalia.packages.${system}.default or inputs.noctalia.packages.${system}.noctalia or null;
           asus-numberpad-driver =
@@ -73,6 +72,7 @@ let
             imports = [
               ../hosts/${hostname}/home.nix
               inputs.plasma-manager.homeModules.plasma-manager
+              inputs.noctalia.homeModules.default
             ];
             home = {
               inherit username;
