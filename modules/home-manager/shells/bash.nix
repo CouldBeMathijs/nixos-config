@@ -23,12 +23,12 @@ in
       shellAliases = common.aliases // common.abbrs;
       initExtra = "microfetch";
     };
-
-    programs.atuin = {
-      enable = true;
-      enableBashIntegration = true;
-    };
-
+    /*
+        programs.atuin = {
+          enable = true;
+          enableBashIntegration = true;
+        };
+    */
     programs.starship.enableBashIntegration = true;
     programs.zoxide.enableBashIntegration = true;
   };
