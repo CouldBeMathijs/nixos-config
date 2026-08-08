@@ -13,7 +13,9 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
-
+    environment.systemPackages = with pkgs; [
+      xwayland-satellite
+    ];
     programs.niri = {
       enable = true;
       package = pkgs.niri;

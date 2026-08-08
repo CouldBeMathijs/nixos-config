@@ -8,10 +8,7 @@
   ];
 
   shell.zsh.enable = true;
-  plasma-config.enable = true;
-  dosbox.enable = true;
   helix.enable = true;
-  calibre.enable = false;
   niri-config.enable = true;
 
   home.packages = with pkgs; [

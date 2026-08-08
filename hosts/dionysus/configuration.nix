@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  pkgs,
   config,
   lib,
   ...
@@ -12,9 +11,6 @@
 {
   networking.hostName = "dionysus";
 
-  plasma-apps.enable = true;
-  plasma.enable = true;
-  services.displayManager.defaultSession = lib.mkForce "plasma";
   niri.enable = true;
 
   gaming.steam.enable = true;
