@@ -14,7 +14,7 @@ Hosts:
      - KDE Plasma
      - Steam + Heroic
  - Dionysus: Lenovo Legion - Gaming laptop
-     - KDE Plasma
+     - Niri-Noctalia
      - Steam + Heroic
  - Zeus: Server
      - PiHole

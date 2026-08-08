@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  gruvbox-plus-icons-git,
   ...
 }:
 {
@@ -13,6 +14,7 @@
     programs.noctalia = {
       enable = true;
     };
+    home.packages = [ gruvbox-plus-icons-git ];
 
     gtk = {
       enable = true;

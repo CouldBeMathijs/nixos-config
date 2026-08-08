@@ -6,7 +6,12 @@
   fwupd.enable = lib.mkDefault true;
   locale.enable = lib.mkDefault true;
   lix.enable = lib.mkDefault true;
-
+  nix.settings = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
   # Boot
   boot = {
     loader = {
