@@ -7,8 +7,7 @@
 {
   networking.hostName = "athena";
 
-  plasma.enable = true;
-  plasma-apps.enable = true;
+  niri.enable = true;
 
   tailscale.enable = true;
 

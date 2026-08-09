@@ -18,8 +18,16 @@
       config.common.default = "*";
     };
 
+    home.pointerCursor = {
+      enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      #size = 24;
+    };
+
     programs.noctalia = {
       enable = true;
+      settings = ../../../non-nixlang/noctalia.toml;
     };
     gtk = {
       enable = true;
@@ -45,7 +53,7 @@
         "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
     };
 
-    xdg.configFile."niri/config.kdl".source = ../../../kdl/config.kdl;
-    xdg.configFile."niri/noctalia.kdl".source = ../../../kdl/noctalia.kdl;
+    xdg.configFile."niri/config.kdl".source = ../../../non-nixlang/niri-config.kdl;
+    xdg.configFile."niri/noctalia.kdl".source = ../../../non-nixlang/niri-noctalia-colors.kdl;
   };
 }

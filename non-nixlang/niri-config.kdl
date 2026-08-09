@@ -60,13 +60,13 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-cursor {
-    xcursor-theme "breeze_cursors"
-    xcursor-size 24
-
-    hide-when-typing
-    hide-after-inactive-ms 10000
-}
+//cursor {
+//    xcursor-theme "breeze_cursors"
+//    xcursor-size 24
+//
+//    hide-when-typing
+//    hide-after-inactive-ms 10000
+//}
 
 environment {
     // Stel de cursorgrootte in op 16 (of 24)
@@ -375,7 +375,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+W hotkey-overlay-title="Open a Browser: Zen Browser" { spawn "zen-browser"; }
+    Mod+W hotkey-overlay-title="Open a Browser: Zen Browser" { spawn "zen-beta"; }
     Mod+E hotkey-overlay-title="Open a File Manager: Nautilus" { spawn "nautilus"; }
     Mod+Space hotkey-overlay-title="Run an Application: Noctalia Run" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Super+L hotkey-overlay-title="Lock the Screen: Noctalia Lock" { spawn "noctalia" "msg" "session" "lock"; }
