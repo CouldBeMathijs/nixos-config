@@ -12,6 +12,7 @@
   networking.hostName = "dionysus";
 
   niri.enable = true;
+  sddm-minimal-theme.enable = true;
 
   gaming.steam.enable = true;
   gaming.heroic.enable = true;

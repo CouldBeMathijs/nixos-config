@@ -34,7 +34,7 @@ in
       '';
     };
 
-    programs.atuin.enableZshIntegration = true;
+    # programs.atuin.enableZshIntegration = true;
     programs.starship.enableZshIntegration = true;
     programs.zoxide.enableZshIntegration = true;
   };
