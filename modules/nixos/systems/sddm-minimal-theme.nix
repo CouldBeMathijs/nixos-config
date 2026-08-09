@@ -40,6 +40,7 @@ in
   };
 
   config = lib.mkIf config.sddm-minimal-theme.enable {
+    services.displayManager.sddm.wayland.enable = true;
     environment.systemPackages = [
       sddm-minimal-theme-pkg
     ];

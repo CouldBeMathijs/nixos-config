@@ -8,6 +8,7 @@
   networking.hostName = "athena";
 
   niri.enable = true;
+  sddm-minimal-theme.enable = true;
 
   tailscale.enable = true;
 

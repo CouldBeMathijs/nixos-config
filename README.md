@@ -11,7 +11,7 @@ Hosts:
      - Niri-Noctalia
      - Development tooling and IDE's
  - Chronos: Aorus Elite - Gaming PC
-     - KDE Plasma
+     - Niri-Noctalia
      - Steam + Heroic
  - Dionysus: Lenovo Legion - Gaming laptop
      - Niri-Noctalia

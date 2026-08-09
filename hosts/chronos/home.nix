@@ -1,4 +1,4 @@
-{ pkgs, gruvbox-plus-icons-git, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -8,7 +8,7 @@
   ];
 
   shell.zsh.enable = true;
-  plasma-config.enable = true;
+  niri-config.enable = true;
   dosbox.enable = true;
   helix.enable = true;
   ollama.enable = true;
@@ -16,8 +16,6 @@
   calibre.enable = true;
 
   home.packages = with pkgs; [
-    gruvbox-plus-icons-git
     subtitlecomposer
-    qwen-code
   ];
 }

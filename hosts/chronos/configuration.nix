@@ -11,10 +11,9 @@
 
 {
   networking.hostName = "chronos";
-  # Enable plasma
-  plasma-apps.enable = true;
-  plasma.enable = true;
-
+  niri.enable = true;
+  # services.displayManager.defaultSession = "plasma";
+  sddm-minimal-theme.enable = true;
   gaming.heroic.enable = true;
   gaming.steam.enable = true;
   locale.code = "en_IE";
