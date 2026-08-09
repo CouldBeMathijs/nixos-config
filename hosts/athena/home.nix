@@ -8,7 +8,7 @@
   ];
 
   shell.zsh.enable = true;
-  plasma-config.enable = true;
+  niri-config.enable = true;
 
   # Extras
   dosbox.enable = true;
