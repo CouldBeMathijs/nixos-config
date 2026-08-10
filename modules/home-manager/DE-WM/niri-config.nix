@@ -22,7 +22,32 @@
       enable = true;
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
-      #size = 24;
+      size = 16;
+    };
+
+    dconf = {
+      enable = true;
+      settings = {
+        # Change button layout
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = ":appmenu";
+        };
+
+        # Privacy settings
+        "org/gnome/desktop/privacy" = {
+          recent-files-max-age = 30;
+          old-files-age = 30;
+          remove-old-temp-files = true;
+          remove-old-trash-files = true;
+        };
+
+        # Font settings
+        "org/gnome/desktop/interface" = {
+          document-font-name = "JetBrainsMono Nerd Font 11";
+          font-name = "JetBrainsMono Nerd Font 11";
+          monospace-font-name = "JetBrainsMono Nerd Font 11";
+        };
+      };
     };
 
     programs.noctalia = {
