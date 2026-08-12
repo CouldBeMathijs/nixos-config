@@ -10,6 +10,8 @@
   niri.enable = true;
   sddm-minimal-theme.enable = true;
 
+  gnome-boxes.enable = true;
+
   tailscale.enable = true;
 
   restic-client = {
