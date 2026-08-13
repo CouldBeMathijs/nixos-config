@@ -21,7 +21,17 @@
 
     home.pointerCursor = {
       enable = true;
-      package = pkgs.bibata-cursors;
+      package = (
+        pkgs.bibata-cursors.overrideAttrs (oldAttrs: {
+          buildPhase = ''
+            runHook preBuild
+
+            ctgen configs/normal/x.build.toml -p x11 -d $bitmaps/Bibata-Modern-Ice -n 'Bibata-Modern-Ice' -c 'White and rounded edge Bibata XCursors'
+
+            runHook postBuild
+          '';
+        })
+      );
       name = "Bibata-Modern-Ice";
       size = 16;
     };
