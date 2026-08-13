@@ -98,10 +98,11 @@
   users.users.zeus = {
     isNormalUser = true;
     description = "Zeus";
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     extraGroups = [
       "networkmanager"
       "wheel"
+      "transmission"
     ];
   };
   programs.zsh.enable = true;
