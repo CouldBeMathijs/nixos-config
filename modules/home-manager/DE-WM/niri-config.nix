@@ -11,7 +11,8 @@
   };
 
   config = lib.mkIf config.niri-config.enable {
-
+    services.gnome-keyring.enable = true;
+    home.packages = with pkgs; [ gcr ];
     xdg.portal = {
       enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
