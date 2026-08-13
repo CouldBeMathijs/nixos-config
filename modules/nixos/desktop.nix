@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   audio.enable = lib.mkDefault true;
@@ -7,4 +7,5 @@
   printing.enable = lib.mkDefault true;
   bluetooth.enable = lib.mkDefault true;
   obs-studio.enable = lib.mkDefault true;
+  environment.systemPackages = with pkgs; [ lact ];
 }
