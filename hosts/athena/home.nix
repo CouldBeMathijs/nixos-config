@@ -18,9 +18,9 @@
 
   home.packages = with pkgs; [
     audacity
+    drawy
     kdePackages.kwordquiz
     kooha
-    krita
     shotcut
     xournalpp
   ];
