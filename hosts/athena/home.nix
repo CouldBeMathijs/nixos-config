@@ -15,6 +15,7 @@
   fun-cli.enable = true;
   gramps.enable = true;
   vivaldi.enable = true;
+  osc-suse-cli.enable = true;
 
   home.packages = with pkgs; [
     audacity
