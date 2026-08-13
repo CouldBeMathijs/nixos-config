@@ -18,6 +18,7 @@
     ./cli-apps/helix.nix
     ./cli-apps/nh.nix
     ./cli-apps/ollama.nix
+    ./cli-apps/osc-suse-cli.nix
     ./cli-apps/tldr.nix
     ./programs/browsers/vivaldi.nix
     ./programs/browsers/zen.nix
