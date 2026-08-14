@@ -15,7 +15,15 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       xwayland-satellite
+      nautilus
+      cifs-utils
+      samba
     ];
+    services = {
+      gvfs.enable = true;
+      gnome.gnome-keyring.enable = true;
+      samba-wsdd.enable = true;
+    };
     programs.niri = {
       enable = true;
       package = pkgs.niri;
