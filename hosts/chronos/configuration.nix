@@ -20,7 +20,7 @@
   tailscale.enable = true;
 
   # Virtmanager & GPU Acceleration Config
-  programs.virt-manager.enable = true;
+  gnome-boxes.enable = true;
   users.groups.libvirtd.members = [ "mathijs" ];
 
   virtualisation.libvirtd = {

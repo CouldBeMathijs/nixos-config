@@ -2,17 +2,17 @@
 
 {
   # Common desktop apps and utilities
-  zen-browser.enable = lib.mkDefault true;
   composing.enable = lib.mkDefault true;
   discord.enable = lib.mkDefault true;
+  libreoffice.enable = lib.mkDefault true;
   mail.enable = lib.mkDefault true;
   minecraft.enable = lib.mkDefault true;
   zed.enable = lib.mkDefault true;
+  zen-browser.enable = lib.mkDefault true;
 
   # Shared packages across all desktops
   home.packages = with pkgs; [
     signal-desktop
-    libreoffice-fresh
     tor-browser
   ];
 
