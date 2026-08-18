@@ -21,6 +21,7 @@ in
       killall # Kill all instances of a program
       pbpctrl # Control Pixel Buds Pro from the cli
       ripgrep # Better grep
+      ugrep # Even better (but also a little slower, grep)
       tree # Tree folder view
       unzip # Make it not zipped
       wget # Download things from the World Wide Web
