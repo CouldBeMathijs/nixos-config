@@ -29,6 +29,7 @@
     ./programs/gramps.nix
     ./programs/jetbrains.nix
     ./programs/latex.nix
+    ./programs/libreoffice.nix
     ./programs/mail.nix
     ./programs/minecraft.nix
     ./programs/zed.nix
