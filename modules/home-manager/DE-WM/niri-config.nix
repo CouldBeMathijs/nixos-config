@@ -15,6 +15,8 @@
     home.packages = with pkgs; [
       gcr
       loupe
+      mpd
+      mpv
     ];
     xdg.portal = {
       enable = true;
