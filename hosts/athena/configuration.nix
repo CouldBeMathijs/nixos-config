@@ -26,6 +26,7 @@
   imports = [
     ./../../modules/nixos
     ./../../modules/nixos/desktop.nix
+    ./external-backup.nix
   ];
 
   services = {
