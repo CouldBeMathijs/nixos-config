@@ -13,6 +13,7 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
+    security.polkit.enable = true;
     environment.systemPackages = with pkgs; [
       xwayland-satellite
       nautilus
@@ -23,6 +24,11 @@ in
       gvfs.enable = true;
       gnome.gnome-keyring.enable = true;
       samba-wsdd.enable = true;
+      upower.enable = true;
+      logind = {
+        powerKey = "suspend";
+        powerKeyLongPress = "poweroff";
+      };
     };
     programs.niri = {
       enable = true;
