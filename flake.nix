@@ -32,7 +32,7 @@
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
