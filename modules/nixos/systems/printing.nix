@@ -31,6 +31,7 @@
     };
     services.udev.packages = [
       pkgs.sane-airscan
+      pkgs.simple-scan
     ];
   };
 }
