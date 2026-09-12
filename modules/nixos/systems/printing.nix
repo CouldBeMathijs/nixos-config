@@ -31,7 +31,7 @@
     };
     services.udev.packages = [
       pkgs.sane-airscan
-      pkgs.simple-scan
     ];
+    environment.systemPackages = [ pkgs.simple-scan ];
   };
 }
