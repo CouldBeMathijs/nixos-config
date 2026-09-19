@@ -16,15 +16,19 @@
     clion = {
       enable = lib.mkEnableOption "Enable CLion";
     };
+
+    webstorm = {
+      enable = lib.mkEnableOption "Enable Webstorm";
+    };
   };
 
   config = {
     # If the top-level jetbrains.enable is set, enable the individual options
-    jetbrains.pycharm.enable = lib.mkIf config.jetbrains.enable true;
-    jetbrains.clion.enable = lib.mkIf config.jetbrains.enable true;
+    jetbrains.webstorm.enable = lib.mkIf config.jetbrains.enable true;
 
     home.packages =
       lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm
-      ++ lib.optional config.jetbrains.clion.enable pkgs.jetbrains.clion;
+      ++ lib.optional config.jetbrains.clion.enable pkgs.jetbrains.clion
+      ++ lib.optional config.jetbrains.webstorm.enable pkgs.jetbrains.webstorm;
   };
 }

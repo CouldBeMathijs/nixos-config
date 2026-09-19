@@ -16,6 +16,8 @@
   gramps.enable = true;
   vivaldi.enable = true;
   osc-suse-cli.enable = true;
+  vscode.enable = true;
+  jetbrains.webstorm.enable = true;
 
   home.packages = with pkgs; [
     audacity
