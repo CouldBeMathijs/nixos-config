@@ -33,6 +33,8 @@
     envfs.enable = true;
   };
 
+  virtualisation.vmware.host.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mathijs = {
     isNormalUser = true;
