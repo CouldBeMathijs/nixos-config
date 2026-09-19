@@ -46,7 +46,7 @@ in
         ++ lib.optionals cfg.ripping.dvd.enable [
           pkgs.libdvdcss
           pkgs.handbrake
-          pkgs.makemkv
+          # pkgs.makemkv
         ]
         ++ lib.optionals cfg.burning.enable [ pkgs.devede ];
 

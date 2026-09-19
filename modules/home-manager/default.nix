@@ -10,6 +10,7 @@
     ./DE-WM/gnome-extensions.nix
     ./DE-WM/niri-config.nix
     ./DE-WM/plasma-config.nix
+    ./cli-apps/autotrash.nix
     ./cli-apps/bat.nix
     ./cli-apps/direnv.nix
     ./cli-apps/fastfetch.nix

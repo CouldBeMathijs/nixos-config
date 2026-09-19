@@ -18,6 +18,7 @@
   gaming.steam.enable = true;
   locale.code = "en_IE";
   tailscale.enable = true;
+  optical.ripping.enable = true;
 
   # Virtmanager & GPU Acceleration Config
   gnome-boxes.enable = true;
