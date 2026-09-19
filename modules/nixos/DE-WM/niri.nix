@@ -25,9 +25,9 @@ in
       gnome.gnome-keyring.enable = true;
       samba-wsdd.enable = true;
       upower.enable = true;
-      logind = {
-        powerKey = "suspend";
-        powerKeyLongPress = "poweroff";
+      logind.settings.Login = {
+        HandlePowerKey = "suspend";
+        HandlePowerKeyLongPress = "poweroff";
       };
     };
     programs.niri = {
