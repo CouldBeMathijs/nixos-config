@@ -29,6 +29,7 @@
     home.packages =
       lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm
       ++ lib.optional config.jetbrains.clion.enable pkgs.jetbrains.clion
-      ++ lib.optional config.jetbrains.webstorm.enable pkgs.jetbrains.webstorm;
+      ++ lib.optional config.jetbrains.webstorm.enable pkgs.jetbrains.webstorm
+      ++ lib.optional config.jetbrains.webstorm.enable pkgs.nodejs;
   };
 }
