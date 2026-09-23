@@ -13,9 +13,9 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
-
-    home.packages = with pkgs; [
-      vscode
-    ];
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscode.fhs;
+    };
   };
 }
