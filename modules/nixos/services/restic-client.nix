@@ -91,6 +91,7 @@ in
         "**/.ollama"
 
         "**/Virtualbox VMs"
+        "**/VMs"
         "/mnt/storage/backups"
         "**/share/baloo/*"
       ];
