@@ -18,10 +18,18 @@
       mpd
       mpv
     ];
-    xdg.portal = {
-      enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-      config.common.default = "*";
+    xdg = {
+      mimeApps = {
+        enable = true;
+        defaultApplications = {
+          "inode/directory" = "org.gnome.Nautilus.desktop";
+        };
+      };
+      portal = {
+        enable = true;
+        extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+        config.common.default = "*";
+      };
     };
 
     home.pointerCursor = {
