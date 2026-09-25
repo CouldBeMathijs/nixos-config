@@ -24,10 +24,12 @@
   pihole.enable = true;
   lix.enable = false;
   transmission-custom.enable = true;
-  immich = {
-    enable = true;
-    mediaLocation = "/mnt/storage/immich";
-  };
+  /*
+    immich = {
+      enable = true;
+      mediaLocation = "/mnt/storage/immich";
+    };
+  */
   restic-server = {
     enable = true;
     dataDir = "/mnt/storage/backups";
