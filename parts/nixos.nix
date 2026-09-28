@@ -64,7 +64,6 @@ let
             inherit self inputs;
             pkgs-unstable = genPkgs inputs.nixpkgs system;
             pkgs-stable = genPkgs inputs.nixpkgs-stable system;
-            gruvbox-plus-icons-git = self.packages.${system}.gruvbox-plus-icons-git;
             plasma-manager-pkgs = inputs.plasma-manager.packages.${system};
           };
 
