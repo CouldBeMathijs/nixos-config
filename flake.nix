@@ -16,10 +16,6 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    gruvbox-icons = {
-      url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
-      flake = false;
-    };
     my-bash-scripts-repo = {
       url = "github:CouldBeMathijs/bash-scripts";
       inputs.nixpkgs.follows = "nixpkgs";

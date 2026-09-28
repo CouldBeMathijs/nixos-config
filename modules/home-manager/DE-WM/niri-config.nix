@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  gruvbox-plus-icons-git,
   ...
 }:
 {
@@ -13,6 +12,7 @@
   config = lib.mkIf config.niri-config.enable {
     services.gnome-keyring.enable = true;
     home.packages = with pkgs; [
+      file-roller
       gcr_4
       loupe
       mpd
@@ -22,6 +22,7 @@
       mimeApps = {
         enable = true;
         defaultApplications = {
+          "applications/zip" = "org.gnome.FileRoller.desktop";
           "inode/directory" = "org.gnome.Nautilus.desktop";
         };
       };
@@ -86,7 +87,7 @@
       };
       iconTheme = {
         name = "Gruvbox-Plus-Dark";
-        package = gruvbox-plus-icons-git;
+        package = pkgs.gruvbox-plus-icons;
       };
       gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
       gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;

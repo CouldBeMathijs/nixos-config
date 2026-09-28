@@ -3,7 +3,6 @@
   config,
   osConfig ? { },
   pkgs,
-  gruvbox-plus-icons-git,
   plasma-manager-pkgs,
   ...
 }:
@@ -31,7 +30,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      gruvbox-plus-icons-git
+      pkgs.gruvbox-plus-icons
       pkgs.kdePackages.karousel
       plasma-manager-pkgs.rc2nix
       pkgs.kwin-script-geometry-change
