@@ -38,23 +38,6 @@
         "type": "github"
       }
     },
-    "gruvbox-icons": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1790333490,
-        "narHash": "sha256-c2mDchcN8GCviEQh7Mru/SLNpvf1ITh/YWYz23JddHw=",
-        "owner": "SylEleuth",
-        "repo": "gruvbox-plus-icon-pack",
-        "rev": "4871affc1679ed91f541061afb2e5e96a1027fe4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "SylEleuth",
-        "ref": "master",
-        "repo": "gruvbox-plus-icon-pack",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -243,7 +226,6 @@
       "inputs": {
         "asus-numberpad-driver": "asus-numberpad-driver",
         "flake-parts": "flake-parts",
-        "gruvbox-icons": "gruvbox-icons",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
         "my-bash-scripts-repo": "my-bash-scripts-repo",
