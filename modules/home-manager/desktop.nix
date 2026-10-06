@@ -9,7 +9,6 @@
   minecraft.enable = lib.mkDefault true;
   zed.enable = lib.mkDefault true;
   zen-browser.enable = lib.mkDefault true;
-  autotrash.enable = lib.mkDefault true;
 
   # Shared packages across all desktops
   home.packages = with pkgs; [

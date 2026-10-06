@@ -8,6 +8,7 @@
   nix-direnv.enable = lib.mkDefault true;
   shell.bash.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;
+  autotrash.enable = lib.mkDefault true;
 
   # Let Home Manager install and manage itself
   programs.home-manager.enable = true;
