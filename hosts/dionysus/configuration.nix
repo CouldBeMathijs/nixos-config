@@ -16,7 +16,17 @@
 
   gaming.steam.enable = true;
   gaming.heroic.enable = true;
+  tailscale.enable = true;
   locale.code = "en_IE";
+
+  restic-client = {
+    enable = true;
+    remoteLocation = [
+      "rest:http://zeus.local:8000/dionysus"
+      "rest:http://zeus.tail65fbd9.ts.net:8000/dionysus"
+    ];
+    passwordFile = "/var/lib/restic-password";
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;

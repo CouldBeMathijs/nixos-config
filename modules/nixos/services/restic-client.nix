@@ -61,6 +61,12 @@ in
         "--keep-monthly 12"
       ];
 
+      timerConfig = {
+        OnCalendar = "daily";
+        OnBootSec = "15m";
+        Persistent = true;
+      };
+
       exclude = [
         "**/.cache"
         "**/Downloads"
