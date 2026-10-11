@@ -47,9 +47,13 @@
       "burning"
     ];
   };
+  boot.kernelParams = [
+    "pcie_aspm=off"
+  ];
 
   environment.systemPackages = with pkgs; [
     android-tools
+    openvpn
   ];
 
   programs.zsh.enable = true;

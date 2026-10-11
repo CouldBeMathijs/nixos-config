@@ -14,6 +14,7 @@
     home.packages = with pkgs; [
       file-roller
       gcr_4
+      hyprpicker
       loupe
       mpd
       mpv
