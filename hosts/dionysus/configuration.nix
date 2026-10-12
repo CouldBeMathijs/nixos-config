@@ -4,7 +4,7 @@
 
 {
   config,
-  lib,
+  pkgs,
   ...
 }:
 
@@ -27,6 +27,7 @@
     ];
     passwordFile = "/var/lib/restic-password";
   };
+  programs.zsh.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -42,6 +43,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mathijs = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     description = "Mathijs Pittoors";
     extraGroups = [
       "networkmanager"
