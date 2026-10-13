@@ -68,36 +68,56 @@ in
       };
 
       exclude = [
+        # Caches
+        "**/*.log"
         "**/.cache"
-        "**/Downloads"
-        "**/.local/share/Trash"
+        "**/.cargo/registry/cache/**"
+        "**/.direnv"
+        "**/.direnv"
+        "**/.local/share/Steam/steamapps/common"
+        "**/.local/share/Steam/steamapps/downloading"
+        "**/.local/share/Steam/steamapps/shadercache"
+        "**/.npm/_cacache/**"
+        "**/.paradoxlauncher"
         "**/.thumbnails"
-        "**/direnv/prev"
-        "**/.direnv"
-        "**/vesktop/sessionData/Cache"
-
-        "**/.direnv"
         "**/.venv*"
         "**/__pycache__"
         "**/build"
         "**/cmake-build*"
+        "**/direnv/prev"
         "**/dist"
         "**/node_modules"
         "**/target"
+        "**/temp/**"
+        "**/tmp/**"
         "**/venv"
+        "**/vesktop/sessionData/Cache"
 
-        "**/.local/share/Steam/steamapps/common"
-        "**/.local/share/Steam/steamapps/downloading"
-        "**/.local/share/Steam/steamapps/shadercache"
-        "**/.paradoxlauncher"
+        # Generic folders to ignore
+        "**/.local/share/Trash"
+        "**/.ollama"
+        "**/Downloads"
         "**/GE-Proton-latest"
         "**/Games/Heroic"
-
         "**/easy-diffusion"
-        "**/.ollama"
-
-        "/mnt/storage/backups"
         "**/share/baloo/*"
+        "/mnt/storage/backups"
+
+        # Zen-browser temporary and cache files
+        "**/.zen/**/*.sqlite-journal"
+        "**/.zen/**/*.sqlite-shm"
+        "**/.zen/**/*.sqlite-wal"
+        "**/.zen/**/AlternateServices.bin"
+        "**/.zen/**/SiteSecurityServiceState.bin"
+        "**/.zen/**/crashes"
+        "**/.zen/**/datareporting"
+        "**/.zen/**/enumerate_devices.txt"
+        "**/.zen/**/lock"
+        "**/.zen/**/minidumps"
+        "**/.zen/**/serviceworker.txt"
+        "**/.zen/**/sessionstore-backups"
+        "**/.zen/Pending Pings"
+        "**/.zen/Crash Reports"
       ];
     }) cfg.backups;
 
