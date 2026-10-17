@@ -5,7 +5,7 @@
   cli-utils.enable = lib.mkDefault true;
   fwupd.enable = lib.mkDefault true;
   locale.enable = lib.mkDefault true;
-  lix.enable = lib.mkDefault true;
+  lix.enable = lib.mkDefault false;
   nix.settings = {
     extra-substituters = [ "https://noctalia.cachix.org" ];
     extra-trusted-public-keys = [
