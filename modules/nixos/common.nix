@@ -2,6 +2,9 @@
 
 {
   # Modules enabled in each system
+  imports = [
+    ./patches.nix
+  ];
   cli-utils.enable = lib.mkDefault true;
   fwupd.enable = lib.mkDefault true;
   locale.enable = lib.mkDefault true;
