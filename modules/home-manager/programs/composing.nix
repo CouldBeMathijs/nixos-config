@@ -3,7 +3,6 @@
   pkgs-stable,
   lib,
   config,
-  options,
   ...
 }:
 let
@@ -17,7 +16,7 @@ in
   config = lib.mkIf cfg.enable {
 
     home.packages = [
-      pkgs.musescore # Writing music scores
+      pkgs-stable.musescore # Writing music scores
       pkgs.muse-sounds-manager # Write music scores with better playback
     ];
     xdg.enable = true;

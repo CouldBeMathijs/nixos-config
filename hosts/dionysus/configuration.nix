@@ -35,6 +35,7 @@
   imports = [
     ./../../modules/nixos
     ./../../modules/nixos/desktop.nix
+    ./../athena/external-backup.nix
   ];
   services = {
     envfs.enable = true;
