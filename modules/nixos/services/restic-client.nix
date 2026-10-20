@@ -63,7 +63,6 @@ in
 
       timerConfig = {
         OnCalendar = "daily";
-        OnBootSec = "15m";
         Persistent = true;
       };
 
@@ -131,7 +130,6 @@ in
         path = [
           pkgs.coreutils
           pkgs.iputils
-          # pkgs.gnused removed as it is no longer needed
         ];
         serviceConfig = {
           EnvironmentFile = "-${envFilePath}";
@@ -144,8 +142,8 @@ in
 
         preStart = ''
           FOUND_TARGET=""
+          sleep 120
           for TARGET in $RESTIC_TARGET_LIST; do
-            # Bypass ping checks entirely if the target is a local folder
             if [ -d "$TARGET" ]; then
               echo "Target $TARGET is a local directory. Selection: $TARGET"
               FOUND_TARGET="$TARGET"
