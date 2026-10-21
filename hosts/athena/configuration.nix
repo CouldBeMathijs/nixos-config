@@ -47,9 +47,12 @@
       "burning"
     ];
   };
-  boot.kernelParams = [
-    "pcie_aspm=off"
-  ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "pcie_aspm=off"
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     android-tools

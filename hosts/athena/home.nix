@@ -20,7 +20,7 @@
   jetbrains.webstorm.enable = true;
 
   home.packages = with pkgs; [
-    audacity
+    audacity_3
     drawy
     kdePackages.kwordquiz
     kooha
