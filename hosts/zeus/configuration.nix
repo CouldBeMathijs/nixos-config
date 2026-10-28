@@ -57,6 +57,10 @@
       };
     };
   };
+  programs.ssh.extraConfig = ''
+    Host 192.168.1.130
+        WarnWeakCrypto no-pq-kex
+  '';
 
   # Samba Configuration
   services.samba = {

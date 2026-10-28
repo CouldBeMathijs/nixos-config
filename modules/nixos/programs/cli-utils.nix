@@ -20,9 +20,11 @@ in
       ghostty.terminfo # Fix ssh when remoting using ghostty
       git # Version control for the modern age
       killall # Kill all instances of a program
+      libjxl # Superior images
       p7zip # Compression and stuff
       pbpctrl # Control Pixel Buds Pro from the cli
       ripgrep # Better grep
+      tmux # Cause sometimes that's useful
       tree # Tree folder view
       ugrep # Even better (but also a little slower, grep)
       unzip # Make it not zipped
