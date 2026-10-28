@@ -9,6 +9,7 @@
 
   shell.zsh.enable = true;
   niri-config.enable = true;
+  programs.noctalia.settings = ./noctalia.toml;
 
   # Extras
   dosbox.enable = true;

@@ -78,7 +78,7 @@
 
     programs.noctalia = {
       enable = true;
-      settings = ../../../non-nixlang/noctalia.toml;
+      settings = lib.mkDefault ../../../non-nixlang/noctalia.toml;
     };
     gtk = {
       enable = true;
