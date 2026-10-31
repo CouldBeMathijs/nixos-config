@@ -17,5 +17,9 @@ in
       enable = true;
       package = pkgs.vscode.fhs;
     };
+    home.packages = with pkgs; [
+      nodejs
+      jre
+    ];
   };
 }

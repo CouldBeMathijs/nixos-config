@@ -13,7 +13,7 @@
   helix.enable = true;
   ollama.enable = true;
   vivaldi.enable = true;
-  calibre.enable = true;
+  vscode.enable = true;
 
   home.packages = with pkgs; [
     subtitlecomposer
