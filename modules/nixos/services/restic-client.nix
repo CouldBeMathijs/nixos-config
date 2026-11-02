@@ -101,6 +101,7 @@ in
         "**/easy-diffusion"
         "**/share/baloo/*"
         "/mnt/storage/backups"
+        "**/VMs/*NoBkup"
 
         # Zen-browser temporary and cache files
         "**/.zen/**/*.sqlite-journal"
