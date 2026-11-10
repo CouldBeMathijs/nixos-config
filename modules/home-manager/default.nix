@@ -33,7 +33,7 @@
     ./programs/libreoffice.nix
     ./programs/mail.nix
     ./programs/minecraft.nix
-    ./programs/vscode.nix
+    ./programs/vscodium.nix
     ./programs/zed.nix
     ./shells/bash.nix
     ./shells/fish.nix

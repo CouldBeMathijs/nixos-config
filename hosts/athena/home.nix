@@ -15,10 +15,10 @@
   dosbox.enable = true;
   fun-cli.enable = true;
   gramps.enable = true;
-  vivaldi.enable = true;
-  osc-suse-cli.enable = true;
-  vscode.enable = true;
   jetbrains.webstorm.enable = true;
+  osc-suse-cli.enable = true;
+  vivaldi.enable = true;
+  vscodium.enable = true;
 
   home.packages = with pkgs; [
     audacity_3

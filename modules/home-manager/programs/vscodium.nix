@@ -5,7 +5,7 @@
   ...
 }:
 let
-  name = "vscode";
+  name = "vscodium";
   cfg = config.${name};
 in
 {
@@ -13,9 +13,9 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
-      package = pkgs.vscode.fhs;
+      package = pkgs.vscodium.fhs;
     };
     home.packages = with pkgs; [
       nodejs
