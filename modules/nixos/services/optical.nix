@@ -41,7 +41,7 @@ in
 
       environment.systemPackages =
         lib.optionals cfg.ripping.cd.enable [
-          pkgs.sound-juicer
+          pkgs.freac
         ]
         ++ lib.optionals cfg.ripping.dvd.enable [
           pkgs.libdvdcss

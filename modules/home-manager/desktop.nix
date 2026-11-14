@@ -52,7 +52,8 @@
     enableBashIntegration = true;
     installBatSyntax = true;
     settings = {
-      theme = "Gruvbox Dark Hard";
+      theme = "Selenized Black";
+      font-family = "Hurmit Nerd Font Mono";
     };
   };
 }

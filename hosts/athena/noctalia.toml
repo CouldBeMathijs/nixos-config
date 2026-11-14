@@ -115,7 +115,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 enabled = true
 
 [shell]
-font_family = "Andale Mono"
+font_family = "Hurmit Nerd Font"
 
     [shell.launcher]
     category_icons_only = true

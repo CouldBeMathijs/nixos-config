@@ -20,7 +20,7 @@ in
       vista-fonts
       corefonts
       # Nerd fonts
-      nerd-fonts.jetbrains-mono
+      nerd-fonts.hurmit
       # toki pona
       nasin-nanpa
       linja-sike
