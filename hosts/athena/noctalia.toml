@@ -1,5 +1,3 @@
-config_version = 12
-
 [bar.default]
 center = []
 end = [
@@ -15,12 +13,14 @@ end = [
     "clock",
     "session"
 ]
+margin_edge = 4
+margin_opposite_edge = 4
 position = "left"
 start = [ "launcher", "control-center", "wallpaper", "workspaces" ]
 
 [desktop_widgets]
 schema_version = 2
-widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002" ]
+widget_order = [ "desktop-widget-0000000000000001" ]
 
     [desktop_widgets.grid]
     cell_size = 16
@@ -33,6 +33,8 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
     cx = 768.0
     cy = 368.0
     output = "eDP-1"
+    placement_height = 960.0
+    placement_width = 1536.0
     rotation = 0.0
     type = "clock"
 
@@ -50,6 +52,24 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
 
         [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
         background = false
+
+[idle]
+behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 500.0
 
 [location]
 address = "Bruges, Belgium"
@@ -70,6 +90,8 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
     cx = 768.0
     cy = 778.0
     output = "eDP-1"
+    placement_height = 960.0
+    placement_width = 1536.0
     rotation = 0.0
     type = "login_box"
 
@@ -92,9 +114,30 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 [nightlight]
 enabled = true
 
+[shell]
+font_family = "Andale Mono"
+
+    [shell.launcher]
+    category_icons_only = true
+    default_view = "pinned"
+    search_position = "top"
+    show_navigation_labels = false
+
+        [shell.launcher.providers.calculator]
+        prefix = "calc"
+
+        [shell.launcher.providers.emoji]
+        prefix = "emo"
+
+    [shell.screen_corners]
+    enabled = true
+
 [theme]
-community_palette = "GruvboxAlt"
+builtin = "Eldritch"
+community_palette = "Gruber Darker"
+shell_mode = "dark"
 source = "community"
+wallpaper_scheme = "m3-fruit-salad"
 
     [theme.templates]
     builtin_ids = [
@@ -135,25 +178,7 @@ transition_on_startup = true
 enabled = false
 
 [widget.network]
-enabled = false
+enabled = true
 
 [widget.wallpaper]
 enabled = false
-
-[idle]
-behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
-
-    [idle.behavior.lock]
-    action = "lock"
-    enabled = true
-    timeout = 600.0
-
-    [idle.behavior.lock-and-suspend]
-    action = "lock_and_suspend"
-    enabled = true
-    timeout = 900.0
-
-    [idle.behavior.screen-off]
-    action = "screen_off"
-    enabled = true
-    timeout = 500.0

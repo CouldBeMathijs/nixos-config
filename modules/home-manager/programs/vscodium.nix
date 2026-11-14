@@ -18,8 +18,10 @@ in
       package = pkgs.vscodium.fhs;
     };
     home.packages = with pkgs; [
-      nodejs
+      dotnet-sdk_8
       jre
+      nodejs
+      openssl
     ];
   };
 }
