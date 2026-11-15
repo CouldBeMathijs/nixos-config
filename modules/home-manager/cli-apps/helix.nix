@@ -7,7 +7,6 @@
 let
   name = "helix";
   cfg = config.${name};
-  # Reference the external latex option
   latexEnabled = config.latex.enable;
 in
 {
@@ -23,6 +22,8 @@ in
       extraPackages =
         with pkgs;
         [
+          # Universal color & snippet LSP
+          hx-lsp
           # Nix
           nil
           nixfmt
@@ -39,7 +40,6 @@ in
           marksman
         ]
         ++ lib.optionals latexEnabled [
-          # LaTeX Specific Binaries
           texlab
           ltex-ls
           texlivePackages.latexindent
@@ -59,13 +59,16 @@ in
       };
 
       languages = {
-        # Using flatten to merge the base list with the optional latex list
         language = lib.flatten [
           [
             {
               name = "nix";
               auto-format = true;
               formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+              language-servers = [
+                "nil"
+                "hx-lsp"
+              ];
             }
             {
               name = "python";
@@ -80,12 +83,30 @@ in
               language-servers = [
                 "basedpyright"
                 "ruff"
+                "hx-lsp"
               ];
             }
             {
               name = "markdown";
               auto-format = true;
-              language-servers = [ "marksman" ];
+              language-servers = [
+                "marksman"
+                "hx-lsp"
+              ];
+            }
+            {
+              name = "bash";
+              language-servers = [
+                "bash-language-server"
+                "hx-lsp"
+              ];
+            }
+            {
+              name = "cpp";
+              language-servers = [
+                "clangd"
+                "hx-lsp"
+              ];
             }
           ]
           (lib.optionals latexEnabled [
@@ -95,6 +116,7 @@ in
               language-servers = [
                 "texlab"
                 "ltex-ls"
+                "hx-lsp"
               ];
               formatter = {
                 command = "latexindent";
@@ -107,8 +129,12 @@ in
           ])
         ];
 
-        # Configure the LSP if latex is active
-        language-server = lib.mkIf latexEnabled {
+        language-server = {
+          hx-lsp = {
+            command = "${pkgs.hx-lsp}/bin/hx-lsp";
+          };
+        }
+        // lib.optionalAttrs latexEnabled {
           ltex-ls = {
             command = "ltex-ls";
             config.ltex.language = "en-US";
