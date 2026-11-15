@@ -28,6 +28,10 @@
     passwordFile = "/var/lib/restic-password";
   };
   programs.zsh.enable = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  environment.systemPackages = with pkgs; [
+    proton-vpn
+  ];
 
   # Enable networking
   networking.networkmanager.enable = true;
