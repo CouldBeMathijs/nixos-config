@@ -9,17 +9,17 @@ let
   sddm-minimal-theme-pkg = pkgs.where-is-my-sddm-theme.override {
     themeConfig.General = {
       # --- General Appearance ---
-      backgroundFill = "#1d2021"; # Gruvbox Dark Hard Background
+      backgroundFill = "#101010";
       basicTextColor = "#ebdbb2"; # Gruvbox Light Foreground
-      font = "JetBrainsMono Nerd Font"; # Use a nice mono font if available
+      font = "Hurmit Nerd Font Propo";
 
       # --- Password Input ---
-      passwordInputBackground = "#3c3836"; # Gruvbox Dark Gray
+      passwordInputBackground = "#1d2021";
       passwordTextColor = "#ebdbb2";
-      passwordInputRadius = "5"; # Subtle rounded corners
-      passwordInputWidth = "0.3"; # Minimalist narrow input
-      passwordCursorColor = "#fe8019"; # Gruvbox Orange for focus
-      passwordFontSize = "36"; # Smaller, more elegant size
+      passwordInputRadius = "32";
+      passwordInputWidth = "0.3";
+      passwordCursorColor = "#fe8019";
+      passwordFontSize = "36";
 
       # --- Selection Settings ---
       showSessionsByDefault = "true";
