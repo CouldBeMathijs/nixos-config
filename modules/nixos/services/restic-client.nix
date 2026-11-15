@@ -102,6 +102,7 @@ in
         "**/share/baloo/*"
         "/mnt/storage/backups"
         "**/VMs/*NoBkup"
+        "**/.gvfs"
 
         # Zen-browser temporary and cache files
         "**/.zen/**/*.sqlite-journal"
