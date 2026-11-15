@@ -67,7 +67,7 @@ in
       };
 
       exclude = [
-        # Caches
+        # == Caches ==
         "**/*.log"
         "**/.cache"
         "**/.cargo/registry/cache/**"
@@ -92,19 +92,28 @@ in
         "**/venv"
         "**/vesktop/sessionData/Cache"
 
-        # Generic folders to ignore
+        # == Generic folders to ignore ==
         "**/.local/share/Trash"
         "**/.ollama"
         "**/Downloads"
         "**/GE-Proton-latest"
-        "**/Games/Heroic"
         "**/easy-diffusion"
         "**/share/baloo/*"
         "/mnt/storage/backups"
         "**/VMs/*NoBkup"
         "**/.gvfs"
 
-        # Zen-browser temporary and cache files
+        # == Heroic ==
+        # Exclude Heroic game installations, but allow Prefixes
+        "**/Games/Heroic/*"
+        "!**/Games/Heroic/Prefixes"
+
+        # Prevent prefix bloat by dropping useless caches and logs inside Prefixes
+        "**/Games/Heroic/Prefixes/**/shadercache"
+        "**/Games/Heroic/Prefixes/**/*.log"
+        "**/Games/Heroic/Prefixes/**/*.reg.old"
+
+        # == Zen-browser temporary and cache files ==
         "**/.zen/**/*.sqlite-journal"
         "**/.zen/**/*.sqlite-shm"
         "**/.zen/**/*.sqlite-wal"
