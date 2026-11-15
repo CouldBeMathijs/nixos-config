@@ -15,6 +15,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       btop # System monitor
+      ccrypt # Encrypt with AES-256
       fd # Better find
       file # File information
       ghostty.terminfo # Fix ssh when remoting using ghostty
