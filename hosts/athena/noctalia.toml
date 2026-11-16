@@ -10,6 +10,7 @@ end = [
     "volume",
     "brightness",
     "battery",
+    "caffeine",
     "clock",
     "session"
 ]
