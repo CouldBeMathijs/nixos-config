@@ -1,10 +1,10 @@
 { config, lib, ... }:
 {
-  # 2026-10-21: Force disable vmware https://github.com/NixOS/nixpkgs/issues/575192
   nixpkgs.overlays = [
     (final: prev: {
-      vmware-workstation = final.callPackage ../../packages/vmware-workstation-custom.nix { };
-
+      # 2026-11-10: Use custom updated vmware package
+      vmware-workstation = final.callPackage ../../packages/vmware-workstation-custom { };
+      # 2026-10-21: Fix vmware ko.cer certificates https://github.com/NixOS/nixpkgs/issues/575192
       linuxPackages_latest = prev.linuxPackages_latest.extend (
         lfinal: lprev: {
           vmware = lprev.vmware.overrideAttrs (old: {
