@@ -311,6 +311,10 @@ animations {
     // slowdown 3.0
 }
 
+overview {
+    backdrop-color "#101010"
+}
+
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
@@ -342,7 +346,7 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen"# title="^Picture-in-Picture$"
     open-floating true
 }
 
