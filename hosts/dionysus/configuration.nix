@@ -17,6 +17,8 @@
   gaming.steam.enable = true;
   gaming.heroic.enable = true;
   tailscale.enable = true;
+  syncthing.enable = true;
+
   locale.code = "en_IE";
 
   restic-client = {

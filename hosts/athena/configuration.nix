@@ -7,12 +7,12 @@
 {
   networking.hostName = "athena";
 
+  gnome-boxes.enable = true;
   niri.enable = true;
   sddm-minimal-theme.enable = true;
-
-  gnome-boxes.enable = true;
-
+  syncthing.enable = true;
   tailscale.enable = true;
+  virtualisation.vmware.host.enable = true;
 
   restic-client = {
     enable = true;
@@ -32,8 +32,6 @@
   services = {
     envfs.enable = true;
   };
-
-  virtualisation.vmware.host.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mathijs = {

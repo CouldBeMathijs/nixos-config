@@ -12,13 +12,13 @@
 {
   networking.hostName = "chronos";
   niri.enable = true;
-  # services.displayManager.defaultSession = "plasma";
   sddm-minimal-theme.enable = true;
   gaming.heroic.enable = true;
   gaming.steam.enable = true;
   locale.code = "en_IE";
   tailscale.enable = true;
   optical.ripping.enable = true;
+  syncthing.enable = true;
 
   # Virtmanager & GPU Acceleration Config
   gnome-boxes.enable = true;

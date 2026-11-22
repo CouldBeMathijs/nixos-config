@@ -28,6 +28,7 @@
     ./services/restic-server.nix
     ./services/reverse-proxy.nix
     ./services/ssh.nix
+    ./services/syncthing.nix
     ./services/tailscale.nix
     ./services/transmission.nix
     ./systems/audio.nix
