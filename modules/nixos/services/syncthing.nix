@@ -26,7 +26,12 @@ in
     enable = lib.mkEnableOption "Enable my ${name} configuration";
   };
   config = lib.mkIf cfg.enable {
-    services.syncthing.enable = true;
+    services.syncthing = {
+      enable = true;
+      user = "mathijs";
+      group = "users";
+      dataDir = "/home/mathijs/.config/syncthing";
+    };
 
     services.udev.extraRules = ''
       SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="${syncthingPowerScript} pause"
