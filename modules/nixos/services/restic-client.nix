@@ -94,6 +94,7 @@ in
 
         # == Generic folders to ignore ==
         "**/.local/share/Trash"
+        "**/.stversions"
         "**/.ollama"
         "**/Downloads"
         "**/GE-Proton-latest"
