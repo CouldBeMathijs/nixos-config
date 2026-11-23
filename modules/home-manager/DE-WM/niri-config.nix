@@ -4,6 +4,80 @@
   pkgs,
   ...
 }:
+let
+  imageMimeTypes = [
+    "image/jpeg"
+    "image/png"
+    "image/jxl"
+    "image/webp"
+  ];
+
+  audioMimeTypes = [
+    "audio/mpeg"
+    "audio/wav"
+    "audio/x-aac"
+    "audio/x-aiff"
+    "audio/x-ape"
+    "audio/x-flac"
+    "audio/x-m4a"
+    "audio/x-m4b"
+    "audio/x-mp1"
+    "audio/x-mp2"
+    "audio/x-mp3"
+    "audio/x-mpeg"
+    "audio/x-mpegurl"
+    "audio/x-mpg"
+    "audio/x-opus+ogg"
+    "audio/x-pn-aiff"
+    "audio/x-pn-au"
+    "audio/x-pn-wav"
+    "audio/x-speex"
+    "audio/x-vorbis"
+    "audio/x-vorbis+ogg"
+    "audio/x-wavpack"
+  ];
+
+  videoMimeTypes = [
+    "video/3gp"
+    "video/3gpp"
+    "video/3gpp2"
+    "video/divx"
+    "video/dv"
+    "video/fli"
+    "video/flv"
+    "video/mp2t"
+    "video/mp4"
+    "video/mp4v-es"
+    "video/mpeg"
+    "video/mpeg-system"
+    "video/msvideo"
+    "video/ogg"
+    "video/quicktime"
+    "video/vnd.mpegurl"
+    "video/vnd.rn-realvideo"
+    "video/webm"
+    "video/x-avi"
+    "video/x-flc"
+    "video/x-fli"
+    "video/x-flv"
+    "video/x-m4v"
+    "video/x-matroska"
+    "video/x-mpeg"
+    "video/x-mpeg-system"
+    "video/x-mpeg2"
+    "video/x-ms-asf"
+    "video/x-ms-wm"
+    "video/x-ms-wmv"
+    "video/x-ms-wmx"
+    "video/x-msvideo"
+    "video/x-nsv"
+    "video/x-ogm+ogg"
+    "video/x-theora"
+    "video/x-theora+ogg"
+  ];
+
+  mkMimeAssoc = mimeTypes: desktopFile: lib.genAttrs mimeTypes (_: desktopFile);
+in
 {
   options.niri-config = {
     enable = lib.mkEnableOption "Enable niri-config configuration";
@@ -22,10 +96,15 @@
     xdg = {
       mimeApps = {
         enable = true;
-        defaultApplications = {
-          "applications/zip" = "org.gnome.FileRoller.desktop";
-          "inode/directory" = "org.gnome.Nautilus.desktop";
-        };
+        defaultApplications = lib.mkMerge [
+          {
+            "application/zip" = "org.gnome.FileRoller.desktop";
+            "inode/directory" = "org.gnome.Nautilus.desktop";
+          }
+          (mkMimeAssoc imageMimeTypes "org.gnome.Loupe.desktop")
+          (mkMimeAssoc audioMimeTypes "mpd.desktop")
+          (mkMimeAssoc videoMimeTypes "mpv.desktop")
+        ];
       };
       portal = {
         enable = true;
