@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795430422,
-        "narHash": "sha256-mIf4sXfIwKVJuNY1xKJ2nsQMp5OfTsTDa5cv4T62dKY=",
+        "lastModified": 1795430782,
+        "narHash": "sha256-M0TUMRcTzQrRCkBifRFd8k7/qI0/Zpdrtenbk3DZcdc=",
         "owner": "CouldBeMathijs",
         "repo": "bash-scripts",
-        "rev": "306bfb9392e2b661b62190294ae009c85d8079e7",
+        "rev": "8ab2f681489633bc23a206cb8ceb3c3746a5f98f",
         "type": "github"
       },
       "original": {
